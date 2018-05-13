@@ -1,4 +1,4 @@
-import initialState from 'store/initialState'
+import initialState from 'Store/initialState'
 // import { FETCH_STUFF, RECEIVE_STUFF } from '../actions/actionTypes'
 
 export default (state = initialState.user, action) => {
