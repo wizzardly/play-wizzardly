@@ -1,5 +1,3 @@
-import React from 'react'
-
 import initialState from 'store/initialState'
 
 import reducer from './index.js'
