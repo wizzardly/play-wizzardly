@@ -1,0 +1,29 @@
+extends:
+  eslint-config-airbnb
+
+parser:
+  babel-eslint
+
+settings:
+  ecmascript: 6
+
+ecmaFeatures:
+  jsx: true
+  modules: true
+  destructuring: true
+  classes: true
+  forOf: true
+  blockBindings: true
+  arrowFunctions: true
+
+env:
+  browser: true
+  jest: true
+
+rules:
+  semi: 0
+  react/jsx-filename-extension: 0
+  react/jsx-wrap-multilines: 0
+  arrow-body-style: [2, "as-needed", { "requireReturnForObjectLiteral": false }]
+  arrow-parens: [2, "as-needed", { "requireForBlockBody": false }]
+  import/extensions: 0

@@ -1,0 +1,59 @@
+{
+  "name": "play-wizzardly",
+  "version": "0.0.1",
+  "private": true,
+  "license": "MIT",
+  "engines": {
+    "node": "8.0.0",
+    "npm": "6.0.1",
+    "yarn": "1.6.0"
+  },
+  "scripts": {
+    "build": "webpack",
+    "start": "webpack-dashboard -- webpack-dev-server -d",
+    "test": "jest",
+    "ci": "jest --coverage && codeclimate-test-reporter < coverage/lcov.info",
+    "lint": "eslint ./src --ext .js"
+  },
+  "dependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.24.1",
+    "babel-eslint": "^7.2.3",
+    "babel-jest": "^20.0.1",
+    "babel-loader": "^7.0.0",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "codeclimate-test-reporter": "^0.4.1",
+    "css-loader": "^0.28.1",
+    "enzyme": "^2.8.2",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^15.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^5.0.1",
+    "eslint-plugin-react": "^7.0.1",
+    "jest": "^20.0.1",
+    "prop-types": "^15.5.10",
+    "react": "^15.5.4",
+    "react-addons-test-utils": "^15.5.1",
+    "react-dom": "^15.5.4",
+    "react-fontawesome": "^1.6.1",
+    "react-redux": "^5.0.4",
+    "react-test-renderer": "^15.5.4",
+    "redux": "^3.6.0",
+    "style-loader": "^0.17.0",
+    "webpack": "^2.5.1",
+    "webpack-dashboard": "^0.4.0",
+    "webpack-dev-server": "^2.4.5",
+    "webpack-git-hash": "^1.0.2"
+  },
+  "jest": {
+    "modulePaths": [
+      "src"
+    ]
+  },
+  "devDependencies": {
+    "babel-preset-env": "^1.6.1",
+    "sinon": "^4.5.0"
+  }
+}
