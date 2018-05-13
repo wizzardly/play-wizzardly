@@ -27,3 +27,4 @@ rules:
   arrow-body-style: [2, "as-needed", { "requireReturnForObjectLiteral": false }]
   arrow-parens: [2, "as-needed", { "requireForBlockBody": false }]
   import/extensions: 0
+  import/no-unresolved: 0
