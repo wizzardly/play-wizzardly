@@ -1,6 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const WebpackGitHash = require('webpack-git-hash')
+const DashboardPlugin = require('webpack-dashboard/plugin')
 
 const isProduction = process.env.NODE_ENV === 'production'
 
@@ -39,6 +40,7 @@ module.exports = {
     contentBase: path.resolve(__dirname, './public'),
   },
   plugins: [
+    new DashboardPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(isProduction ? 'production' : 'development'),
