@@ -1,19 +1,25 @@
 import React from 'react'
-import { mount } from 'enzyme'
+import { withMounted, withWrapper } from 'shared/specs'
+
 import Application from './index.js'
 
 describe('Application', () => {
+  const identifier = '#application'
   const subject = () => <Application />
 
-  describe('rendering', () => {
-    let mounted
-
-    beforeAll(() => {
-      mounted = mount(subject())
+  withMounted(subject, identifier, mounted => {
+    it('renders Masthead', () => {
+      expect(mounted.find('#masthead').length).toBe(1)
     })
 
-    it('renders without error', () => {
-      expect(mounted.html()).toContain('Hello, World!')
+    it('renders Mastfoot', () => {
+      expect(mounted.find('#mastfoot').length).toBe(1)
+    })
+
+    it('renders Site', () => {
+      expect(mounted.find('#site').length).toBe(1)
     })
   })
+
+  withWrapper(subject, identifier)
 })

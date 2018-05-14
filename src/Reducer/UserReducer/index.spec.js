@@ -1,4 +1,4 @@
-import initialState from 'store/initialState'
+import initialState from 'Store/initialState'
 
 import reducer from './index.js'
 

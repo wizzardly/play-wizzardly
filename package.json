@@ -16,6 +16,7 @@
     "lint": "eslint ./src --ext .js"
   },
   "dependencies": {
+    "@material-ui/icons": "^1.0.0-beta.43",
     "babel-cli": "^6.24.1",
     "babel-core": "^6.24.1",
     "babel-eslint": "^7.2.3",
@@ -33,6 +34,7 @@
     "eslint-plugin-jsx-a11y": "^5.0.1",
     "eslint-plugin-react": "^7.0.1",
     "jest": "^20.0.1",
+    "material-ui": "^1.0.0-beta.47",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-addons-test-utils": "^15.5.1",
