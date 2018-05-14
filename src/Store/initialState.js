@@ -1,4 +1,4 @@
-export const authenticationInitialState = {
+const authenticationInitialState = {
   signedIn: false,
   token: null,
   currentUser: null,

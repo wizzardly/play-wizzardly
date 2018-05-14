@@ -1,4 +1,9 @@
+import React from 'react'
+import { Provider } from 'react-redux'
 import { mount, shallow } from 'enzyme'
+
+import configureMockStore from 'redux-mock-store'
+import thunk from 'redux-thunk'
 
 export function withMounted(subject, identifier, fn) {
   describe('with mounted', () => {
@@ -32,4 +37,21 @@ export function withWrapper(subject, identifier, fn) {
       fn(wrapper)
     }
   })
+}
+
+export function provideMockedStore(subject, fn) {
+  if (!fn) {
+    throw new Error("provideMockedStore requires a function.")
+  }
+
+  const middlewares = [thunk]
+  const mockStore = configureMockStore(middlewares)
+
+  const store = mockStore()
+
+  fn(() => <Provider store={store}>{subject()}</Provider>)
+}
+
+export function withMountedHavingMockedStore(subject, identifier, fn) {
+  provideMockedStore(subject, subjectWithMockedStore => withMounted(subjectWithMockedStore, identifier, fn))
 }
