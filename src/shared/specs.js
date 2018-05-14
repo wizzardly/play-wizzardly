@@ -13,14 +13,20 @@ export function withMounted(subject, identifier, fn) {
       expect(mounted.find(identifier).length).toBe(1)
     })
 
-    const contains = text => {
-      it('contains the expected text', () => {
-        expect(mounted.html()).toContain(text)
-      })
-    }
-
     if (fn) {
-      fn(mounted, { contains })
+      const contains = text => {
+        it('contains the expected text', () => {
+          expect(mounted.html()).toContain(text)
+        })
+      }
+
+      const rendersOne = selector => {
+        it('renders the expected selector', () => {
+          expect(mounted.find(selector).length).toBe(1)
+        })
+      }
+
+      fn(mounted, { contains, rendersOne })
     }
   })
 }

@@ -9,16 +9,12 @@ describe('Site', () => {
   const signedOutSubject = () => subject({ authentication: { signedIn: false } })
   const signedInSubject = () => subject({ authentication: { signedIn: true } })
 
-  withMounted(signedOutSubject, identifier, mounted => {
-    it('renders Login', () => {
-      expect(mounted.find('#login').length).toBe(1)
-    })
+  withMounted(signedOutSubject, identifier, (mounted, example) => {
+    example.rendersOne('#login')
   })
 
-  withMounted(signedInSubject, identifier, mounted => {
-    it('renders Dashboard', () => {
-      expect(mounted.find('#dashboard').length).toBe(1)
-    })
+  withMounted(signedInSubject, identifier, (mounted, example) => {
+    example.rendersOne('#dashboard')
   })
 
   withWrapper(subject, identifier)
