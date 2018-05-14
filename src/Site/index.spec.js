@@ -1,5 +1,5 @@
 import React from 'react'
-import { mount, shallow } from 'enzyme'
+import { withMounted, withWrapper } from 'shared/specs'
 
 import Grid from 'material-ui/Grid'
 import Paper from 'material-ui/Paper'
@@ -10,25 +10,13 @@ describe('Site', () => {
   const identifier = '#site'
   const subject = () => <Site classes={{ root: '', paper: '' }} />
 
-  describe('mounted', () => {
-    const mounted = mount(subject())
-
-    it('has the correct identifier', () => {
-      expect(mounted.find(identifier).length).toBe(1)
-    })
-
+  withMounted(subject, identifier, mounted => {
     it('renders a sign in page', () => {
       expect(mounted.html()).toContain('Sign In')
     })
   })
 
-  describe('shallow', () => {
-    const wrapper = shallow(subject())
-
-    it('has the correct identifier', () => {
-      expect(wrapper.is(identifier)).toBe(true)
-    })
-
+  withWrapper(subject, identifier, wrapper => {
     it('contains a Paper', () => {
       expect(wrapper.find(Paper).length).toBe(1)
     })
