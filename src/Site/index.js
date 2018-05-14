@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import styledComponentShape from 'shared/shapes'
 
 import { withStyles } from 'material-ui/styles'
 import Typography from 'material-ui/Typography'
@@ -26,8 +26,6 @@ export function Site(props) {
   </div>
 }
 
-Site.propTypes = {
-  classes: PropTypes.shape({ root: PropTypes.string, paper: PropTypes.string }).isRequired,
-}
+Site.propTypes = { ...styledComponentShape }
 
 export default withStyles(styles)(Site)

@@ -10,11 +10,7 @@ describe('Masthead', () => {
   const subject = () => <Masthead classes={{ root: '', flex: '' }} />
 
   describe('mounted', () => {
-    let mounted
-
-    beforeAll(() => {
-      mounted = mount(subject())
-    })
+    const mounted = mount(subject())
 
     it('has the correct identifier', () => {
       expect(mounted.find(identifier).length).toBe(1)

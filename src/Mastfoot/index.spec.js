@@ -8,11 +8,7 @@ describe('Mastfoot', () => {
   const subject = () => <Mastfoot />
 
   describe('mounted', () => {
-    let mounted
-
-    beforeAll(() => {
-      mounted = mount(subject())
-    })
+    const mounted = mount(subject())
 
     it('has the correct identifier', () => {
       expect(mounted.find(identifier).length).toBe(1)

@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import styledComponentShape from 'shared/shapes'
 
 import { withStyles } from 'material-ui/styles'
 import AppBar from 'material-ui/AppBar'
@@ -31,8 +31,6 @@ export function Masthead(props) {
   </header>
 }
 
-Masthead.propTypes = {
-  classes: PropTypes.shape({ root: PropTypes.string, flex: PropTypes.string }).isRequired,
-}
+Masthead.propTypes = { ...styledComponentShape }
 
 export default withStyles(styles)(Masthead)
