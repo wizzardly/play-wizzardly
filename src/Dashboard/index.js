@@ -1,5 +1,5 @@
 import React from 'react'
-import styledComponentShape from 'shared/shapes'
+import { styledComponentPropType } from 'shared/shapes'
 
 import { withStyles } from 'material-ui/styles'
 import Typography from 'material-ui/Typography'
@@ -26,6 +26,6 @@ export function Dashboard(props) {
   </div>
 }
 
-Dashboard.propTypes = { ...styledComponentShape }
+Dashboard.propTypes = { ...styledComponentPropType }
 
 export default withStyles(styles)(Dashboard)

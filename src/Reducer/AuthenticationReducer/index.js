@@ -1,7 +1,7 @@
-import initialState from 'Store/initialState'
+import { authenticationInitialState } from 'Store/initialState'
 // import { FETCH_STUFF, RECEIVE_STUFF } from '../actions/actionTypes'
 
-export default (state = initialState.authentication, action) => {
+export default (state = authenticationInitialState, action) => {
   switch (action.type) {
     // case FETCH_STUFF:
     //   console.log('FETCH_STUFF Action')
