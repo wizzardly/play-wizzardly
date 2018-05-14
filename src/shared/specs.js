@@ -8,8 +8,14 @@ export function withMounted(subject, identifier, fn) {
       expect(mounted.find(identifier).length).toBe(1)
     })
 
+    const contains = text => {
+      it('contains the expected text', () => {
+        expect(mounted.html()).toContain(text)
+      })
+    }
+
     if (fn) {
-      fn(mounted)
+      fn(mounted, { contains })
     }
   })
 }

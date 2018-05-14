@@ -10,10 +10,8 @@ describe('Site', () => {
   const identifier = '#site'
   const subject = () => <Site classes={{ root: '', paper: '' }} />
 
-  withMounted(subject, identifier, mounted => {
-    it('renders a sign in page', () => {
-      expect(mounted.html()).toContain('Sign In')
-    })
+  withMounted(subject, identifier, (mounted, example) => {
+    example.contains('Sign In')
   })
 
   withWrapper(subject, identifier, wrapper => {

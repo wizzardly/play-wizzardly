@@ -9,10 +9,8 @@ describe('Masthead', () => {
   const identifier = '#masthead'
   const subject = () => <Masthead classes={{ root: '', flex: '' }} />
 
-  withMounted(subject, identifier, mounted => {
-    it('renders the site name', () => {
-      expect(mounted.html()).toContain('wizzard.ly')
-    })
+  withMounted(subject, identifier, (mounted, example) => {
+    example.contains('wizzard.ly')
   })
 
   withWrapper(subject, identifier, wrapper => {

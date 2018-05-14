@@ -7,10 +7,8 @@ describe('Mastfoot', () => {
   const identifier = '#mastfoot'
   const subject = () => <Mastfoot />
 
-  withMounted(subject, identifier, mounted => {
-    it('renders the copyright', () => {
-      expect(mounted.html()).toContain('Copyright © 2018')
-    })
+  withMounted(subject, identifier, (mounted, example) => {
+    example.contains('Copyright © 2018')
   })
 
   withWrapper(subject, identifier)
