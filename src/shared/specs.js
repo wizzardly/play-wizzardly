@@ -41,7 +41,7 @@ export function withWrapper(subject, identifier, fn) {
 
 export function provideMockedStore(subject, fn) {
   if (!fn) {
-    throw new Error("provideMockedStore requires a function.")
+    throw new Error('provideMockedStore requires a callback')
   }
 
   const middlewares = [thunk]
