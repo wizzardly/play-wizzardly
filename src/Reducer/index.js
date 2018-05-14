@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 
-import UserReducer from './UserReducer'
+import AuthenticationReducer from './AuthenticationReducer'
 
 export default combineReducers({
-  UserReducer,
+  AuthenticationReducer,
 })

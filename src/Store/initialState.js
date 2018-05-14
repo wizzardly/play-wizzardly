@@ -1,5 +1,6 @@
 export default {
-  user: {
+  authentication: {
     token: null,
+    current_user: null,
   },
 }
