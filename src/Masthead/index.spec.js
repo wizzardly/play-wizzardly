@@ -1,11 +1,13 @@
 import React from 'react'
 import { mount, shallow } from 'enzyme'
 
-import Application from './index.js'
+import AppBar from 'material-ui/AppBar'
 
-describe('Application', () => {
-  const identifier = '#application'
-  const subject = () => <Application />
+import { Masthead } from './index.js'
+
+describe('Masthead', () => {
+  const identifier = '#masthead'
+  const subject = () => <Masthead classes={{ root: '', flex: '' }} />
 
   describe('mounted', () => {
     let mounted
@@ -18,16 +20,8 @@ describe('Application', () => {
       expect(mounted.find(identifier).length).toBe(1)
     })
 
-    it('renders Masthead', () => {
-      expect(mounted.find('#masthead').length).toBe(1)
-    })
-
-    it('renders Mastfoot', () => {
-      expect(mounted.find('#mastfoot').length).toBe(1)
-    })
-
-    it('renders Site', () => {
-      expect(mounted.find('#site').length).toBe(1)
+    it('renders the site name', () => {
+      expect(mounted.html()).toContain('wizzard.ly')
     })
   })
 
@@ -36,6 +30,10 @@ describe('Application', () => {
 
     it('has the correct identifier', () => {
       expect(wrapper.is(identifier)).toBe(true)
+    })
+
+    it('contains an AppBar', () => {
+      expect(wrapper.find(AppBar).length).toBe(1)
     })
   })
 })

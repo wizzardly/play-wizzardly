@@ -1,11 +1,11 @@
 import React from 'react'
 import { mount, shallow } from 'enzyme'
 
-import Application from './index.js'
+import Mastfoot from './index.js'
 
-describe('Application', () => {
-  const identifier = '#application'
-  const subject = () => <Application />
+describe('Mastfoot', () => {
+  const identifier = '#mastfoot'
+  const subject = () => <Mastfoot />
 
   describe('mounted', () => {
     let mounted
@@ -18,16 +18,8 @@ describe('Application', () => {
       expect(mounted.find(identifier).length).toBe(1)
     })
 
-    it('renders Masthead', () => {
-      expect(mounted.find('#masthead').length).toBe(1)
-    })
-
-    it('renders Mastfoot', () => {
-      expect(mounted.find('#mastfoot').length).toBe(1)
-    })
-
-    it('renders Site', () => {
-      expect(mounted.find('#site').length).toBe(1)
+    it('renders the copyright', () => {
+      expect(mounted.html()).toContain('Copyright © 2018')
     })
   })
 

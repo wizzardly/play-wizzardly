@@ -8,7 +8,7 @@ import Grid from 'material-ui/Grid'
 
 import styles from './styles'
 
-function Site(props) {
+export function Site(props) {
   const { classes } = props
 
   return <div id="site">

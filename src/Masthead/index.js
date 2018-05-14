@@ -17,7 +17,7 @@ import styles from './styles'
 //   <MenuIcon />
 // </IconButton>
 
-function Masthead(props) {
+export function Masthead(props) {
   const { classes } = props
 
   return <header id="masthead" className={classes.root}>
@@ -32,7 +32,7 @@ function Masthead(props) {
 }
 
 Masthead.propTypes = {
-  classes: PropTypes.shape({ root: PropTypes.string, flex: PropTypes.string, menuButton: PropTypes.string }).isRequired,
+  classes: PropTypes.shape({ root: PropTypes.string, flex: PropTypes.string }).isRequired,
 }
 
 export default withStyles(styles)(Masthead)
