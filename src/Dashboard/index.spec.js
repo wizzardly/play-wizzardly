@@ -1,7 +1,7 @@
 import React from 'react'
 import { withMounted, withWrapper } from 'shared/specs'
 
-import { Dashboard } from './index.js'
+import Dashboard from './index.js'
 
 describe('Dashboard', () => {
   const identifier = '#dashboard'
