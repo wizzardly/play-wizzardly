@@ -5,13 +5,13 @@ import { mount, shallow } from 'enzyme'
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
 
-const rendersOne = (source, selector) => expect(source.find(selector).length).toBe(1)
+const findInSource = (source, selector) => expect(source.find(selector).length).toBe(1)
 
 export function withMounted(subject, identifier, fn) {
   describe('with mounted', () => {
     const mounted = mount(subject())
 
-    it('has the correct identifier', () => rendersOne(mounted, identifier))
+    it('has the correct identifier', () => findInSource(mounted, identifier))
 
     if (fn) {
       const contains = text => {
@@ -19,7 +19,7 @@ export function withMounted(subject, identifier, fn) {
       }
 
       const rendersOne = selector => {
-        it('renders the expected selector', () => rendersOne(mounted, selector))
+        it('renders the expected selector', () => findInSource(mounted, selector))
       }
 
       fn(mounted, { contains, rendersOne })
@@ -34,7 +34,7 @@ export function withWrapper(subject, identifier, fn) {
     it('has the correct identifier', () => expect(wrapper.is(identifier)).toBe(true))
 
     const rendersOne = selector => {
-      it('renders the expected selector', () => rendersOne(wrapper, selector))
+      it('renders the expected selector', () => findInSource(wrapper, selector))
     }
 
     if (fn) {
