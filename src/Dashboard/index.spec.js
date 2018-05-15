@@ -1,8 +1,8 @@
 import React from 'react'
 import { withMounted, withWrapper } from 'shared/specs'
 
-import Grid from 'material-ui/Grid'
-import Paper from 'material-ui/Paper'
+import Grid from '@material-ui/core/Grid'
+import Paper from '@material-ui/core/Paper'
 
 import { Dashboard } from './index.js'
 
@@ -20,7 +20,7 @@ describe('Dashboard', () => {
     })
 
     it('contains a Grid', () => {
-      expect(wrapper.find(Grid).length).toBeGreaterThan(0);
+      expect(wrapper.find(Grid).length).toBeGreaterThan(0)
     })
   })
 })

@@ -1,7 +1,7 @@
 import React from 'react'
 import { withMounted, withWrapper } from 'shared/specs'
 
-import AppBar from 'material-ui/AppBar'
+import AppBar from '@material-ui/core/AppBar'
 
 import { Masthead } from './index.js'
 
