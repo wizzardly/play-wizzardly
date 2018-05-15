@@ -1,5 +1,5 @@
 import React from 'react'
-import { withMounted, withWrapper } from 'shared/specs'
+import { withMountedHavingMockedStore, withWrapper } from 'shared/specs'
 
 import Application from './index.js'
 
@@ -7,7 +7,7 @@ describe('Application', () => {
   const identifier = '#application'
   const subject = () => <Application />
 
-  withMounted(subject, identifier, mounted => {
+  withMountedHavingMockedStore(subject, identifier, mounted => {
     it('renders Masthead', () => {
       expect(mounted.find('#masthead').length).toBe(1)
     })

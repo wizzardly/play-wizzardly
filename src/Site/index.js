@@ -1,11 +1,27 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import initialState from 'Store/initialState'
+import authenticationShape from 'Store/shapes'
 
 import Login from 'Login'
+import Dashboard from 'Dashboard'
 
-export function Site() {
+export function Site(props) {
+  const { signedIn } = props.authentication
+
   return <div id="site">
-    <Login />
+    {signedIn ? <Dashboard /> : <Login />}
   </div>
 }
 
-export default Site
+Site.propTypes = {
+  authentication: authenticationShape,
+}
+
+Site.defaultProps = {
+  authentication: { ...initialState.authentication },
+}
+
+const mapStateToProps = state => ({ authentication: state.authentication })
+
+export default connect(mapStateToProps)(Site)

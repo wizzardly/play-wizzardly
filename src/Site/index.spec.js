@@ -5,12 +5,16 @@ import { Site } from './index.js'
 
 describe('Site', () => {
   const identifier = '#site'
-  const subject = () => <Site />
+  const subject = props => <Site {...props} />
+  const signedOutSubject = () => subject({ authentication: { signedIn: false } })
+  const signedInSubject = () => subject({ authentication: { signedIn: true } })
 
-  withMounted(subject, identifier, mounted => {
-    it('renders Login', () => {
-      expect(mounted.find('#login').length).toBe(1)
-    })
+  withMounted(signedOutSubject, identifier, (mounted, example) => {
+    example.rendersOne('#login')
+  })
+
+  withMounted(signedInSubject, identifier, (mounted, example) => {
+    example.rendersOne('#dashboard')
   })
 
   withWrapper(subject, identifier)

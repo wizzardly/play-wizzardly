@@ -1,6 +1,9 @@
+export const authenticationInitialState = {
+  signedIn: false,
+  token: null,
+  currentUser: null,
+}
+
 export default {
-  authentication: {
-    token: null,
-    current_user: null,
-  },
+  authentication: { ...authenticationInitialState },
 }
