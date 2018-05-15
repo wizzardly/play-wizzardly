@@ -11,5 +11,12 @@ describe('FormInputText', () => {
 
   withMounted(subject, identifier, (mounted, example) => {
     example.contains(exampleLabel)
+
+    // TODO: check input exist
+      // TODO: check placeholder gets used
+      // TODO: check value is assigned
+      // TODO: Check value change works
+    // TODO: check label exists
+      // TODO: Check label for correct properties
   })
 })
