@@ -7,8 +7,8 @@ import thunk from 'redux-thunk'
 
 const findInSource = (source, selector) => expect(source.find(selector).length).toBe(1)
 
-const rendersOne = selector => {
-  it(`renders the expected selector "${selector.toString()}"`, () => findInSource(mounted, selector))
+const findOneInSource = source => selector => {
+  it(`renders the expected selector "${selector.toString()}"`, () => findInSource(source, selector))
 }
 
 export function withMounted(subject, identifier, fn) {
@@ -22,6 +22,8 @@ export function withMounted(subject, identifier, fn) {
         it(`contains the expected text "${text}"`, () => expect(mounted.html()).toContain(text))
       }
 
+      const rendersOne = findOneInSource(mounted)
+
       fn(mounted, { contains, rendersOne })
     }
   })
@@ -32,6 +34,8 @@ export function withWrapper(subject, identifier, fn) {
     const wrapper = shallow(subject())
 
     it('has the correct identifier', () => expect(wrapper.is(identifier)).toBe(true))
+
+    const rendersOne = findOneInSource(wrapper)
 
     if (fn) {
       fn(wrapper, { rendersOne })

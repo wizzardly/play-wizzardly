@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import PropTypes from 'PropTypes'
+import PropTypes from 'prop-types'
 import { styledComponentPropType } from 'shared/shapes'
 
 import { withStyles } from '@material-ui/core/styles'
@@ -11,7 +11,7 @@ import FormControl from '@material-ui/core/FormControl'
 import styles from './styles'
 
 export class FormInputText extends Component {
-  static propTypes = {
+  static propTypes = { // eslint-disable-line no-undef
     ...styledComponentPropType,
     name: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
@@ -19,12 +19,14 @@ export class FormInputText extends Component {
     placeholder: PropTypes.string,
   }
 
+  static defaultProps = { value: '', placeholder: '' } // eslint-disable-line no-undef
+
   constructor(props) {
     super(props)
     this.handleChange = this.handleChange.bind(this)
   }
 
-  state = {
+  state = { // eslint-disable-line no-undef
     value: '',
   }
 
