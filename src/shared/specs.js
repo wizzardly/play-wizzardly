@@ -15,11 +15,11 @@ export function withMounted(subject, identifier, fn) {
 
     if (fn) {
       const contains = text => {
-        it('contains the expected text', () => expect(mounted.html()).toContain(text))
+        it(`contains the expected text "${text}"`, () => expect(mounted.html()).toContain(text))
       }
 
       const rendersOne = selector => {
-        it('renders the expected selector', () => findInSource(mounted, selector))
+        it(`renders the expected selector "${selector.toString()}"`, () => findInSource(mounted, selector))
       }
 
       fn(mounted, { contains, rendersOne })
@@ -34,7 +34,7 @@ export function withWrapper(subject, identifier, fn) {
     it('has the correct identifier', () => expect(wrapper.is(identifier)).toBe(true))
 
     const rendersOne = selector => {
-      it('renders the expected selector', () => findInSource(wrapper, selector))
+      it(`renders the expected selector ${selector.toString()}`, () => findInSource(wrapper, selector))
     }
 
     if (fn) {

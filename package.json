@@ -68,6 +68,7 @@
     ]
   },
   "devDependencies": {
+    "babel-eslint": "^8.2.3",
     "sinon": "^4.5.0"
   }
 }
