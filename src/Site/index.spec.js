@@ -1,21 +1,25 @@
 import React from 'react'
-import { withMounted, withWrapper } from 'shared/specs'
+import { shallow } from 'enzyme'
+
+import Login from 'Login'
+import Dashboard from 'Dashboard'
 
 import { Site } from './index.js'
 
 describe('Site', () => {
-  const identifier = '#site'
   const subject = props => <Site {...props} />
-  const signedOutSubject = () => subject({ authentication: { signedIn: false } })
-  const signedInSubject = () => subject({ authentication: { signedIn: true } })
 
-  withMounted(signedOutSubject, identifier, (mounted, example) => {
-    example.rendersOne('#login')
+  describe('when shallow rendered and unauthenticated', () => {
+    const wrapper = shallow(subject({ authentication: { signedIn: false } }))
+
+    it('has the expected selector', () => expect(wrapper.is('#site')).toBe(true))
+    it('renders Login', () => expect(wrapper.find(Login).length).toBe(1))
   })
 
-  withMounted(signedInSubject, identifier, (mounted, example) => {
-    example.rendersOne('#dashboard')
-  })
+  describe('when shallow rendered and authenticated', () => {
+    const wrapper = shallow(subject({ authentication: { signedIn: true } }))
 
-  withWrapper(subject, identifier)
+    it('has the expected selector', () => expect(wrapper.is('#site')).toBe(true))
+    it('renders Login', () => expect(wrapper.find(Dashboard).length).toBe(1))
+  })
 })

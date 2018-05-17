@@ -1,25 +1,21 @@
 import React from 'react'
-import { withMountedHavingMockedStore, withWrapper } from 'shared/specs'
+import { shallow } from 'enzyme'
+
+import Masthead from 'Masthead'
+import Mastfoot from 'Mastfoot'
+import Site from 'Site'
 
 import Application from './index.js'
 
 describe('Application', () => {
-  const identifier = '#application'
   const subject = () => <Application />
 
-  withMountedHavingMockedStore(subject, identifier, mounted => {
-    it('renders Masthead', () => {
-      expect(mounted.find('#masthead').length).toBe(1)
-    })
+  describe('when shallow rendered', () => {
+    const wrapper = shallow(subject())
 
-    it('renders Mastfoot', () => {
-      expect(mounted.find('#mastfoot').length).toBe(1)
-    })
-
-    it('renders Site', () => {
-      expect(mounted.find('#site').length).toBe(1)
-    })
+    it('has the expected selector', () => expect(wrapper.is('#application')).toBe(true))
+    it('renders Masthead', () => expect(wrapper.find(Masthead).length).toBe(1))
+    it('renders Mastfoot', () => expect(wrapper.find(Mastfoot).length).toBe(1))
+    it('renders Site', () => expect(wrapper.find(Site).length).toBe(1))
   })
-
-  withWrapper(subject, identifier)
 })
