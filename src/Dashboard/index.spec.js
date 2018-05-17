@@ -1,15 +1,21 @@
 import React from 'react'
-import { withMounted, withWrapper } from 'shared/specs'
+import { mount, shallow } from 'enzyme'
 
 import Dashboard from './index.js'
 
 describe('Dashboard', () => {
-  const identifier = '#dashboard'
   const subject = () => <Dashboard classes={{ root: '', paper: '' }} />
 
-  withMounted(subject, identifier, (mounted, example) => {
-    example.contains('Welcome!')
+  describe('when mounted', () => {
+    const mounted = mount(subject())
+    const html = mounted.html()
+
+    it('contains the expected text', () => expect(html).toContain('Welcome!'))
   })
 
-  withWrapper(subject, identifier)
+  describe('when shallow rendered', () => {
+    const wrapper = shallow(subject())
+
+    it('has the expected selector', () => expect(wrapper.is('#dashboard')).toBe(true))
+  })
 })

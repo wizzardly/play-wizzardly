@@ -7,4 +7,4 @@ ratings:
     - "**.js"
 
 exclude_patterns:
-  - "*specs.js"
+  - "*.spec.js"
