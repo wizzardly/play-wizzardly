@@ -1,4 +1,4 @@
-engines
+engines:
   eslint:
     enabled: true
 
@@ -7,4 +7,4 @@ ratings:
     - "**.js"
 
 exclude_patterns:
-  - **/*.spec.js
+  - "**/*.spec.js"
