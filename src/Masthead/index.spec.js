@@ -1,21 +1,24 @@
 import React from 'react'
-import { withMounted, withWrapper } from 'shared/specs'
+import { mount, shallow } from 'enzyme'
 
-import AppBar from 'material-ui/AppBar'
+import AppBar from '@material-ui/core/AppBar'
 
 import { Masthead } from './index.js'
 
 describe('Masthead', () => {
-  const identifier = '#masthead'
   const subject = () => <Masthead classes={{ root: '', flex: '' }} />
 
-  withMounted(subject, identifier, (mounted, example) => {
-    example.contains('wizzard.ly')
+  describe('when mounted', () => {
+    const mounted = mount(subject())
+    const html = mounted.html()
+
+    it('contains the expected text', () => expect(html).toContain('wizzard.ly'))
   })
 
-  withWrapper(subject, identifier, wrapper => {
-    it('contains an AppBar', () => {
-      expect(wrapper.find(AppBar).length).toBe(1)
-    })
+  describe('when shallow rendered', () => {
+    const wrapper = shallow(subject())
+
+    it('has the expected selector', () => expect(wrapper.is('#masthead')).toBe(true))
+    it('renders Paper', () => expect(wrapper.find(AppBar).length).toBe(1))
   })
 })

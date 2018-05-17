@@ -1,10 +1,10 @@
 import React from 'react'
 import { styledComponentPropType } from 'shared/shapes'
 
-import { withStyles } from 'material-ui/styles'
-import Typography from 'material-ui/Typography'
-import Paper from 'material-ui/Paper'
-import Grid from 'material-ui/Grid'
+import { withStyles } from '@material-ui/core/styles'
+import Typography from '@material-ui/core/Typography'
+import Paper from '@material-ui/core/Paper'
+import Grid from '@material-ui/core/Grid'
 
 import styles from './styles'
 

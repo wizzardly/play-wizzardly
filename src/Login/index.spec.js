@@ -1,26 +1,26 @@
 import React from 'react'
-import { withMounted, withWrapper } from 'shared/specs'
+import { mount, shallow } from 'enzyme'
 
-import Grid from 'material-ui/Grid'
-import Paper from 'material-ui/Paper'
+import Grid from '@material-ui/core/Grid'
+import Paper from '@material-ui/core/Paper'
 
 import { Login } from './index.js'
 
 describe('Login', () => {
-  const identifier = '#login'
   const subject = () => <Login classes={{ root: '', paper: '' }} />
 
-  withMounted(subject, identifier, (mounted, example) => {
-    example.contains('Sign In')
+  describe('when mounted', () => {
+    const mounted = mount(subject())
+    const html = mounted.html()
+
+    it('contains the expected text', () => expect(html).toContain('Sign In'))
   })
 
-  withWrapper(subject, identifier, wrapper => {
-    it('contains a Paper', () => {
-      expect(wrapper.find(Paper).length).toBe(1)
-    })
+  describe('when shallow rendered', () => {
+    const wrapper = shallow(subject())
 
-    it('contains a Grid', () => {
-      expect(wrapper.find(Grid).length).toBeGreaterThan(0);
-    })
+    it('has the expected selector', () => expect(wrapper.is('#login')).toBe(true))
+    it('renders Paper', () => expect(wrapper.find(Paper).length).toBe(1))
+    it('renders Grid', () => expect(wrapper.find(Grid).length).toBeGreaterThan(0))
   })
 })

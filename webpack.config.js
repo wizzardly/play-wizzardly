@@ -25,7 +25,9 @@ module.exports = {
         exclude: [/node_modules/],
         use: [{
           loader: 'babel-loader',
-          options: { presets: ['env'] },
+          options: {
+            presets: ['@babel/preset-env'],
+          },
         }],
       },
     ],
@@ -33,8 +35,8 @@ module.exports = {
   resolve: {
     modules: [
       path.resolve('./src'),
-      path.resolve('./node_modules')
-    ]
+      path.resolve('./node_modules'),
+    ],
   },
   devServer: {
     contentBase: path.resolve(__dirname, './public'),

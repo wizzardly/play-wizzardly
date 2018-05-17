@@ -1,26 +1,21 @@
 import React from 'react'
-import { withMounted, withWrapper } from 'shared/specs'
+import { mount, shallow } from 'enzyme'
 
-import Grid from 'material-ui/Grid'
-import Paper from 'material-ui/Paper'
-
-import { Dashboard } from './index.js'
+import Dashboard from './index.js'
 
 describe('Dashboard', () => {
-  const identifier = '#dashboard'
   const subject = () => <Dashboard classes={{ root: '', paper: '' }} />
 
-  withMounted(subject, identifier, (mounted, example) => {
-    example.contains('Welcome')
+  describe('when mounted', () => {
+    const mounted = mount(subject())
+    const html = mounted.html()
+
+    it('contains the expected text', () => expect(html).toContain('Welcome!'))
   })
 
-  withWrapper(subject, identifier, wrapper => {
-    it('contains a Paper', () => {
-      expect(wrapper.find(Paper).length).toBe(1)
-    })
+  describe('when shallow rendered', () => {
+    const wrapper = shallow(subject())
 
-    it('contains a Grid', () => {
-      expect(wrapper.find(Grid).length).toBeGreaterThan(0);
-    })
+    it('has the expected selector', () => expect(wrapper.is('#dashboard')).toBe(true))
   })
 })
