@@ -37,6 +37,7 @@ export class Form extends Component {
         onChange={this.handleChange('email')}
         margin="normal"
         fullWidth
+        autoFocus
       />
 
       <TextField

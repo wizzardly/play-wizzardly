@@ -15,8 +15,8 @@ export function Site(props) {
 
   return <div id="site">
     <Masthead />
-    <Mastfoot />
     <Dashboard />
+    <Mastfoot />
   </div>
 }
 
