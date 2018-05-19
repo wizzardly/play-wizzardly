@@ -3,6 +3,7 @@ import { styledComponentPropType } from 'shared/shapes'
 
 import { withStyles } from '@material-ui/core/styles'
 import TextField from '@material-ui/core/TextField'
+import Button from '@material-ui/core/Button'
 
 import styles from './styles'
 
@@ -13,11 +14,20 @@ export class Form extends Component {
 
   handleChange = name => event => this.setState({ [name]: event.target.value })
 
+  handleSubmit = event => {
+    event.preventDefault()
+    this.signIn()
+  }
+
+  signIn() {
+    alert('signIn')
+  }
+
   render() {
     const { classes } = this.props
     const { email, password } = this.state
 
-    return <form id="login-form">
+    return <form id="login-form" onSubmit={this.handleSubmit}>
       <TextField
         id="email"
         label="Email"
@@ -41,6 +51,10 @@ export class Form extends Component {
         margin="normal"
         fullWidth
       />
+
+      <Button size="large" className={classes.button} type="submit">
+        Submit
+      </Button>
     </form>
   }
 }
