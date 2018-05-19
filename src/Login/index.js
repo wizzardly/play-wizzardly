@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography'
 import Paper from '@material-ui/core/Paper'
 import Grid from '@material-ui/core/Grid'
 
-import { wand } from 'shared/images'
+import { logo, wand } from 'shared/images'
 
 import LoginForm from './LoginForm'
 
@@ -18,10 +18,7 @@ export function Login(props) {
   return <div id="login" className={classes.container}>
     <Grid container justify="center" alignItems="center" className={classes.root}>
       <Paper className={classes.paper} elevation12>
-        <Typography variant="display1" gutterBottom>
-          <img src={wand} />
-          Sign In
-        </Typography>
+        <img src={logo} />
 
         <LoginForm />
       </Paper>
