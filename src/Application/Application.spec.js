@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 
 import Site from 'Site'
 
-import { Application } from './index.js'
+import Application from './Application.js'
 
 describe('Application', () => {
   const subject = () => <Application classes={{ application: '' }} />
@@ -12,6 +12,6 @@ describe('Application', () => {
     const wrapper = shallow(subject())
 
     it('has the expected selector', () => expect(wrapper.is('#application')).toBe(true))
-    it('renders Site', () => expect(wrapper.find(Site).length).toBe(1))
+    it('renders Site', () => expect(wrapper.find(Site)).toHaveLength(1))
   })
 })

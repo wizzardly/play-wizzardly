@@ -4,7 +4,7 @@ import { mount, shallow } from 'enzyme'
 // import Grid from '@material-ui/core/Grid'
 // import Paper from '@material-ui/core/Paper'
 
-import { LoginForm } from './index.js'
+import LoginForm from './LoginForm'
 
 describe('LoginForm', () => {
   const subject = () => <LoginForm classes={{ textField: '', button: '' }} />

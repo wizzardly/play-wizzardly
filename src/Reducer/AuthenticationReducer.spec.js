@@ -1,6 +1,6 @@
-import { authenticationInitialState } from 'Store/initialState'
+import { authenticationInitialState } from 'data/initialState'
 
-import reducer from './index.js'
+import reducer from './AuthenticationReducer'
 
 describe('AuthenticationReducer', () => {
   it('should return the initial state', () => {

@@ -1,13 +1,10 @@
 import React, { Component } from 'react'
-import { styledComponentPropType } from 'shared/shapes'
+import { styledComponentPropType } from 'data/shapes'
 
-import { withStyles } from '@material-ui/core/styles'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 
-import styles from './styles'
-
-export class LoginForm extends Component {
+class LoginForm extends Component {
   static propTypes = { ...styledComponentPropType }
 
   state = { email: '', password: '' }
@@ -79,4 +76,4 @@ export class LoginForm extends Component {
   }
 }
 
-export default withStyles(styles)(LoginForm)
+export default LoginForm

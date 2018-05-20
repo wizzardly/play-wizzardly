@@ -9,3 +9,10 @@ export const userShape = PropTypes.shape({
   last_name: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
 })
+
+export const authenticationShape = PropTypes.shape({
+  signedIn: PropTypes.bool,
+  token: PropTypes.string,
+  currentUser: PropTypes.shape(userShape),
+})
+
