@@ -60,7 +60,7 @@ export class LoginForm extends Component {
       id="login-form-submit"
       size="large"
       type="submit"
-      color={!email ? 'primary' : 'secondary'}
+      color={(!email || !password) ? 'primary' : 'secondary'}
       variant="raised"
       // disabled={!email || !password}
     >
