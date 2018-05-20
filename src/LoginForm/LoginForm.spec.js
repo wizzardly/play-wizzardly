@@ -13,31 +13,48 @@ describe('LoginForm', () => {
   const subject = dispatch => <LoginForm dispatch={dispatch} classes={{ textField: '', button: '' }} />
 
   describe('when mounted', () => {
-    const mounted = mount(subject(() => {}))
+    let mounted
+
+    beforeEach(() => {
+      mounted = mount(subject(() => {}))
+    })
 
     it('renders an email input', () => expect(mounted.find('input#login-form-email')).toHaveLength(1))
     it('renders an password input', () => {
       expect(mounted.find('input#login-form-password[type="password"]')).toHaveLength(1)
     })
-    it('renders a submit button', () => {
-      expect(mounted.find('button#login-form-submit[type="submit"]')).toHaveLength(1)
-    })
 
     describe('submit button', () => {
-      describe('when no email or password is entered', () => {
+      const submitButton = () => mounted.find('button#login-form-submit[type="submit"]')
+      const setValues = (email, password) => {
+        mounted.find('input#login-form-email').simulate('change', { target: { value: email } })
+        mounted.find('input#login-form-password').simulate('change', { target: { value: password } })
+      }
 
+      it('renders', () => expect(submitButton()).toHaveLength(1))
+
+      describe('when no email or password is entered', () => {
+        beforeEach(() => setValues('', ''))
+
+        it('is disabled', () => expect(submitButton()).toBeDisabled(true))
       })
 
       describe('when only an email is entered', () => {
+        beforeEach(() => setValues(faker.internet.email(), ''))
 
+        it('is disabled', () => expect(submitButton()).toBeDisabled(true))
       })
 
       describe('when only a password is entered', () => {
+        beforeEach(() => setValues('', faker.internet.password()))
 
+        it('is disabled', () => expect(submitButton()).toBeDisabled())
       })
 
       describe('when both a username and password are entered', () => {
+        beforeEach(() => setValues(faker.internet.email(), faker.internet.password()))
 
+        it('is enabled', () => expect(submitButton()).not.toBeDisabled())
       })
     })
   })
