@@ -1,5 +1,9 @@
 import PropTypes from 'prop-types'
 
+export const connectedComponentPropType = {
+  dispatch: PropTypes.func.isRequired,
+}
+
 export const styledComponentPropType = {
   classes: PropTypes.objectOf(PropTypes.string).isRequired,
 }
