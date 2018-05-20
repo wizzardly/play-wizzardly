@@ -19,6 +19,6 @@ describe('Masthead', () => {
     const wrapper = shallow(subject())
 
     it('has the expected selector', () => expect(wrapper.is('#masthead')).toBe(true))
-    it('renders Paper', () => expect(wrapper.find(AppBar).length).toBe(1))
+    it('renders Paper', () => expect(wrapper.find(AppBar)).toHaveLength(1))
   })
 })
