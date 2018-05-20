@@ -20,7 +20,7 @@ export class Form extends Component {
   }
 
   signIn() {
-    alert('signIn')
+    console.log('state at signin', this.state)
   }
 
   render() {
@@ -53,13 +53,7 @@ export class Form extends Component {
         fullWidth
       />
 
-      <Button
-        size="large"
-        className={classes.button}
-        type="submit"
-        color="primary"
-        variant="raised"
-      >
+      <Button size="large" className={classes.button} type="submit" color="primary" variant="raised">
         Sign In
       </Button>
     </form>
