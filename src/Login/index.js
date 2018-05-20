@@ -7,7 +7,8 @@ import Grid from '@material-ui/core/Grid'
 
 import { logo } from 'shared/images'
 
-import LoginForm from './LoginForm'
+// TODO: fix this
+import LoginFormf from './LoginForm'
 
 import styles from './styles'
 
@@ -19,7 +20,7 @@ export function Login(props) {
       <Paper className={classes.paper} elevation={12}>
         <img src={logo} alt="wizzard.ly" />
 
-        <LoginForm />
+        <LoginFormf />
       </Paper>
     </Grid>
   </div>

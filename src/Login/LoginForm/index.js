@@ -53,13 +53,16 @@ export class LoginForm extends Component {
   }
 
   submitButton(className) {
+    const { email, password } = this.state
+
     return <Button
       className={className}
       id="login-form-submit"
       size="large"
       type="submit"
-      color="primary"
+      color={!email ? 'primary' : 'secondary'}
       variant="raised"
+      // disabled={!email || !password}
     >
       Sign In
     </Button>
