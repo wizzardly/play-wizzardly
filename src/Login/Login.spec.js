@@ -8,13 +8,6 @@ import Login from './Login'
 describe('Login', () => {
   const subject = () => <Login classes={{ root: '', paper: '' }} />
 
-  describe('when mounted', () => {
-    const mounted = mount(subject())
-    const html = mounted.html()
-
-    it('contains the expected text', () => expect(html).toContain('Sign In'))
-  })
-
   describe('when shallow rendered', () => {
     const wrapper = shallow(subject())
 
