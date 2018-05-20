@@ -1,30 +1,68 @@
 import React from 'react'
 import { mount, shallow } from 'enzyme'
-
-// import Grid from '@material-ui/core/Grid'
-// import Paper from '@material-ui/core/Paper'
+import configureMockStore from 'redux-mock-store'
+import thunk from 'redux-thunk'
+import faker from 'faker'
+import { SIGN_IN_SUBMIT } from 'Actions'
 
 import LoginForm from './LoginForm'
 
+const mockStore = configureMockStore([thunk])
+
 describe('LoginForm', () => {
-  const subject = () => <LoginForm classes={{ textField: '', button: '' }} />
+  const subject = dispatch => <LoginForm dispatch={dispatch} classes={{ textField: '', button: '' }} />
 
   describe('when mounted', () => {
-    const mounted = mount(subject())
+    const mounted = mount(subject(() => {}))
 
+    it('renders an email input', () => expect(mounted.find('input#login-form-email')).toHaveLength(1))
+    it('renders an password input', () => {
+      expect(mounted.find('input#login-form-password[type="password"]')).toHaveLength(1)
+    })
+    it('renders a submit button', () => {
+      expect(mounted.find('button#login-form-submit[type="submit"]')).toHaveLength(1)
+    })
+
+    describe('submit button', () => {
+      describe('when no email or password is entered', () => {
+
+      })
+
+      describe('when only an email is entered', () => {
+
+      })
+
+      describe('when only a password is entered', () => {
+
+      })
+
+      describe('when both a username and password are entered', () => {
+
+      })
+    })
+  })
+
+  describe('when mounted with a store', () => {
     describe('onSubmit', () => {
-      beforeEach(() => mounted.find('form#login-form').simulate('submit'))
+      it('dispatches the expected action', () => {
+        const store = mockStore()
+        const mounted = mount(subject(store.dispatch))
 
-      it('submits the form when the submit button is clicked', () => expect(true).toBe(true))
+        const email = faker.internet.email()
+        const password = faker.internet.password()
+
+        mounted.setState({ email, password })
+
+        mounted.find('form#login-form').simulate('submit')
+
+        expect(store.getActions()).toEqual([{ type: SIGN_IN_SUBMIT, auth: { email, password } }])
+      })
     })
   })
 
   describe('when shallow rendered', () => {
-    const wrapper = shallow(subject())
+    const wrapper = shallow(subject(() => {}))
 
     it('has the expected selector', () => expect(wrapper.is('#login-form')).toBe(true))
-    // it('renders Paper', () => expect(wrapper.find(Paper)).toHaveLength(1))
-    // it('renders Grid', () => expect(wrapper.find(Grid)).not.toHaveLength(0))
-    // it('renders LoginForm', () => expect(wrapper.find(LoginFormf)).toHaveLength(1))
   })
 })

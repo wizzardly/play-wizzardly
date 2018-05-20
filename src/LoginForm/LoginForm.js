@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
-import { styledComponentPropType } from 'data/shapes'
+import { connectedComponentPropType, styledComponentPropType } from 'data/shapes'
 
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 
+import { SignInSubmit } from 'Actions'
+
 class LoginForm extends Component {
-  static propTypes = { ...styledComponentPropType }
+  static propTypes = { ...connectedComponentPropType, ...styledComponentPropType }
 
   state = { email: '', password: '' }
 
@@ -13,16 +15,13 @@ class LoginForm extends Component {
 
   handleSubmit = event => {
     event.preventDefault()
-    this.signIn()
-  }
-
-  signIn() {
-    console.log('state at signin', this.state) // eslint-disable-line no-console
+    const { email, password } = this.state
+    this.props.dispatch(SignInSubmit(email, password))
   }
 
   emailInput(className) {
     return <TextField
-      id="email"
+      id="login-form-email"
       label="Email"
       placeholder="Email"
       className={className}
@@ -36,12 +35,12 @@ class LoginForm extends Component {
 
   passwordInput(className) {
     return <TextField
-      className={className}
-      id="password"
+      id="login-form-password"
       label="Password"
       placeholder="Password"
       type="password"
       autoComplete="current-password"
+      className={className}
       value={this.state.password}
       onChange={this.handleChange('password')}
       margin="normal"
@@ -53,13 +52,13 @@ class LoginForm extends Component {
     const { email, password } = this.state
 
     return <Button
-      className={className}
+      disabled={!email || !password}
       id="login-form-submit"
-      size="large"
       type="submit"
-      color={(!email || !password) ? 'primary' : 'secondary'}
+      size="large"
+      color="primary"
       variant="raised"
-      // disabled={!email || !password}
+      className={className}
     >
       Sign In
     </Button>

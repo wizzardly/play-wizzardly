@@ -1,8 +1,6 @@
 import React from 'react'
 import { mount, shallow } from 'enzyme'
 
-import AppBar from '@material-ui/core/AppBar'
-
 import Masthead from './Masthead'
 
 describe('Masthead', () => {
@@ -10,15 +8,13 @@ describe('Masthead', () => {
 
   describe('when mounted', () => {
     const mounted = mount(subject())
-    const html = mounted.html()
 
-    it('contains the expected text', () => expect(html).toContain('wizzard.ly'))
+    it('renders the brand image', () => expect(mounted.find('#brand-image').prop('alt')).toBe('wizzard.ly'))
   })
 
   describe('when shallow rendered', () => {
     const wrapper = shallow(subject())
 
     it('has the expected selector', () => expect(wrapper.is('#masthead')).toBe(true))
-    it('renders Paper', () => expect(wrapper.find(AppBar)).toHaveLength(1))
   })
 })

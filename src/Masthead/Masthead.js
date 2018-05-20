@@ -22,7 +22,7 @@ function Masthead(props) {
     <AppBar position="static">
       <Toolbar>
         <div className={classes.brand}>
-          <img src={logoRelief} alt="wizzard.ly" className={classes.logo} />
+          <img id="brand-image" src={logoRelief} alt="wizzard.ly" className={classes.logo} />
         </div>
       </Toolbar>
     </AppBar>
