@@ -49,9 +49,8 @@
     "collectCoverageFrom": [
       "src/**/*.js",
       "!src/index.js",
-      "!src/**/styles.js",
-      "!src/Store/index.js",
-      "!src/Reducer/index.js"
+      "!src/**/index.js",
+      "!src/**/styles.js"
     ]
   },
   "devDependencies": {
