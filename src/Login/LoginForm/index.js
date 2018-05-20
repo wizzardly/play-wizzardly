@@ -20,38 +20,44 @@ export class Form extends Component {
   }
 
   signIn() {
-    console.log('state at signin', this.state)
+    console.log('state at signin', this.state) // eslint-disable-line no-console
+  }
+
+  emailInput(className) {
+    return <TextField
+      id="email"
+      label="Email"
+      placeholder="Email"
+      className={className}
+      value={this.state.email}
+      onChange={this.handleChange('email')}
+      margin="normal"
+      fullWidth
+      autoFocus
+    />
+  }
+
+  passwordInput(className) {
+    return <TextField
+      id="password"
+      label="Password"
+      placeholder="Password"
+      className={className}
+      type="password"
+      autoComplete="current-password"
+      value={this.state.password}
+      onChange={this.handleChange('password')}
+      margin="normal"
+      fullWidth
+    />
   }
 
   render() {
     const { classes } = this.props
-    const { email, password } = this.state
 
     return <form id="login-form" onSubmit={this.handleSubmit}>
-      <TextField
-        id="email"
-        label="Email"
-        placeholder="Email"
-        className={classes.textField}
-        value={email}
-        onChange={this.handleChange('email')}
-        margin="normal"
-        fullWidth
-        autoFocus
-      />
-
-      <TextField
-        id="password"
-        label="Password"
-        className={classes.textField}
-        type="password"
-        autoComplete="current-password"
-        placeholder="Password"
-        value={password}
-        onChange={this.handleChange('password')}
-        margin="normal"
-        fullWidth
-      />
+      {this.emailInput(classes.textField)}
+      {this.passwordInput(classes.textField)}
 
       <Button size="large" className={classes.button} type="submit" color="primary" variant="raised">
         Sign In
