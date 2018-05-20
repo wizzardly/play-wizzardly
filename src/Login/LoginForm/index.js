@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button'
 
 import styles from './styles'
 
-export class Form extends Component {
+export class LoginForm extends Component {
   static propTypes = { ...styledComponentPropType }
 
   state = { email: '', password: '' }
@@ -39,10 +39,10 @@ export class Form extends Component {
 
   passwordInput(className) {
     return <TextField
+      className={className}
       id="password"
       label="Password"
       placeholder="Password"
-      className={className}
       type="password"
       autoComplete="current-password"
       value={this.state.password}
@@ -52,18 +52,28 @@ export class Form extends Component {
     />
   }
 
+  submitButton(className) {
+    return <Button
+      className={className}
+      id="login-form-submit"
+      size="large"
+      type="submit"
+      color="primary"
+      variant="raised"
+    >
+      Sign In
+    </Button>
+  }
+
   render() {
     const { classes } = this.props
 
     return <form id="login-form" onSubmit={this.handleSubmit}>
       {this.emailInput(classes.textField)}
       {this.passwordInput(classes.textField)}
-
-      <Button size="large" className={classes.button} type="submit" color="primary" variant="raised">
-        Sign In
-      </Button>
+      {this.submitButton(classes.button)}
     </form>
   }
 }
 
-export default withStyles(styles)(Form)
+export default withStyles(styles)(LoginForm)
