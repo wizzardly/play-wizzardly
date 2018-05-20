@@ -9,17 +9,16 @@ import { Site } from './index.js'
 describe('Site', () => {
   const subject = props => <Site {...props} />
 
-  describe('when shallow rendered and unauthenticated', () => {
+  describe('when unauthenticated', () => {
     const wrapper = shallow(subject({ authentication: { signedIn: false } }))
 
-    it('has the expected selector', () => expect(wrapper.is('#site')).toBe(true))
-    it('renders Login', () => expect(wrapper.find(Login).length).toBe(1))
+    it('returns Login', () => expect(wrapper.is(Login)).toBe(true))
   })
 
-  describe('when shallow rendered and authenticated', () => {
+  describe('when authenticated', () => {
     const wrapper = shallow(subject({ authentication: { signedIn: true } }))
 
     it('has the expected selector', () => expect(wrapper.is('#site')).toBe(true))
-    it('renders Login', () => expect(wrapper.find(Dashboard).length).toBe(1))
+    it('renders Dashboard', () => expect(wrapper.find(Dashboard)).toHaveLength(1))
   })
 })

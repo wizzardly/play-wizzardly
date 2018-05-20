@@ -34,8 +34,8 @@ module.exports = {
   },
   resolve: {
     modules: [
-      path.resolve('./src'),
       path.resolve('./node_modules'),
+      path.resolve('./src'),
     ],
   },
   devServer: {
@@ -46,13 +46,6 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(isProduction ? 'production' : 'development'),
-      },
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
-      minimize: isProduction,
-      output: {
-        comments: false,
       },
     }),
   ],

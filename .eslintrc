@@ -4,17 +4,13 @@ extends:
 parser:
   babel-eslint
 
-settings:
-  ecmascript: 6
+plugins:
+  - babel
+  - react
+  - promise
 
-ecmaFeatures:
-  jsx: true
-  modules: true
-  destructuring: true
-  classes: true
-  forOf: true
-  blockBindings: true
-  arrowFunctions: true
+settings:
+  ecmascript: 7
 
 env:
   browser: true
@@ -24,6 +20,7 @@ rules:
   semi: 0
   react/jsx-filename-extension: 0
   react/jsx-wrap-multilines: 0
+  react/jsx-closing-tag-location: 0
   arrow-body-style: [2, "as-needed", { "requireReturnForObjectLiteral": false }]
   arrow-parens: [2, "as-needed", { "requireForBlockBody": false }]
   import/extensions: 0

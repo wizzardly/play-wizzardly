@@ -3,7 +3,7 @@ export default function mainPaper(theme) {
     paper: {
       marginTop: theme.spacing.unit * 4,
       marginBottom: theme.spacing.unit * 4,
-      padding: theme.spacing.unit * 2,
+      padding: theme.spacing.unit * 4,
       color: theme.palette.text.secondary,
     },
   }

@@ -5,12 +5,18 @@ import authenticationShape from 'Store/shapes'
 
 import Login from 'Login'
 import Dashboard from 'Dashboard'
+import Masthead from 'Masthead'
+import Mastfoot from 'Mastfoot'
 
 export function Site(props) {
   const { signedIn } = props.authentication
 
+  if (!signedIn) return <Login />
+
   return <div id="site">
-    {signedIn ? <Dashboard /> : <Login />}
+    <Masthead />
+    <Dashboard />
+    <Mastfoot />
   </div>
 }
 

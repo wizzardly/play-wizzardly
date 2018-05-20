@@ -1,12 +1,26 @@
 import React from 'react'
 
-import Masthead from 'Masthead'
-import Site from 'Site'
-import Mastfoot from 'Mastfoot'
+import { withStyles, MuiThemeProvider } from '@material-ui/core/styles'
+import CssBaseline from '@material-ui/core/CssBaseline'
 
-export default () =>
-  <div id="application">
-    <Masthead />
-    <Site />
-    <Mastfoot />
+import { styledComponentPropType } from 'shared/shapes'
+
+import Site from 'Site'
+
+import theme from './theme'
+import styles from './styles'
+
+export function Application(props) {
+  const { classes } = props
+
+  return <div id="application" className={classes.application}>
+    <CssBaseline />
+    <MuiThemeProvider theme={theme}>
+      <Site />
+    </MuiThemeProvider>
   </div>
+}
+
+Application.propTypes = { ...styledComponentPropType }
+
+export default withStyles(styles)(Application)

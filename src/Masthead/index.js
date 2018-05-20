@@ -4,7 +4,8 @@ import { styledComponentPropType } from 'shared/shapes'
 import { withStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
+
+import { logoRelief } from 'shared/images'
 
 import styles from './styles'
 
@@ -23,9 +24,9 @@ export function Masthead(props) {
   return <header id="masthead" className={classes.root}>
     <AppBar position="static">
       <Toolbar>
-        <Typography variant="title" color="inherit" align="center" className={classes.flex}>
-          wizzard.ly
-        </Typography>
+        <div className={classes.brand}>
+          <img src={logoRelief} alt="wizzard.ly" className={classes.logo} />
+        </div>
       </Toolbar>
     </AppBar>
   </header>

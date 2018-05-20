@@ -3,13 +3,13 @@ import { authenticationInitialState } from 'Store/initialState'
 
 export default (state = authenticationInitialState, action) => {
   switch (action.type) {
-    // case FETCH_STUFF:
-    //   console.log('FETCH_STUFF Action')
-    //   return action
-    // case RECEIVE_STUFF:
-    //   newState = action.stuff
-    //   console.log('RECEIVE_STUFF Action')
-    //   return newState
+  // case FETCH_STUFF:
+  //   console.log('FETCH_STUFF Action')
+  //   return action
+  // case RECEIVE_STUFF:
+  //   newState = action.stuff
+  //   console.log('RECEIVE_STUFF Action')
+  //   return newState
   default:
     return state
   }

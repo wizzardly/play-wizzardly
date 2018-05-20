@@ -1,6 +1,4 @@
-import initialState, {
-  authenticationInitialState,
-} from './initialState.js'
+import initialState, { authenticationInitialState } from './initialState.js'
 
 describe('initialState', () => {
   it('contains authenticationInitialState', () => {
