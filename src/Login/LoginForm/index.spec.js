@@ -13,7 +13,7 @@ describe('LoginForm', () => {
     const mounted = mount(subject())
 
     describe('onSubmit', () => {
-      beforeEach(() => mounted.find('button#login-form-submit').simulate('click'))
+      beforeEach(() => mounted.find('form#login-form').simulate('submit'))
 
       it('submits the form when the submit button is clicked', () => expect(true).toBe(true))
     })
