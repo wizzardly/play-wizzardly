@@ -43,15 +43,15 @@
   "jest": {
     "setupTestFrameworkScriptFile": "./.jest.js",
     "modulePaths": [
+      "app",
       "src"
     ],
     "collectCoverageFrom": [
-      "src/**/*.{js,jsx}",
+      "src/**/*.js",
       "!src/index.js",
       "!src/**/styles.js",
       "!src/Store/index.js",
-      "!src/Reducer/index.js",
-      "!src/shared/specs.js"
+      "!src/Reducer/index.js"
     ]
   },
   "devDependencies": {

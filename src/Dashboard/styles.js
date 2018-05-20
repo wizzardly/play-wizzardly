@@ -1,4 +1,4 @@
-import mainPaper from 'shared/styles'
+import mainPaper from '../../app/styles'
 
 export default theme => ({
   ...mainPaper(theme),

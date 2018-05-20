@@ -1,7 +1,7 @@
 import React from 'react'
 import { mount, shallow } from 'enzyme'
 
-import Mastfoot from './index.js'
+import Mastfoot from './Mastfoot'
 
 describe('Mastfoot', () => {
   const subject = () => <Mastfoot />

@@ -8,3 +8,4 @@ ratings:
 
 exclude_patterns:
   - "**/*.spec.js"
+  - "data/**/*.js"

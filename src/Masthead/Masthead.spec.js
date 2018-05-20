@@ -3,7 +3,7 @@ import { mount, shallow } from 'enzyme'
 
 import AppBar from '@material-ui/core/AppBar'
 
-import { Masthead } from './index.js'
+import Masthead from './Masthead'
 
 describe('Masthead', () => {
   const subject = () => <Masthead classes={{ root: '', flex: '' }} />

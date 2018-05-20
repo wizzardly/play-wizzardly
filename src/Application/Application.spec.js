@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 
 import Site from 'Site'
 
-import { Application } from './index.js'
+import Application from './Application.js'
 
 describe('Application', () => {
   const subject = () => <Application classes={{ application: '' }} />

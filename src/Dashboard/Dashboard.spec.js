@@ -4,7 +4,7 @@ import { mount, shallow } from 'enzyme'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 
-import { Dashboard } from './index.js'
+import Dashboard from './Dashboard'
 
 describe('Dashboard', () => {
   const subject = () => <Dashboard classes={{ root: '', paper: '' }} />
