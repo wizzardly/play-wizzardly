@@ -13,12 +13,12 @@ import styles from './styles'
 export function Application(props) {
   const { classes } = props
 
-  return <MuiThemeProvider theme={theme}>
-    <div id="application" className={classes.application}>
-      <CssBaseline />
+  return <div id="application" className={classes.application}>
+    <CssBaseline />
+    <MuiThemeProvider theme={theme}>
       <Site />
-    </div>
-  </MuiThemeProvider>
+    </MuiThemeProvider>
+  </div>
 }
 
 Application.propTypes = { ...styledComponentPropType }

@@ -13,7 +13,7 @@ export function Dashboard(props) {
 
   return <div id="dashboard">
     <Grid container justify="center" alignItems="center" className={classes.root}>
-      <Paper className={classes.paper} elevation12>
+      <Paper className={classes.paper} elevation={12}>
         <Typography variant="display4" align="center">
           Coming Soon
         </Typography>

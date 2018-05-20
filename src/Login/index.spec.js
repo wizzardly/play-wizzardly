@@ -20,7 +20,7 @@ describe('Login', () => {
     const wrapper = shallow(subject())
 
     it('has the expected selector', () => expect(wrapper.is('#login')).toBe(true))
-    it('renders Paper', () => expect(wrapper.find(Paper).length).toBe(1))
-    it('renders Grid', () => expect(wrapper.find(Grid).length).toBeGreaterThan(0))
+    it('renders Paper', () => expect(wrapper.find(Paper)).toHaveLength(1))
+    it('renders Grid', () => expect(wrapper.find(Grid)).not.toHaveLength(0))
   })
 })

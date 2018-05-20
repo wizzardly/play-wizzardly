@@ -48,12 +48,5 @@ module.exports = {
         NODE_ENV: JSON.stringify(isProduction ? 'production' : 'development'),
       },
     }),
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
-      minimize: isProduction,
-      output: {
-        comments: false,
-      },
-    }),
   ],
 }

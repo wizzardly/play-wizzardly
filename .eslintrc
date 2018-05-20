@@ -4,8 +4,13 @@ extends:
 parser:
   babel-eslint
 
+plugins:
+  - babel
+  - react
+  - promise
+
 settings:
-  ecmascript: 6
+  ecmascript: 7
 
 ecmaFeatures:
   jsx: true

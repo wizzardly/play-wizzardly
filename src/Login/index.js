@@ -16,7 +16,7 @@ export function Login(props) {
 
   return <div id="login" className={classes.container}>
     <Grid container justify="center" alignItems="center" className={classes.root}>
-      <Paper className={classes.paper} elevation12>
+      <Paper className={classes.paper} elevation={12}>
         <img src={logo} alt="wizzard.ly" />
 
         <LoginForm />
