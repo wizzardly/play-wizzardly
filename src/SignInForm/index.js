@@ -5,4 +5,6 @@ import styles from './styles'
 
 import SignInForm from './SignInForm'
 
-export default connect()(withStyles(styles)(SignInForm))
+const mapStateToProps = state => ({ authentication: state.authentication })
+
+export default withStyles(styles)(connect(mapStateToProps)(SignInForm))

@@ -1,13 +1,23 @@
 import React, { Component } from 'react'
-import { connectedComponentPropType, styledComponentPropType } from 'data/shapes'
+import { authenticationInitialState } from 'data/initialState'
+import { connectedComponentPropType, styledComponentPropType, authenticationShape } from 'data/shapes'
 
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
+import FontAwesome from 'react-fontawesome'
 
 import { SignIn } from 'Actions'
 
+export const SIGN_IN_FAIL_ERROR_TEXT = 'Email and password do not match.'
+
 class SignInForm extends Component {
-  static propTypes = { ...connectedComponentPropType, ...styledComponentPropType }
+  static propTypes = {
+    ...connectedComponentPropType,
+    ...styledComponentPropType,
+    authentication: authenticationShape,
+  }
+
+  static defaultProps = { authentication: { ...authenticationInitialState } }
 
   state = { email: '', password: '' }
 
@@ -20,11 +30,15 @@ class SignInForm extends Component {
   }
 
   emailInput(className) {
+    const { signingIn, signInFailed } = this.props.authentication
+
     return <TextField
       id="sign-in-form-email"
       label="Email"
       placeholder="Email"
       className={className}
+      disabled={signingIn}
+      error={signInFailed}
       value={this.state.email}
       onChange={this.handleChange('email')}
       margin="normal"
@@ -34,6 +48,10 @@ class SignInForm extends Component {
   }
 
   passwordInput(className) {
+    const { signingIn, signInFailed } = this.props.authentication
+
+    const helperText = signInFailed ? SIGN_IN_FAIL_ERROR_TEXT : ''
+
     return <TextField
       id="sign-in-form-password"
       label="Password"
@@ -41,6 +59,9 @@ class SignInForm extends Component {
       type="password"
       autoComplete="current-password"
       className={className}
+      disabled={signingIn}
+      error={signInFailed}
+      helperText={helperText}
       value={this.state.password}
       onChange={this.handleChange('password')}
       margin="normal"
@@ -49,10 +70,11 @@ class SignInForm extends Component {
   }
 
   submitButton(className) {
+    const { signingIn } = this.props.authentication
     const { email, password } = this.state
 
     return <Button
-      disabled={!email || !password}
+      disabled={signingIn || (!email || !password)}
       id="sign-in-form-submit"
       type="submit"
       size="large"
@@ -60,7 +82,7 @@ class SignInForm extends Component {
       variant="raised"
       className={className}
     >
-      Sign In
+      {signingIn ? <FontAwesome name="spinner" spin size="2x" /> : 'Sign In'}
     </Button>
   }
 

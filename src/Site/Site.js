@@ -1,5 +1,5 @@
 import React from 'react'
-import initialState from 'data/initialState'
+import { authenticationInitialState } from 'data/initialState'
 import { authenticationShape } from 'data/shapes'
 
 import SignIn from 'SignIn'
@@ -24,7 +24,7 @@ Site.propTypes = {
 }
 
 Site.defaultProps = {
-  authentication: { ...initialState.authentication },
+  authentication: { ...authenticationInitialState },
 }
 
 export default Site

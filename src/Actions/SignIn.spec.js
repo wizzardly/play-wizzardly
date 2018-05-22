@@ -40,12 +40,12 @@ describe('SignIn', () => {
   })
 
   it('dispatches the expected actions on failure', () => {
-    mockClient.onPost('/user_token').networkError()
+    mockClient.onPost('/user_token').reply(404)
 
     return store.dispatch(SignIn(email, password)).then(() => {
       expect(store.getActions()).toMatchObject([
         { type: SIGN_IN, payload },
-        { type: SIGN_IN_FAIL, error: { data: 'Network Error', status: 0 } },
+        { type: SIGN_IN_FAIL, error: {} },
       ])
     })
   })
