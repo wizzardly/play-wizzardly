@@ -1,32 +1,68 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { styledComponentPropType } from 'data/shapes'
 
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
+import IconButton from '@material-ui/core/IconButton'
+import AccountCircle from '@material-ui/icons/AccountCircle'
+import MenuItem from '@material-ui/core/MenuItem'
+import Menu from '@material-ui/core/Menu'
+
+import { SignOut } from 'Actions'
 
 import { logoRelief } from 'images'
 
-// import Button from '@material-ui/core/Button'
-// <Button color="inherit">Login</Button>
+class Masthead extends Component {
+  state = { menuAnchor: null }
 
-// import IconButton from '@material-ui/core/IconButton'
-// import MenuIcon from '@material-ui/icons/Menu'
-// <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-//   <MenuIcon />
-// </IconButton>
+  handleMenuClick = event => this.setState({ menuAnchor: event.currentTarget })
+  handleMenuClose = () => this.setState({ menuAnchor: null })
 
-function Masthead(props) {
-  const { classes } = props
+  handleSignOutClick = () => {
+    this.props.dispatch(SignOut())
+    this.handleMenuClose()
+  }
 
-  return <header id="masthead" className={classes.root}>
-    <AppBar position="static">
+  userMenu() {
+    const { menuAnchor } = this.state
+
+    const menuOpen = Boolean(menuAnchor)
+
+    return <div>
+      <IconButton
+        id="masthead-user-menu-trigger"
+        aria-owns={menuOpen ? 'menu-appbar' : null}
+        aria-haspopup="true"
+        onClick={this.handleMenuClick}
+        color="inherit"
+      >
+        <AccountCircle />
+      </IconButton>
+      <Menu
+        id="masthead-user-menu"
+        anchorEl={menuAnchor}
+        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+        open={menuOpen}
+        onClose={this.handleMenuClose}
+      >
+        <MenuItem id="masthead-user-menu-sign-out" onClick={this.handleSignOutClick}>Sign Out</MenuItem>
+      </Menu>
+    </div>
+  }
+
+  render() {
+    const { classes } = this.props
+
+    return <AppBar id="masthead" position="static">
       <Toolbar>
         <div className={classes.brand}>
           <img id="brand-image" src={logoRelief} alt="wizzard.ly" className={classes.logo} />
         </div>
+        {this.userMenu()}
       </Toolbar>
     </AppBar>
-  </header>
+  }
 }
 
 Masthead.propTypes = { ...styledComponentPropType }
