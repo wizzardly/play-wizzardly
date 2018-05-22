@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const path = require('path')
 const webpack = require('webpack')
 const WebpackGitHash = require('webpack-git-hash')
@@ -10,15 +12,13 @@ const isProduction = env.NODE_ENV === 'production'
 const { skipHash: gitHash } = new WebpackGitHash()
 
 module.exports = {
-  devtool: isProduction ? 'source-map' : 'cheap-module-eval-source-map',
   context: path.resolve(__dirname, './src'),
+  devServer: {
+    contentBase: path.resolve(__dirname, './public'),
+  },
+  devtool: isProduction ? 'source-map' : 'cheap-module-eval-source-map',
   entry: {
     index: './index.js',
-  },
-  output: {
-    filename: `[name]${isProduction ? `-${gitHash}` : ''}.js`,
-    path: path.resolve(__dirname, './dist/assets'),
-    publicPath: '/assets',
   },
   module: {
     rules: [
@@ -34,15 +34,13 @@ module.exports = {
       },
     ],
   },
-  resolve: {
-    modules: [
-      path.resolve('./node_modules'),
-      path.resolve('./app'),
-      path.resolve('./src'),
-    ],
+  node: {
+    fs: 'empty'
   },
-  devServer: {
-    contentBase: path.resolve(__dirname, './public'),
+  output: {
+    filename: `[name]${isProduction ? `-${gitHash}` : ''}.js`,
+    path: path.resolve(__dirname, './dist/assets'),
+    publicPath: '/assets',
   },
   plugins: [
     new DashboardPlugin(),
@@ -53,4 +51,11 @@ module.exports = {
       },
     }),
   ],
+  resolve: {
+    modules: [
+      path.resolve('./node_modules'),
+      path.resolve('./app'),
+      path.resolve('./src'),
+    ],
+  },
 }

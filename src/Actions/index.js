@@ -1,4 +1,4 @@
-export const SIGN_IN_STARTED = 'SIGN_IN_STARTED'
+export const SIGN_IN = 'SIGN_IN'
 export const SIGN_IN_SUCCESS = 'SIGN_IN_SUCCESS'
-export const SIGN_IN_FAILURE = 'SIGN_IN_FAILURE'
-export SignInSubmit from './SignInSubmit'
+export const SIGN_IN_FAIL = 'SIGN_IN_FAIL'
+export SignIn from './SignIn'

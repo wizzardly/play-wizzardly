@@ -1,9 +1,10 @@
 import React from 'react'
 import { mount, shallow } from 'enzyme'
+import faker from 'faker'
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
-import faker from 'faker'
-import { SIGN_IN_STARTED } from 'Actions'
+
+import { SIGN_IN } from 'Actions'
 
 import LoginForm from './LoginForm'
 
@@ -15,7 +16,9 @@ describe('LoginForm', () => {
   describe('when mounted', () => {
     let mounted
 
-    beforeEach(() => mounted = mount(subject(() => {})))
+    beforeEach(() => {
+      mounted = mount(subject(() => {}))
+    })
 
     it('renders an email input', () => expect(mounted.find('input#login-form-email')).toHaveLength(1))
     it('renders an password input', () => {
@@ -49,7 +52,7 @@ describe('LoginForm', () => {
         it('is disabled', () => expect(submitButton()).toBeDisabled())
       })
 
-      describe('when both a username and password are entered', () => {
+      describe('when both a email and password are entered', () => {
         beforeEach(() => setValues(faker.internet.email(), faker.internet.password()))
 
         it('is enabled', () => expect(submitButton()).not.toBeDisabled())
@@ -58,20 +61,25 @@ describe('LoginForm', () => {
   })
 
   describe('when mounted with a store', () => {
-    describe('onSubmit', () => {
-      it('dispatches the expected action', () => {
-        const store = mockStore()
-        const mounted = mount(subject(store.dispatch))
+    const email = faker.internet.email()
+    const password = faker.internet.password()
 
-        const email = faker.internet.email()
-        const password = faker.internet.password()
+    let store
+    let mounted
 
-        mounted.setState({ email, password })
+    beforeEach(() => {
+      store = mockStore()
+      mounted = mount(subject(store.dispatch))
 
-        mounted.find('form#login-form').simulate('submit')
+      mounted.setState({ email, password })
+    })
 
-        expect(store.getActions()).toEqual([{ type: SIGN_IN_STARTED }])
-      })
+    it('calls the SignIn action', () => {
+      mounted.find('form#login-form').simulate('submit')
+
+      const payload = { request: { data: { auth: { email, password } }, url: '/user_token', method: 'POST' } }
+
+      expect(store.getActions()).toEqual([{ type: SIGN_IN, payload }])
     })
   })
 
