@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button'
 
 import { SignIn } from 'Actions'
 
-class LoginForm extends Component {
+class SignInForm extends Component {
   static propTypes = { ...connectedComponentPropType, ...styledComponentPropType }
 
   state = { email: '', password: '' }
@@ -21,7 +21,7 @@ class LoginForm extends Component {
 
   emailInput(className) {
     return <TextField
-      id="login-form-email"
+      id="sign-in-form-email"
       label="Email"
       placeholder="Email"
       className={className}
@@ -35,7 +35,7 @@ class LoginForm extends Component {
 
   passwordInput(className) {
     return <TextField
-      id="login-form-password"
+      id="sign-in-form-password"
       label="Password"
       placeholder="Password"
       type="password"
@@ -53,7 +53,7 @@ class LoginForm extends Component {
 
     return <Button
       disabled={!email || !password}
-      id="login-form-submit"
+      id="sign-in-form-submit"
       type="submit"
       size="large"
       color="primary"
@@ -67,7 +67,7 @@ class LoginForm extends Component {
   render() {
     const { classes } = this.props
 
-    return <form id="login-form" onSubmit={this.handleSubmit}>
+    return <form id="sign-in-form" onSubmit={this.handleSubmit}>
       {this.emailInput(classes.textField)}
       {this.passwordInput(classes.textField)}
       {this.submitButton(classes.button)}
@@ -75,4 +75,4 @@ class LoginForm extends Component {
   }
 }
 
-export default LoginForm
+export default SignInForm

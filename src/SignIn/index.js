@@ -2,6 +2,6 @@ import { withStyles } from '@material-ui/core/styles'
 
 import styles from './styles'
 
-import Login from './Login'
+import SignIn from './SignIn'
 
-export default withStyles(styles)(Login)
+export default withStyles(styles)(SignIn)

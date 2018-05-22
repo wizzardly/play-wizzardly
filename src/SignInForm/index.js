@@ -3,6 +3,6 @@ import { withStyles } from '@material-ui/core/styles'
 
 import styles from './styles'
 
-import LoginForm from './LoginForm'
+import SignInForm from './SignInForm'
 
-export default connect()(withStyles(styles)(LoginForm))
+export default connect()(withStyles(styles)(SignInForm))
