@@ -1,10 +1,10 @@
 import React from 'react'
 import { mount, shallow } from 'enzyme'
 
-import Mastfoot from './Mastfoot'
+import Footer from './Footer'
 
-describe('Mastfoot', () => {
-  const subject = () => <Mastfoot />
+describe('Footer', () => {
+  const subject = () => <Footer />
 
   describe('when mounted', () => {
     const mounted = mount(subject())
@@ -16,6 +16,6 @@ describe('Mastfoot', () => {
   describe('when shallow rendered', () => {
     const wrapper = shallow(subject())
 
-    it('has the expected selector', () => expect(wrapper.is('#mastfoot')).toBe(true))
+    it('has the expected selector', () => expect(wrapper.is('#footer')).toBe(true))
   })
 })
