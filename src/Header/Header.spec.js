@@ -5,12 +5,12 @@ import configureMockStore from 'redux-mock-store'
 
 import { SIGN_OUT } from 'Actions'
 
-import Masthead from './Masthead'
+import Header from './Header'
 
 const mockStore = configureMockStore([thunk])
 
-describe('Masthead', () => {
-  const subject = dispatch => <Masthead dispatch={dispatch} classes={{ root: '', flex: '' }} />
+describe('Header', () => {
+  const subject = dispatch => <Header dispatch={dispatch} classes={{ root: '', flex: '' }} />
 
   describe('when mounted', () => {
     const mounted = mount(subject(() => {}))
@@ -38,6 +38,6 @@ describe('Masthead', () => {
   describe('when shallow rendered', () => {
     const wrapper = shallow(subject(() => {}))
 
-    it('has the expected selector', () => expect(wrapper.is('#masthead')).toBe(true))
+    it('has the expected selector', () => expect(wrapper.is('#header')).toBe(true))
   })
 })

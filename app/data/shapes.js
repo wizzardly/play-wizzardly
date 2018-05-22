@@ -21,3 +21,7 @@ export const authenticationShape = PropTypes.shape({
   token: PropTypes.string,
   currentUser: PropTypes.shape(userShape),
 })
+
+export const siteShape = PropTypes.shape({
+  mainMenuOpen: PropTypes.bool,
+})

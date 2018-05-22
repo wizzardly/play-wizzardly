@@ -6,3 +6,6 @@ export SignIn from './SignIn'
 
 export const SIGN_OUT = 'SIGN_OUT'
 export SignOut from './SignOut'
+
+export const MAIN_MENU_SHOW = 'MAIN_MENU_SHOW'
+export const MAIN_MENU_HIDE = 'MAIN_MENU_HIDE'

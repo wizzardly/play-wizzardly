@@ -3,6 +3,6 @@ import { withStyles } from '@material-ui/core/styles'
 
 import styles from './styles'
 
-import Masthead from './Masthead'
+import Header from './Header'
 
-export default withStyles(styles)(connect()(Masthead))
+export default withStyles(styles)(connect()(Header))

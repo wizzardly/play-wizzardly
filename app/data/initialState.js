@@ -6,6 +6,11 @@ export const authenticationInitialState = {
   currentUser: null,
 }
 
+export const siteInitialState = {
+  mainMenuOpen: false,
+}
+
 export default {
   authentication: { ...authenticationInitialState },
+  site: { ...siteInitialState },
 }

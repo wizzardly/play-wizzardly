@@ -3,9 +3,9 @@ import { authenticationInitialState } from 'data/initialState'
 import { authenticationShape } from 'data/shapes'
 
 import SignIn from 'SignIn'
-import Dashboard from 'Dashboard'
-import Masthead from 'Masthead'
-import Mastfoot from 'Mastfoot'
+import Header from 'Header'
+import Layout from 'Layout'
+import Footer from 'Footer'
 
 function Site(props) {
   const { signedIn } = props.authentication
@@ -13,9 +13,9 @@ function Site(props) {
   if (!signedIn) return <SignIn />
 
   return <div id="site">
-    <Masthead />
-    <Dashboard />
-    <Mastfoot />
+    <Header />
+    <Layout />
+    <Footer />
   </div>
 }
 
