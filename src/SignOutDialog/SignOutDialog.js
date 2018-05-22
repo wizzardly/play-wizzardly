@@ -1,32 +1,41 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import Button from '@material-ui/core/Button'
 import Dialog from '@material-ui/core/Dialog'
 import DialogActions from '@material-ui/core/DialogActions'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import Slide from '@material-ui/core/Slide'
+import { siteInitialState } from 'data/initialState'
+import { connectedComponentPropType, siteShape } from 'data/shapes'
 
 const Transition = props => <Slide direction="up" {...props} />
 
 class SignOutDialog extends Component {
-  static propTypes = { isOpen: PropTypes.bool }
+  static propTypes = {
+    ...connectedComponentPropType,
+    site: siteShape,
+  }
 
-  static defaultProps = { isOpen: false }
+  static defaultProps = {
+    site: { ...siteInitialState },
+  }
 
   handleClose = () => {
 
   }
 
+  handleSignOut = () => {
+
+  }
+
   render() {
-    const { isOpen } = this.props
+    const { signOutDialogOpen } = this.props.site
 
     return <Dialog
-      open={isOpen}
+      open={signOutDialogOpen}
       TransitionComponent={Transition}
       keepMounted
       onClose={this.handleClose}
       aria-labelledby="sign-out-dialog-title"
-      aria-describedby="sign-out-dialog-description"
     >
       <DialogTitle id="sign-out-dialog-title">
         Are you sure you want to sign out?
