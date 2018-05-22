@@ -25,6 +25,7 @@
     "@babel/register": "^7.0.0-beta.47",
     "@material-ui/core": "^1.0.0-rc.0",
     "@material-ui/icons": "^1.0.0-beta.43",
+    "axios": "^0.18.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^22.4.3",
     "babel-loader": "^8.0.0-beta",
@@ -56,6 +57,7 @@
   "devDependencies": {
     "babel-eslint": "^8.2.3",
     "codeclimate-test-reporter": "^0.5.0",
+    "dotenv": "^5.0.1",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-matchers": "^6.0.0",
@@ -69,6 +71,7 @@
     "faker": "^4.1.0",
     "jest-cli": "^22.4.3",
     "jest-enzyme": "^6.0.0",
+    "moxios": "^0.4.0",
     "redux-mock-store": "^1.5.1",
     "sinon": "^5.0.7",
     "webpack-cli": "^2.1.3",

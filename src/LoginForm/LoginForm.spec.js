@@ -3,7 +3,7 @@ import { mount, shallow } from 'enzyme'
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
 import faker from 'faker'
-import { SIGN_IN_SUBMIT } from 'Actions'
+import { SIGN_IN_STARTED } from 'Actions'
 
 import LoginForm from './LoginForm'
 
@@ -15,9 +15,7 @@ describe('LoginForm', () => {
   describe('when mounted', () => {
     let mounted
 
-    beforeEach(() => {
-      mounted = mount(subject(() => {}))
-    })
+    beforeEach(() => mounted = mount(subject(() => {})))
 
     it('renders an email input', () => expect(mounted.find('input#login-form-email')).toHaveLength(1))
     it('renders an password input', () => {
@@ -72,7 +70,7 @@ describe('LoginForm', () => {
 
         mounted.find('form#login-form').simulate('submit')
 
-        expect(store.getActions()).toEqual([{ type: SIGN_IN_SUBMIT, auth: { email, password } }])
+        expect(store.getActions()).toEqual([{ type: SIGN_IN_STARTED }])
       })
     })
   })

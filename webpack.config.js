@@ -3,7 +3,9 @@ const webpack = require('webpack')
 const WebpackGitHash = require('webpack-git-hash')
 const DashboardPlugin = require('webpack-dashboard/plugin')
 
-const isProduction = process.env.NODE_ENV === 'production'
+const { env } = process
+
+const isProduction = env.NODE_ENV === 'production'
 
 const { skipHash: gitHash } = new WebpackGitHash()
 
@@ -47,6 +49,7 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(isProduction ? 'production' : 'development'),
+        API_ROOT: JSON.stringify(env.API_ROOT),
       },
     }),
   ],
