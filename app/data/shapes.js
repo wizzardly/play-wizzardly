@@ -16,7 +16,8 @@ export const userShape = PropTypes.shape({
 
 export const authenticationShape = PropTypes.shape({
   signedIn: PropTypes.bool,
+  signingIn: PropTypes.bool,
+  signInFailed: PropTypes.bool,
   token: PropTypes.string,
   currentUser: PropTypes.shape(userShape),
 })
-
