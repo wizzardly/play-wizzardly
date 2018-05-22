@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { authenticationInitialState } from 'data/initialState'
 import { connectedComponentPropType, styledComponentPropType, authenticationShape } from 'data/shapes'
 
+import FormGroup from '@material-ui/core/FormGroup'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import FontAwesome from 'react-fontawesome'
@@ -32,19 +33,21 @@ class SignInForm extends Component {
   emailInput(className) {
     const { signingIn, signInFailed } = this.props.authentication
 
-    return <TextField
-      id="sign-in-form-email"
-      label="Email"
-      placeholder="Email"
-      className={className}
-      disabled={signingIn}
-      error={signInFailed}
-      value={this.state.email}
-      onChange={this.handleChange('email')}
-      margin="normal"
-      fullWidth
-      autoFocus
-    />
+    return <FormGroup>
+      <TextField
+        id="sign-in-form-email"
+        label="Email"
+        placeholder="Email"
+        className={className}
+        disabled={signingIn}
+        error={signInFailed}
+        value={this.state.email}
+        onChange={this.handleChange('email')}
+        margin="normal"
+        fullWidth
+        autoFocus
+      />
+    </FormGroup>
   }
 
   passwordInput(className) {
@@ -52,21 +55,23 @@ class SignInForm extends Component {
 
     const helperText = signInFailed ? SIGN_IN_FAIL_ERROR_TEXT : ''
 
-    return <TextField
-      id="sign-in-form-password"
-      label="Password"
-      placeholder="Password"
-      type="password"
-      autoComplete="current-password"
-      className={className}
-      disabled={signingIn}
-      error={signInFailed}
-      helperText={helperText}
-      value={this.state.password}
-      onChange={this.handleChange('password')}
-      margin="normal"
-      fullWidth
-    />
+    return <FormGroup>
+      <TextField
+        id="sign-in-form-password"
+        label="Password"
+        placeholder="Password"
+        type="password"
+        autoComplete="current-password"
+        className={className}
+        disabled={signingIn}
+        error={signInFailed}
+        helperText={helperText}
+        value={this.state.password}
+        onChange={this.handleChange('password')}
+        margin="normal"
+        fullWidth
+      />
+    </FormGroup>
   }
 
   submitButton(className) {

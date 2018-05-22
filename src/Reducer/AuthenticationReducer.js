@@ -1,12 +1,10 @@
 import { authenticationInitialState } from 'data/initialState'
-import { SIGN_IN, SIGN_IN_SUCCESS, SIGN_IN_FAIL, TOKEN_RECOVERY } from 'Actions'
+import { SIGN_IN, SIGN_IN_SUCCESS, SIGN_IN_FAIL, TOKEN_RECOVERY, SIGN_OUT } from 'Actions'
 
 const extractAndStoreToken = action => {
   const { jwt } = action.payload.data
 
-  if (localStorage.getItem('token') !== jwt) {
-    localStorage.setItem('token', jwt)
-  }
+  if (localStorage.getItem('token') !== jwt) localStorage.setItem('token', jwt)
 
   return jwt
 }
@@ -26,6 +24,9 @@ export default (state = authenticationInitialState, action) => {
     return { ...state, signingIn: false, signInFailed: true }
   case TOKEN_RECOVERY:
     return { ...authenticationInitialState, signedIn: true, token: action.token }
+  case SIGN_OUT:
+    localStorage.removeItem('token')
+    return { ...authenticationInitialState }
   default:
     return state
   }
