@@ -22,11 +22,36 @@ class Masthead extends Component {
     this.props.dispatch(SignOut())
   }
 
-  render() {
-    const { classes } = this.props
+  userMenu() {
     const { menuAnchor } = this.state
 
     const menuOpen = Boolean(menuAnchor)
+
+    return <div>
+      <IconButton
+        id="masthead-user-menu-trigger"
+        aria-owns={menuOpen ? 'menu-appbar' : null}
+        aria-haspopup="true"
+        onClick={this.handleMenuClick}
+        color="inherit"
+      >
+        <AccountCircle />
+      </IconButton>
+      <Menu
+        id="masthead-user-menu"
+        anchorEl={menuAnchor}
+        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+        open={menuOpen}
+        onClose={this.handleMenuClose}
+      >
+        <MenuItem id="masthead-user-menu-sign-out" onClick={this.handleSignOutClick}>Sign Out</MenuItem>
+      </Menu>
+    </div>
+  }
+
+  render() {
+    const { classes } = this.props
 
     return <header id="masthead" className={classes.root}>
       <AppBar position="static">
@@ -34,27 +59,7 @@ class Masthead extends Component {
           <div className={classes.brand}>
             <img id="brand-image" src={logoRelief} alt="wizzard.ly" className={classes.logo} />
           </div>
-          <div>
-            <IconButton
-              id="masthead-user-menu-trigger"
-              aria-owns={menuOpen ? 'menu-appbar' : null}
-              aria-haspopup="true"
-              onClick={this.handleMenuClick}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
-            <Menu
-              id="masthead-user-menu"
-              anchorEl={menuAnchor}
-              anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-              transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-              open={menuOpen}
-              onClose={this.handleMenuClose}
-            >
-              <MenuItem id="masthead-user-menu-sign-out" onClick={this.handleSignOutClick}>Sign Out</MenuItem>
-            </Menu>
-          </div>
+          {this.userMenu()}
         </Toolbar>
       </AppBar>
     </header>
