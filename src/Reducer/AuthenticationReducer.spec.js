@@ -1,10 +1,9 @@
 import faker from 'faker'
 
-import { SIGN_IN } from 'Actions'
+import { SIGN_IN, SIGN_IN_SUCCESS, SIGN_IN_FAIL, TOKEN_RECOVERY } from 'Actions'
 import { authenticationInitialState } from 'data/initialState'
 
 import reducer from './AuthenticationReducer'
-import {SIGN_IN_FAIL, SIGN_IN_SUCCESS} from "../Actions";
 
 describe('AuthenticationReducer', () => {
   it('should return the initial state', () => {
@@ -22,7 +21,19 @@ describe('AuthenticationReducer', () => {
   it('should return the SIGN_IN_SUCCESS state', () => {
     const jwt = faker.random.uuid()
 
-    expect(reducer(undefined, { type: SIGN_IN_SUCCESS, payload: { data: { jwt: jwt } } })).toEqual({
+    expect(reducer(undefined, { type: SIGN_IN_SUCCESS, payload: { data: { jwt } } })).toEqual({
+      ...authenticationInitialState,
+      signedIn: true,
+      token: jwt,
+    })
+
+    expect(localStorage.getItem('token')).toBe(jwt)
+  })
+
+  it('should return the TOKEN_RECOVERY state', () => {
+    const jwt = faker.random.uuid()
+
+    expect(reducer(undefined, { type: TOKEN_RECOVERY, token: jwt })).toEqual({
       ...authenticationInitialState,
       signedIn: true,
       token: jwt,

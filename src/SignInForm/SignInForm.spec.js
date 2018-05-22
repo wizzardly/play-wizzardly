@@ -12,9 +12,8 @@ import SignInForm, { SIGN_IN_FAIL_ERROR_TEXT } from './SignInForm'
 const mockStore = configureMockStore([thunk])
 
 describe('SignInForm', () => {
-  const subject = (dispatch, authentication = { ...authenticationInitialState }) => {
-    return <SignInForm dispatch={dispatch} authentication={authentication} classes={{ textField: '', button: '' }} />
-  }
+  const subject = (dispatch, authentication = { ...authenticationInitialState }) =>
+    <SignInForm dispatch={dispatch} authentication={authentication} classes={{ textField: '', button: '' }} />
 
   const emailInputSelector = 'input#sign-in-form-email'
   const passwordInputSelector = 'input#sign-in-form-password[type="password"]'
