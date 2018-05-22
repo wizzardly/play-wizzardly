@@ -7,6 +7,7 @@ export default () => ({
   },
   brand: {
     width: '100%',
+    textAlign: 'center',
   },
 })
 

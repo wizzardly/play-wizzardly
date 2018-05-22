@@ -9,3 +9,5 @@ export SignOut from './SignOut'
 
 export const MAIN_MENU_SHOW = 'MAIN_MENU_SHOW'
 export const MAIN_MENU_HIDE = 'MAIN_MENU_HIDE'
+export const SIGN_OUT_DIALOG_SHOW = 'SIGN_OUT_DIALOG_SHOW'
+export const SIGN_OUT_DIALOG_HIDE = 'SIGN_OUT_DIALOG_HIDE'
