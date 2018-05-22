@@ -1,2 +1,4 @@
-export const SIGN_IN_SUBMIT = 'SIGN_IN_SUBMIT'
-export SignInSubmit from './SignInSubmit'
+export const SIGN_IN = 'SIGN_IN'
+export const SIGN_IN_SUCCESS = 'SIGN_IN_SUCCESS'
+export const SIGN_IN_FAIL = 'SIGN_IN_FAIL'
+export SignIn from './SignIn'

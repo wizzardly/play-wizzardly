@@ -4,7 +4,7 @@ import { connectedComponentPropType, styledComponentPropType } from 'data/shapes
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 
-import { SignInSubmit } from 'Actions'
+import { SignIn } from 'Actions'
 
 class LoginForm extends Component {
   static propTypes = { ...connectedComponentPropType, ...styledComponentPropType }
@@ -16,7 +16,7 @@ class LoginForm extends Component {
   handleSubmit = event => {
     event.preventDefault()
     const { email, password } = this.state
-    this.props.dispatch(SignInSubmit(email, password))
+    this.props.dispatch(SignIn(email, password))
   }
 
   emailInput(className) {
