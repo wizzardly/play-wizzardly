@@ -1,7 +1,4 @@
 export default () => ({
-  root: {
-    flexGrow: 1,
-  },
   flex: {
     flex: 1,
   },
@@ -10,7 +7,6 @@ export default () => ({
   },
   brand: {
     width: '100%',
-    // textAlign: 'center',
   },
 })
 

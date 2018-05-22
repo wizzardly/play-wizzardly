@@ -20,6 +20,7 @@ class Masthead extends Component {
 
   handleSignOutClick = () => {
     this.props.dispatch(SignOut())
+    this.handleMenuClose()
   }
 
   userMenu() {
@@ -53,16 +54,14 @@ class Masthead extends Component {
   render() {
     const { classes } = this.props
 
-    return <header id="masthead" className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <div className={classes.brand}>
-            <img id="brand-image" src={logoRelief} alt="wizzard.ly" className={classes.logo} />
-          </div>
-          {this.userMenu()}
-        </Toolbar>
-      </AppBar>
-    </header>
+    return <AppBar id="masthead" position="static">
+      <Toolbar>
+        <div className={classes.brand}>
+          <img id="brand-image" src={logoRelief} alt="wizzard.ly" className={classes.logo} />
+        </div>
+        {this.userMenu()}
+      </Toolbar>
+    </AppBar>
   }
 }
 
