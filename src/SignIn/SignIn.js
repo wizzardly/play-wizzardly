@@ -6,22 +6,22 @@ import Grid from '@material-ui/core/Grid'
 
 import { logo } from 'images'
 
-import LoginForm from 'LoginForm'
+import SignInForm from 'SignInForm'
 
-function Login(props) {
+function SignIn(props) {
   const { classes } = props
 
-  return <div id="login" className={classes.container}>
+  return <div id="sign-in" className={classes.container}>
     <Grid container justify="center" alignItems="center" className={classes.root}>
       <Paper className={classes.paper} elevation={12}>
         <img src={logo} alt="wizzard.ly" />
 
-        <LoginForm />
+        <SignInForm />
       </Paper>
     </Grid>
   </div>
 }
 
-Login.propTypes = { ...styledComponentPropType }
+SignIn.propTypes = { ...styledComponentPropType }
 
-export default Login
+export default SignIn

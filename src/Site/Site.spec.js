@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import Login from 'Login'
+import SignIn from 'SignIn'
 import Masthead from 'Masthead'
 import Dashboard from 'Dashboard'
 import Mastfoot from 'Mastfoot'
@@ -14,7 +14,7 @@ describe('Site', () => {
   describe('when unauthenticated', () => {
     const wrapper = shallow(subject({ authentication: { signedIn: false } }))
 
-    it('returns Login', () => expect(wrapper.is(Login)).toBe(true))
+    it('returns SignIn', () => expect(wrapper.is(SignIn)).toBe(true))
   })
 
   describe('when authenticated', () => {

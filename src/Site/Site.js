@@ -2,7 +2,7 @@ import React from 'react'
 import initialState from 'data/initialState'
 import { authenticationShape } from 'data/shapes'
 
-import Login from 'Login'
+import SignIn from 'SignIn'
 import Dashboard from 'Dashboard'
 import Masthead from 'Masthead'
 import Mastfoot from 'Mastfoot'
@@ -10,7 +10,7 @@ import Mastfoot from 'Mastfoot'
 function Site(props) {
   const { signedIn } = props.authentication
 
-  if (!signedIn) return <Login />
+  if (!signedIn) return <SignIn />
 
   return <div id="site">
     <Masthead />

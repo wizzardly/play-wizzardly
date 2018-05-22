@@ -6,12 +6,12 @@ import thunk from 'redux-thunk'
 
 import { SIGN_IN } from 'Actions'
 
-import LoginForm from './LoginForm'
+import SignInForm from './SignInForm'
 
 const mockStore = configureMockStore([thunk])
 
-describe('LoginForm', () => {
-  const subject = dispatch => <LoginForm dispatch={dispatch} classes={{ textField: '', button: '' }} />
+describe('SignInForm', () => {
+  const subject = dispatch => <SignInForm dispatch={dispatch} classes={{ textField: '', button: '' }} />
 
   describe('when mounted', () => {
     let mounted
@@ -20,16 +20,16 @@ describe('LoginForm', () => {
       mounted = mount(subject(() => {}))
     })
 
-    it('renders an email input', () => expect(mounted.find('input#login-form-email')).toHaveLength(1))
+    it('renders an email input', () => expect(mounted.find('input#sign-in-form-email')).toHaveLength(1))
     it('renders an password input', () => {
-      expect(mounted.find('input#login-form-password[type="password"]')).toHaveLength(1)
+      expect(mounted.find('input#sign-in-form-password[type="password"]')).toHaveLength(1)
     })
 
     describe('submit button', () => {
-      const submitButton = () => mounted.find('button#login-form-submit[type="submit"]')
+      const submitButton = () => mounted.find('button#sign-in-form-submit[type="submit"]')
       const setValues = (email, password) => {
-        mounted.find('input#login-form-email').simulate('change', { target: { value: email } })
-        mounted.find('input#login-form-password').simulate('change', { target: { value: password } })
+        mounted.find('input#sign-in-form-email').simulate('change', { target: { value: email } })
+        mounted.find('input#sign-in-form-password').simulate('change', { target: { value: password } })
       }
 
       it('renders', () => expect(submitButton()).toHaveLength(1))
@@ -75,7 +75,7 @@ describe('LoginForm', () => {
     })
 
     it('calls the SignIn action', () => {
-      mounted.find('form#login-form').simulate('submit')
+      mounted.find('form#sign-in-form').simulate('submit')
 
       const payload = { request: { data: { auth: { email, password } }, url: '/user_token', method: 'POST' } }
 
@@ -86,6 +86,6 @@ describe('LoginForm', () => {
   describe('when shallow rendered', () => {
     const wrapper = shallow(subject(() => {}))
 
-    it('has the expected selector', () => expect(wrapper.is('#login-form')).toBe(true))
+    it('has the expected selector', () => expect(wrapper.is('#sign-in-form')).toBe(true))
   })
 })
