@@ -29,12 +29,12 @@
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^22.4.3",
     "babel-loader": "^8.0.0-beta",
+    "classnames": "^2.2.5",
     "dotenv": "^5.0.1",
     "prop-types": "^15.5.10",
     "react": "^16.3.2",
     "react-addons-test-utils": "^15.5.1",
     "react-dom": "^16.3.2",
-    "react-fontawesome": "^1.6.1",
     "react-redux": "^5.0.4",
     "react-test-renderer": "^16.3.2",
     "redux": "^4.0.0",
@@ -45,7 +45,9 @@
   },
   "jest": {
     "setupTestFrameworkScriptFile": "./.jest.js",
-    "setupFiles": ["jest-localstorage-mock"],
+    "setupFiles": [
+      "jest-localstorage-mock"
+    ],
     "modulePaths": [
       "app",
       "src"

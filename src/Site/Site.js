@@ -5,7 +5,6 @@ import { authenticationShape } from 'data/shapes'
 import SignIn from 'SignIn'
 import Header from 'Header'
 import Layout from 'Layout'
-import Footer from 'Footer'
 import Modals from 'Modals'
 
 function Site(props) {
@@ -16,7 +15,6 @@ function Site(props) {
   return <div id="site">
     <Header />
     <Layout />
-    <Footer />
     <Modals />
   </div>
 }

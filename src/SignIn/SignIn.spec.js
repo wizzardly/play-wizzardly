@@ -6,7 +6,7 @@ import SignInForm from 'SignInForm'
 import SignIn from './SignIn'
 
 describe('SignIn', () => {
-  const subject = () => <SignIn classes={{ root: '', paper: '' }} />
+  const subject = () => <SignIn classes={{}} />
 
   describe('when shallow rendered', () => {
     const wrapper = shallow(subject())
