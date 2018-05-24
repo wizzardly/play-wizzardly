@@ -5,74 +5,42 @@ import { styledComponentPropType, siteShape } from 'data/shapes'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import IconButton from '@material-ui/core/IconButton'
-import AccountCircle from '@material-ui/icons/AccountCircle'
-import MenuItem from '@material-ui/core/MenuItem'
-import Menu from '@material-ui/core/Menu'
+import MenuIcon from '@material-ui/icons/Menu'
 
-import { SignOut } from 'Actions'
+import { ShowSignOutDialog } from 'Actions'
 
 import { logoRelief } from 'images'
 
-class Masthead extends Component {
-  state = { menuAnchor: null }
-
-  handleMenuClick = event => this.setState({ menuAnchor: event.currentTarget })
-  handleMenuClose = () => this.setState({ menuAnchor: null })
-
-  handleSignOutClick = () => {
-    this.props.dispatch(SignOut())
-    this.handleMenuClose()
-  }
-
-  userMenu() {
-    const { menuAnchor } = this.state
-
-    const menuOpen = Boolean(menuAnchor)
-
-    return <div>
-      <IconButton
-        id="masthead-user-menu-trigger"
-        aria-owns={menuOpen ? 'menu-appbar' : null}
-        aria-haspopup="true"
-        onClick={this.handleMenuClick}
-        color="inherit"
-      >
-        <AccountCircle />
-      </IconButton>
-      <Menu
-        id="masthead-user-menu"
-        anchorEl={menuAnchor}
-        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-        open={menuOpen}
-        onClose={this.handleMenuClose}
-      >
-        <MenuItem id="masthead-user-menu-sign-out" onClick={this.handleSignOutClick}>Sign Out</MenuItem>
-      </Menu>
-    </div>
-  }
+class Header extends Component {
+  handleMenuClick = () => this.props.dispatch(ShowSignOutDialog())
 
   render() {
     const { classes } = this.props
 
     return <AppBar id="header" position="static">
       <Toolbar>
-        <div className={classes.brand}>
-          <img id="brand-image" src={logoRelief} alt="wizzard.ly" className={classes.logo} />
-        </div>
-        {this.userMenu()}
+        <IconButton
+          id="header-menu"
+          color="inherit"
+          aria-label="open drawer"
+          onClick={this.handleMenuClick}
+          // className={classNames(classes.menuButton, open && classes.hide)}
+        >
+          <MenuIcon />
+        </IconButton>
+        <img id="brand-image" src={logoRelief} alt="wizzard.ly" className={classes.logo} />
       </Toolbar>
     </AppBar>
   }
 }
 
-Masthead.propTypes = {
+Header.propTypes = {
   ...styledComponentPropType,
   site: siteShape,
 }
 
-Masthead.defaultProps = {
+Header.defaultProps = {
   site: { ...siteInitialState },
 }
 
-export default Masthead
+export default Header

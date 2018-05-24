@@ -5,8 +5,5 @@ export default () => ({
   logo: {
     height: 42,
   },
-  brand: {
-    width: '100%',
-  },
 })
 

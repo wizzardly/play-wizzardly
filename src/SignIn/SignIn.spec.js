@@ -12,6 +12,6 @@ describe('SignIn', () => {
     const wrapper = shallow(subject())
 
     it('has the expected selector', () => expect(wrapper.is('#sign-in')).toBe(true))
-    it('renders SignInForm', () => expect(wrapper.find(SignInForm)).toHaveLength(1))
+    it('renders SignInForm', () => expect(wrapper.find(SignInForm)).toExist())
   })
 })

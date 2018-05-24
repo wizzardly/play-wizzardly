@@ -12,6 +12,6 @@ describe('Layout', () => {
     const wrapper = shallow(subject())
 
     it('has the expected selector', () => expect(wrapper.is('#layout')).toBe(true))
-    it('renders Dashboard', () => expect(wrapper.find(Dashboard)).toHaveLength(1))
+    it('renders Dashboard', () => expect(wrapper.find(Dashboard)).toExist())
   })
 })

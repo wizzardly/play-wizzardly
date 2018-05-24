@@ -6,6 +6,7 @@ import SignIn from 'SignIn'
 import Header from 'Header'
 import Layout from 'Layout'
 import Footer from 'Footer'
+import Modals from 'Modals'
 
 function Site(props) {
   const { signedIn } = props.authentication
@@ -16,6 +17,7 @@ function Site(props) {
     <Header />
     <Layout />
     <Footer />
+    <Modals />
   </div>
 }
 

@@ -3,7 +3,7 @@ import { mount, shallow } from 'enzyme'
 import thunk from 'redux-thunk'
 import configureMockStore from 'redux-mock-store'
 
-import { SIGN_OUT } from 'Actions'
+import { SIGN_OUT_DIALOG_SHOW } from 'Actions'
 
 import Header from './Header'
 
@@ -18,7 +18,7 @@ describe('Header', () => {
     it('renders the brand image', () => expect(mounted.find('#brand-image').prop('alt')).toBe('wizzard.ly'))
   })
 
-  describe('when mounted with a store and signed in', () => {
+  describe('when mounted with a store', () => {
     let store
     let mounted
 
@@ -27,11 +27,10 @@ describe('Header', () => {
       mounted = mount(subject(store.dispatch))
     })
 
-    it('calls the SignOut action', () => {
-      mounted.find('button#masthead-user-menu-trigger').simulate('click')
-      mounted.find('li#masthead-user-menu-sign-out').simulate('click')
+    it('calls the SIGN_OUT_DIALOG_SHOW action', () => {
+      mounted.find('button#header-menu').simulate('click')
 
-      expect(store.getActions()).toEqual([{ type: SIGN_OUT }])
+      expect(store.getActions()).toEqual([{ type: SIGN_OUT_DIALOG_SHOW }])
     })
   })
 

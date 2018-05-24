@@ -12,6 +12,6 @@ describe('Application', () => {
     const wrapper = shallow(subject())
 
     it('has the expected selector', () => expect(wrapper.is('#application')).toBe(true))
-    it('renders Site', () => expect(wrapper.find(Site)).toHaveLength(1))
+    it('renders Site', () => expect(wrapper.find(Site)).toExist())
   })
 })

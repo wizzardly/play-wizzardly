@@ -4,12 +4,17 @@ import faker from 'faker'
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
 import { authenticationInitialState } from 'data/initialState'
+import { client } from 'Store'
+import MockAdapter from 'axios-mock-adapter'
 
-import { SIGN_IN } from 'Actions'
+import axiosMiddleware from 'redux-axios-middleware'
+
+import { SIGN_IN, SIGN_IN_SUCCESS, SIGN_IN_FAIL } from 'Actions'
 
 import SignInForm, { SIGN_IN_FAIL_ERROR_TEXT } from './SignInForm'
 
-const mockStore = configureMockStore([thunk])
+const mockClient = new MockAdapter(client)
+const mockStore = configureMockStore([thunk, axiosMiddleware(client)])
 
 describe('SignInForm', () => {
   const subject = (dispatch, authentication = { ...authenticationInitialState }) =>
@@ -36,7 +41,7 @@ describe('SignInForm', () => {
         mounted.find(passwordInputSelector).simulate('change', { target: { value: password } })
       }
 
-      it('renders disabled submit button', () => expect(submitButton()).toHaveLength(1))
+      it('renders disabled submit button', () => expect(submitButton()).toExist())
 
       describe('when no email or password is entered', () => {
         beforeEach(() => setValues('', ''))
@@ -71,6 +76,8 @@ describe('SignInForm', () => {
     let store
     let mounted
 
+    mockClient.onPost('/user_token').reply(200, { jwt: faker.random.uuid() })
+
     beforeEach(() => {
       store = mockStore()
       mounted = mount(subject(store.dispatch))
@@ -78,12 +85,12 @@ describe('SignInForm', () => {
       mounted.setState({ email, password })
     })
 
-    it('calls the SignIn action', () => {
+    it('calls the SignIn axios action', () => {
       mounted.find('form#sign-in-form').simulate('submit')
 
       const payload = { request: { data: { auth: { email, password } }, url: '/user_token', method: 'POST' } }
 
-      expect(store.getActions()).toEqual([{ type: SIGN_IN, payload }])
+      expect(store.getActions()).toEqual([{ payload, type: SIGN_IN, types: [SIGN_IN, SIGN_IN_SUCCESS, SIGN_IN_FAIL] }])
     })
   })
 
@@ -98,7 +105,7 @@ describe('SignInForm', () => {
     it('renders disabled password input', () => expect(mounted.find(passwordInputSelector)).toBeDisabled())
     it('renders disabled submit button', () => expect(mounted.find(submitButtonSelector)).toBeDisabled())
     it('renders spinner in submit button', () => {
-      expect(mounted.find(`${submitButtonSelector} .fa.fa-spinner`)).toHaveLength(1)
+      expect(mounted.find(`${submitButtonSelector} .fa.fa-spinner`)).toExist()
     })
   })
 

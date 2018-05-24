@@ -8,6 +8,7 @@ export const authenticationInitialState = {
 
 export const siteInitialState = {
   mainMenuOpen: false,
+  signOutDialogOpen: false,
 }
 
 export default {
