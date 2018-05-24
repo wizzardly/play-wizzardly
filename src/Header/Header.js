@@ -20,6 +20,7 @@ class Header extends Component {
     return <AppBar id="header" position="static">
       <Toolbar>
         <IconButton
+          id="header-menu"
           color="inherit"
           aria-label="open drawer"
           onClick={this.handleMenuClick}
