@@ -27,7 +27,7 @@ describe('Header', () => {
       mounted = mount(subject(store.dispatch))
     })
 
-    it('calls the SignIn action', () => {
+    it('calls the SIGN_OUT_DIALOG_SHOW action', () => {
       mounted.find('button#header-menu').simulate('click')
 
       expect(store.getActions()).toEqual([{ type: SIGN_OUT_DIALOG_SHOW }])

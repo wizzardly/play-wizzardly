@@ -1,5 +1,5 @@
 import { siteInitialState } from 'data/initialState'
-import { MAIN_MENU_SHOW, MAIN_MENU_HIDE, SIGN_OUT_DIALOG_SHOW, SIGN_OUT_DIALOG_HIDE } from 'Actions'
+import { MAIN_MENU_SHOW, MAIN_MENU_HIDE, SIGN_OUT_DIALOG_SHOW, SIGN_OUT_DIALOG_HIDE, SIGN_OUT } from 'Actions'
 
 export default (state = siteInitialState, action) => {
   switch (action.type) {
@@ -11,6 +11,8 @@ export default (state = siteInitialState, action) => {
     return { ...state, signOutDialogOpen: true }
   case SIGN_OUT_DIALOG_HIDE:
     return { ...state, signOutDialogOpen: false }
+  case SIGN_OUT:
+    return { ...siteInitialState }
   default:
     return state
   }

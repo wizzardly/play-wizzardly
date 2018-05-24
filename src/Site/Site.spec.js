@@ -21,8 +21,8 @@ describe('Site', () => {
     const wrapper = shallow(subject({ authentication: { signedIn: true } }))
 
     it('has the expected selector', () => expect(wrapper.is('#site')).toBe(true))
-    it('renders Header', () => expect(wrapper.find(Header)).toHaveLength(1))
-    it('renders Layout', () => expect(wrapper.find(Layout)).toHaveLength(1))
-    it('renders Footer', () => expect(wrapper.find(Footer)).toHaveLength(1))
+    it('renders Header', () => expect(wrapper.find(Header)).toExist())
+    it('renders Layout', () => expect(wrapper.find(Layout)).toExist())
+    it('renders Footer', () => expect(wrapper.find(Footer)).toExist())
   })
 })

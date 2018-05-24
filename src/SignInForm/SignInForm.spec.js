@@ -41,7 +41,7 @@ describe('SignInForm', () => {
         mounted.find(passwordInputSelector).simulate('change', { target: { value: password } })
       }
 
-      it('renders disabled submit button', () => expect(submitButton()).toHaveLength(1))
+      it('renders disabled submit button', () => expect(submitButton()).toExist())
 
       describe('when no email or password is entered', () => {
         beforeEach(() => setValues('', ''))
@@ -85,7 +85,7 @@ describe('SignInForm', () => {
       mounted.setState({ email, password })
     })
 
-    it('calls the SignIn action', () => {
+    it('calls the SignIn axios action', () => {
       mounted.find('form#sign-in-form').simulate('submit')
 
       const payload = { request: { data: { auth: { email, password } }, url: '/user_token', method: 'POST' } }
@@ -105,7 +105,7 @@ describe('SignInForm', () => {
     it('renders disabled password input', () => expect(mounted.find(passwordInputSelector)).toBeDisabled())
     it('renders disabled submit button', () => expect(mounted.find(submitButtonSelector)).toBeDisabled())
     it('renders spinner in submit button', () => {
-      expect(mounted.find(`${submitButtonSelector} .fa.fa-spinner`)).toHaveLength(1)
+      expect(mounted.find(`${submitButtonSelector} .fa.fa-spinner`)).toExist()
     })
   })
 

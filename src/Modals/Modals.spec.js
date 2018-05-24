@@ -12,6 +12,6 @@ describe('Modals', () => {
     const wrapper = shallow(subject())
 
     it('has the expected selector', () => expect(wrapper.is('#modals')).toBe(true))
-    it('renders SignOutDialog', () => expect(wrapper.find(SignOutDialog)).toHaveLength(1))
+    it('renders SignOutDialog', () => expect(wrapper.find(SignOutDialog)).toExist())
   })
 })

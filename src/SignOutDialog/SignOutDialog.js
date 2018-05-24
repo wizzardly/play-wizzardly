@@ -22,14 +22,13 @@ class SignOutDialog extends Component {
 
   handleClose = () => this.props.dispatch(HideSignOutDialog())
 
-  handleSignOut = () => {
-    this.props.dispatch(SignOut())
-  }
+  handleSignOut = () => this.props.dispatch(SignOut())
 
   render() {
     const { signOutDialogOpen } = this.props.site
 
     return <Dialog
+      id="sign-out-dialog"
       open={signOutDialogOpen}
       TransitionComponent={Transition}
       keepMounted
@@ -40,10 +39,10 @@ class SignOutDialog extends Component {
         Are you sure you want to sign out?
       </DialogTitle>
       <DialogActions>
-        <Button onClick={this.handleClose} color="default">
+        <Button id="sign-out-dialog-cancel" onClick={this.handleClose} color="default" variant="outlined">
           Cancel
         </Button>
-        <Button onClick={this.handleSignOut} color="primary">
+        <Button id="sign-out-dialog-confirm" onClick={this.handleSignOut} color="primary" variant="raised">
           Sign Out
         </Button>
       </DialogActions>
