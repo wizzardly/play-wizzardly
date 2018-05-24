@@ -5,7 +5,7 @@ import { connectedComponentPropType, styledComponentPropType, authenticationShap
 import FormGroup from '@material-ui/core/FormGroup'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
-import FontAwesome from 'react-fontawesome'
+import CircularProgress from '@material-ui/core/CircularProgress'
 
 import { SignIn } from 'Actions'
 
@@ -87,7 +87,7 @@ class SignInForm extends Component {
       variant="raised"
       className={className}
     >
-      {signingIn ? <FontAwesome name="spinner" spin size="2x" /> : 'Sign In'}
+      {signingIn ? <CircularProgress id="sign-in-loading-spinner" /> : 'Sign In'}
     </Button>
   }
 

@@ -1,5 +1,9 @@
 export default theme => ({
+  logo: {
+    maxWidth: '100%',
+  },
   container: {
+    flexGrow: 1,
     height: '100%',
   },
   root: {
@@ -8,7 +12,6 @@ export default theme => ({
   },
   paper: {
     textAlign: 'center',
-    width: 450,
     padding: theme.spacing.unit * 4,
     color: theme.palette.text.secondary,
   },

@@ -6,7 +6,7 @@ import Site from 'Site'
 import Application from './Application.js'
 
 describe('Application', () => {
-  const subject = () => <Application classes={{ application: '' }} />
+  const subject = () => <Application classes={{}} />
 
   describe('when shallow rendered', () => {
     const wrapper = shallow(subject())

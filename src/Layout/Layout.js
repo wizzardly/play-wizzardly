@@ -1,11 +1,18 @@
 import React from 'react'
+import { styledComponentPropType } from 'data/shapes'
 
-import Dashboard from 'Dashboard'
+import MainMenu from 'MainMenu'
+import MainContent from 'MainContent'
 
-function Layout() {
-  return <div id="layout">
-    <Dashboard />
+function Layout(props) {
+  const { classes } = props
+
+  return <div id="layout" className={classes.layout}>
+    <MainMenu />
+    <MainContent />
   </div>
 }
+
+Layout.propTypes = { ...styledComponentPropType }
 
 export default Layout

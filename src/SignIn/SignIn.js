@@ -14,7 +14,7 @@ function SignIn(props) {
   return <div id="sign-in" className={classes.container}>
     <Grid container justify="center" alignItems="center" className={classes.root}>
       <Paper className={classes.paper} elevation={12}>
-        <img src={logo} alt="wizzard.ly" />
+        <img src={logo} alt="wizzard.ly" className={classes.logo} />
 
         <SignInForm />
       </Paper>

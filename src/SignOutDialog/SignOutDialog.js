@@ -10,7 +10,7 @@ import { HideSignOutDialog, SignOut } from 'Actions'
 
 const Transition = props => <Slide direction="up" {...props} />
 
-class SignOutDialog extends Component {
+export default class SignOutDialog extends Component {
   static propTypes = {
     ...connectedComponentPropType,
     site: siteShape,
@@ -49,5 +49,3 @@ class SignOutDialog extends Component {
     </Dialog>
   }
 }
-
-export default SignOutDialog

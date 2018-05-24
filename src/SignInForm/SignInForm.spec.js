@@ -18,11 +18,12 @@ const mockStore = configureMockStore([thunk, axiosMiddleware(client)])
 
 describe('SignInForm', () => {
   const subject = (dispatch, authentication = { ...authenticationInitialState }) =>
-    <SignInForm dispatch={dispatch} authentication={authentication} classes={{ textField: '', button: '' }} />
+    <SignInForm dispatch={dispatch} authentication={authentication} classes={{}} />
 
   const emailInputSelector = 'input#sign-in-form-email'
   const passwordInputSelector = 'input#sign-in-form-password[type="password"]'
   const submitButtonSelector = 'button#sign-in-form-submit[type="submit"]'
+  const loadingSpinnerSelector = 'div#sign-in-loading-spinner'
 
   describe('when mounted', () => {
     let mounted
@@ -104,9 +105,7 @@ describe('SignInForm', () => {
     it('renders disabled email input', () => expect(mounted.find(emailInputSelector)).toBeDisabled())
     it('renders disabled password input', () => expect(mounted.find(passwordInputSelector)).toBeDisabled())
     it('renders disabled submit button', () => expect(mounted.find(submitButtonSelector)).toBeDisabled())
-    it('renders spinner in submit button', () => {
-      expect(mounted.find(`${submitButtonSelector} .fa.fa-spinner`)).toExist()
-    })
+    it('renders spinner in submit button', () => expect(mounted.find(loadingSpinnerSelector)).toExist())
   })
 
   describe('when mounted and sign in failed', () => {

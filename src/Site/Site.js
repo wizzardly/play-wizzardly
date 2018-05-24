@@ -1,27 +1,27 @@
 import React from 'react'
 import { authenticationInitialState } from 'data/initialState'
-import { authenticationShape } from 'data/shapes'
+import { styledComponentPropType, authenticationShape } from 'data/shapes'
 
 import SignIn from 'SignIn'
 import Header from 'Header'
 import Layout from 'Layout'
-import Footer from 'Footer'
 import Modals from 'Modals'
 
 function Site(props) {
-  const { signedIn } = props.authentication
+  const { classes, authentication } = props
+  const { signedIn } = authentication
 
   if (!signedIn) return <SignIn />
 
-  return <div id="site">
+  return <div id="site" className={classes.root}>
     <Header />
     <Layout />
-    <Footer />
     <Modals />
   </div>
 }
 
 Site.propTypes = {
+  ...styledComponentPropType,
   authentication: authenticationShape,
 }
 

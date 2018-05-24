@@ -3,8 +3,8 @@ import { withStyles } from '@material-ui/core/styles'
 
 import styles from './styles'
 
-import Header from './Header'
+import MainContent from './MainContent'
 
 const mapStateToProps = state => ({ site: state.site })
 
-export default withStyles(styles)(connect(mapStateToProps)(Header))
+export default withStyles(styles)(connect(mapStateToProps)(MainContent))

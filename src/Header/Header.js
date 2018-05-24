@@ -1,30 +1,36 @@
 import React, { Component } from 'react'
+import classNames from 'classnames'
 import { siteInitialState } from 'data/initialState'
-import { styledComponentPropType, siteShape } from 'data/shapes'
+import { connectedComponentPropType, styledComponentPropType, siteShape } from 'data/shapes'
 
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import IconButton from '@material-ui/core/IconButton'
 import MenuIcon from '@material-ui/icons/Menu'
 
-import { ShowSignOutDialog } from 'Actions'
+import { ShowMainMenu } from 'Actions'
 
 import { logoRelief } from 'images'
 
 class Header extends Component {
-  handleMenuClick = () => this.props.dispatch(ShowSignOutDialog())
+  handleMenuClick = () => this.props.dispatch(ShowMainMenu())
 
   render() {
-    const { classes } = this.props
+    const { classes, site } = this.props
+    const { mainMenuOpen } = site
 
-    return <AppBar id="header" position="static">
+    return <AppBar
+      id="header"
+      position="static"
+      className={classNames(classes.appBar, { [classes.appBarShift]: mainMenuOpen })}
+    >
       <Toolbar>
         <IconButton
           id="header-menu"
           color="inherit"
           aria-label="open drawer"
           onClick={this.handleMenuClick}
-          // className={classNames(classes.menuButton, open && classes.hide)}
+          className={classNames(classes.menuButton, mainMenuOpen && classes.hide)}
         >
           <MenuIcon />
         </IconButton>
@@ -35,6 +41,7 @@ class Header extends Component {
 }
 
 Header.propTypes = {
+  ...connectedComponentPropType,
   ...styledComponentPropType,
   site: siteShape,
 }

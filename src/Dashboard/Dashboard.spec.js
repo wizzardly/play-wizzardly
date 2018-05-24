@@ -4,7 +4,7 @@ import { mount, shallow } from 'enzyme'
 import Dashboard from './Dashboard'
 
 describe('Dashboard', () => {
-  const subject = () => <Dashboard classes={{ root: '', paper: '' }} />
+  const subject = () => <Dashboard classes={{}} />
 
   describe('when mounted', () => {
     const mounted = mount(subject())
