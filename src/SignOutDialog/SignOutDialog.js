@@ -6,6 +6,7 @@ import DialogTitle from '@material-ui/core/DialogTitle'
 import Slide from '@material-ui/core/Slide'
 import { siteInitialState } from 'data/initialState'
 import { connectedComponentPropType, siteShape } from 'data/shapes'
+import { HideSignOutDialog, SignOut } from 'Actions'
 
 const Transition = props => <Slide direction="up" {...props} />
 
@@ -19,12 +20,10 @@ class SignOutDialog extends Component {
     site: { ...siteInitialState },
   }
 
-  handleClose = () => {
-
-  }
+  handleClose = () => this.props.dispatch(HideSignOutDialog())
 
   handleSignOut = () => {
-
+    this.props.dispatch(SignOut())
   }
 
   render() {

@@ -11,7 +11,7 @@ import { ShowSignOutDialog } from 'Actions'
 
 import { logoRelief } from 'images'
 
-class Masthead extends Component {
+class Header extends Component {
   handleMenuClick = () => this.props.dispatch(ShowSignOutDialog())
 
   render() {
@@ -33,13 +33,13 @@ class Masthead extends Component {
   }
 }
 
-Masthead.propTypes = {
+Header.propTypes = {
   ...styledComponentPropType,
   site: siteShape,
 }
 
-Masthead.defaultProps = {
+Header.defaultProps = {
   site: { ...siteInitialState },
 }
 
-export default Masthead
+export default Header
