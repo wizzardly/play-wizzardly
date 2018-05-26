@@ -24,6 +24,7 @@ const environmentPlugins = isProduction ? [
   new HtmlWebpackPlugin({
     inject: true,
     template: '../public/index.html',
+    filename: 'index.html',
     minify: {
       removeComments: true,
       collapseWhitespace: true,
@@ -66,8 +67,8 @@ module.exports = {
   },
   output: {
     filename: `[name]${isProduction ? `-${gitHash}` : ''}.js`,
-    path: path.resolve(__dirname, './dist/assets'),
-    publicPath: '/assets',
+    path: path.resolve(__dirname, './dist'),
+    publicPath: '/',
   },
   plugins: [
     new webpack.DefinePlugin({
