@@ -13,6 +13,7 @@ const { skipHash: gitHash } = new WebpackGitHash()
 
 const environmentPlugins = isProduction ? [
   new SentryPlugin({
+    suppressConflictError: true,
     organization: env.SENTRY_ORGANIZATION,
     project: env.SENTRY_PROJECT,
     apiKey: env.SENTRY_API_KEY,
