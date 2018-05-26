@@ -1,14 +1,13 @@
-require('dotenv').config()
+const { env } = process
+const isProduction = env.NODE_ENV === 'production'
+
+if (!isProduction) require('dotenv').config()
 
 const path = require('path')
 const webpack = require('webpack')
 const WebpackGitHash = require('webpack-git-hash')
 const DashboardPlugin = require('webpack-dashboard/plugin')
 const SentryPlugin = require('webpack-sentry-plugin')
-
-const { env } = process
-
-const isProduction = env.NODE_ENV === 'production'
 
 const { skipHash: gitHash } = new WebpackGitHash()
 
