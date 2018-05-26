@@ -9,9 +9,6 @@ import Application from 'Application'
 
 const store = Store()
 
-console.log('index')
-console.log(JSON.stringify(process.env))
-
 const tokenFromStorage = localStorage.getItem('token')
 if (tokenFromStorage) store.dispatch({ type: TOKEN_RECOVERY, token: tokenFromStorage })
 

@@ -3,14 +3,13 @@ const isProduction = env.NODE_ENV === 'production'
 
 if (!isProduction) require('dotenv').config()
 
-console.log('wepback')
-console.log(JSON.stringify(env))
-
+const fs = require('fs')
 const path = require('path')
 const webpack = require('webpack')
 const WebpackGitHash = require('webpack-git-hash')
 const DashboardPlugin = require('webpack-dashboard/plugin')
 const SentryPlugin = require('webpack-sentry-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const { skipHash: gitHash } = new WebpackGitHash()
 
@@ -21,6 +20,19 @@ const environmentPlugins = isProduction ? [
     project: env.SENTRY_PROJECT,
     apiKey: env.SENTRY_API_KEY,
     release: gitHash,
+  }),
+  new HtmlWebpackPlugin({
+    inject: true,
+    template: '../public/index.html',
+    minify: {
+      removeComments: true,
+      collapseWhitespace: true,
+      removeRedundantAttributes: true,
+      useShortDoctype: true,
+      keepClosingSlash: true,
+      minifyJS: true,
+      minifyURLs: true,
+    },
   }),
 ] : [
   new DashboardPlugin(),
