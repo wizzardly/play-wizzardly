@@ -9,7 +9,7 @@
     "yarn": "1.3.2"
   },
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --mode=production",
     "start": "webpack-dashboard -- webpack-dev-server -d",
     "test": "jest",
     "ci": "jest --coverage && codeclimate-test-reporter < coverage/lcov.info",
