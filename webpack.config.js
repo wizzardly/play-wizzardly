@@ -3,6 +3,9 @@ const isProduction = env.NODE_ENV === 'production'
 
 if (!isProduction) require('dotenv').config()
 
+console.log('wepback')
+console.log(JSON.stringify(env))
+
 const path = require('path')
 const webpack = require('webpack')
 const WebpackGitHash = require('webpack-git-hash')
