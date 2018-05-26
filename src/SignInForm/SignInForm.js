@@ -9,7 +9,7 @@ import CircularProgress from '@material-ui/core/CircularProgress'
 
 import { SignIn } from 'Actions'
 
-export const SIGN_IN_FAIL_ERROR_TEXT = 'Email and password do not match.'
+export const SIGN_IN_FAIL_ERROR_TEXT = 'A problem occurred trying to sign in.'
 
 class SignInForm extends Component {
   static propTypes = {

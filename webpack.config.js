@@ -4,12 +4,24 @@ const path = require('path')
 const webpack = require('webpack')
 const WebpackGitHash = require('webpack-git-hash')
 const DashboardPlugin = require('webpack-dashboard/plugin')
+const SentryPlugin = require('webpack-sentry-plugin')
 
 const { env } = process
 
 const isProduction = env.NODE_ENV === 'production'
 
 const { skipHash: gitHash } = new WebpackGitHash()
+
+const environmentPlugins = isProduction ? [
+  new SentryPlugin({
+    organization: env.SENTRY_ORGANIZATION,
+    project: env.SENTRY_PROJECT,
+    apiKey: env.SENTRY_API_KEY,
+    release: gitHash,
+  }),
+] : [
+  new DashboardPlugin(),
+]
 
 module.exports = {
   context: path.resolve(__dirname, './src'),
@@ -43,13 +55,15 @@ module.exports = {
     publicPath: '/assets',
   },
   plugins: [
-    new DashboardPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(isProduction ? 'production' : 'development'),
         API_ROOT: JSON.stringify(env.API_ROOT),
+        SENTRY_DSN: JSON.stringify(env.SENTRY_DSN),
+        GIT_HASH: JSON.stringify(gitHash),
       },
     }),
+    ...environmentPlugins,
   ],
   resolve: {
     modules: [
