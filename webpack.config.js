@@ -6,7 +6,6 @@ if (!isProduction) require('dotenv').config()
 const path = require('path')
 const webpack = require('webpack')
 const WebpackGitHash = require('webpack-git-hash')
-const DashboardPlugin = require('webpack-dashboard/plugin')
 const SentryPlugin = require('webpack-sentry-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
@@ -15,6 +14,7 @@ const { skipHash: gitHash } = new WebpackGitHash()
 const plugins = []
 
 if (!isProduction) {
+  const DashboardPlugin = require('webpack-dashboard/plugin')
   plugins.push(new DashboardPlugin())
 } else {
   plugins.push(new HtmlWebpackPlugin({
