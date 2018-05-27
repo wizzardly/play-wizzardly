@@ -13,15 +13,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const { skipHash: gitHash } = new WebpackGitHash()
 
-const environmentPlugins = isProduction ? [
-  new SentryPlugin({
-    suppressConflictError: true,
-    organization: env.SENTRY_ORGANIZATION,
-    project: env.SENTRY_PROJECT,
-    apiKey: env.SENTRY_API_KEY,
-    release: gitHash,
-  }),
-  new HtmlWebpackPlugin({
+const environmentPlugins = []
+
+if (!isProduction) {
+  environmentPlugins.push(new DashboardPlugin())
+} else {
+  environmentPlugins.push(new HtmlWebpackPlugin({
     inject: true,
     template: '../public/index.html',
     filename: 'index.html',
@@ -34,10 +31,18 @@ const environmentPlugins = isProduction ? [
       minifyJS: true,
       minifyURLs: true,
     },
-  }),
-] : [
-  new DashboardPlugin(),
-]
+  }))
+
+  if (env.SENTRY_API_KEY) {
+    environmentPlugins.push(new SentryPlugin({
+      suppressConflictError: true,
+      organization: env.SENTRY_ORGANIZATION,
+      project: env.SENTRY_PROJECT,
+      apiKey: env.SENTRY_API_KEY,
+      release: gitHash,
+    }))
+  }
+}
 
 module.exports = {
   context: path.resolve(__dirname, './src'),
