@@ -12,8 +12,8 @@ const store = Store()
 const tokenFromStorage = localStorage.getItem('token')
 if (tokenFromStorage) store.dispatch({ type: TOKEN_RECOVERY, token: tokenFromStorage })
 
-const { SENTRY_DSN, GIT_HASH } = process.env
-if (SENTRY_DSN) window.Raven.config(SENTRY_DSN, { release: GIT_HASH }).install()
+const sentryDSN = process.env.SENTRY_DSN
+if (sentryDSN) window.Raven.config(sentryDSN, { release: process.env.GIT_HASH }).install()
 
 ReactDOM.render(
   <Provider store={store}>

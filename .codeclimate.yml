@@ -10,3 +10,4 @@ exclude_patterns:
   - "**/*.spec.js"
   - "**/styles.js"
   - "app/**/*.js"
+  - "*.config.js"

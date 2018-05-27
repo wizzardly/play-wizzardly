@@ -1,27 +1,47 @@
-require('dotenv').config()
+const { env } = process
+const isProduction = env.NODE_ENV === 'production'
+
+if (!isProduction) require('dotenv').config()
 
 const path = require('path')
 const webpack = require('webpack')
 const WebpackGitHash = require('webpack-git-hash')
 const DashboardPlugin = require('webpack-dashboard/plugin')
 const SentryPlugin = require('webpack-sentry-plugin')
-
-const { env } = process
-
-const isProduction = env.NODE_ENV === 'production'
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const { skipHash: gitHash } = new WebpackGitHash()
 
-const environmentPlugins = isProduction ? [
-  new SentryPlugin({
-    organization: env.SENTRY_ORGANIZATION,
-    project: env.SENTRY_PROJECT,
-    apiKey: env.SENTRY_API_KEY,
-    release: gitHash,
-  }),
-] : [
-  new DashboardPlugin(),
-]
+const plugins = []
+
+if (!isProduction) {
+  plugins.push(new DashboardPlugin())
+} else {
+  plugins.push(new HtmlWebpackPlugin({
+    inject: true,
+    template: '../public/index.html',
+    filename: 'index.html',
+    minify: {
+      removeComments: true,
+      collapseWhitespace: true,
+      removeRedundantAttributes: true,
+      useShortDoctype: true,
+      keepClosingSlash: true,
+      minifyJS: true,
+      minifyURLs: true,
+    },
+  }))
+
+  if (env.SENTRY_API_KEY) {
+    plugins.push(new SentryPlugin({
+      suppressConflictError: true,
+      organization: env.SENTRY_ORGANIZATION,
+      project: env.SENTRY_PROJECT,
+      apiKey: env.SENTRY_API_KEY,
+      release: gitHash,
+    }))
+  }
+}
 
 module.exports = {
   context: path.resolve(__dirname, './src'),
@@ -51,19 +71,12 @@ module.exports = {
   },
   output: {
     filename: `[name]${isProduction ? `-${gitHash}` : ''}.js`,
-    path: path.resolve(__dirname, './dist/assets'),
-    publicPath: '/assets',
+    path: path.resolve(__dirname, './dist'),
+    publicPath: '/',
   },
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify(isProduction ? 'production' : 'development'),
-        API_ROOT: JSON.stringify(env.API_ROOT),
-        SENTRY_DSN: JSON.stringify(env.SENTRY_DSN),
-        GIT_HASH: JSON.stringify(gitHash),
-      },
-    }),
-    ...environmentPlugins,
+    new webpack.EnvironmentPlugin(['NODE_ENV', 'API_ROOT', 'SENTRY_DSN', 'GIT_HASH']),
+    ...plugins,
   ],
   resolve: {
     modules: [

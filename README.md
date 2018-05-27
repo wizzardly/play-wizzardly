@@ -29,3 +29,16 @@ yarn lint
 yarn test
 yarn ci # code coverage + code climate reporting
 ```
+
+## Setting up git hooks
+
+Some convenience hooks have been placed in the `.githooks/` directory.
+
+To use one, simply:
+
+```shell
+cd .git/hooks
+ln -s ../../.githooks/pre-push .
+```
+
+- `pre-push`: Checks for pushes to the master branch and prompts you before allowing the push
