@@ -3,7 +3,6 @@ const isProduction = env.NODE_ENV === 'production'
 
 if (!isProduction) require('dotenv').config()
 
-const fs = require('fs')
 const path = require('path')
 const webpack = require('webpack')
 const WebpackGitHash = require('webpack-git-hash')
@@ -13,12 +12,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const { skipHash: gitHash } = new WebpackGitHash()
 
-const environmentPlugins = []
+const plugins = []
 
 if (!isProduction) {
-  environmentPlugins.push(new DashboardPlugin())
+  plugins.push(new DashboardPlugin())
 } else {
-  environmentPlugins.push(new HtmlWebpackPlugin({
+  plugins.push(new HtmlWebpackPlugin({
     inject: true,
     template: '../public/index.html',
     filename: 'index.html',
@@ -34,7 +33,7 @@ if (!isProduction) {
   }))
 
   if (env.SENTRY_API_KEY) {
-    environmentPlugins.push(new SentryPlugin({
+    plugins.push(new SentryPlugin({
       suppressConflictError: true,
       organization: env.SENTRY_ORGANIZATION,
       project: env.SENTRY_PROJECT,
@@ -76,15 +75,8 @@ module.exports = {
     publicPath: '/',
   },
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify(isProduction ? 'production' : 'development'),
-        API_ROOT: JSON.stringify(env.API_ROOT),
-        SENTRY_DSN: JSON.stringify(env.SENTRY_DSN),
-        GIT_HASH: JSON.stringify(gitHash),
-      },
-    }),
-    ...environmentPlugins,
+    new webpack.EnvironmentPlugin(['NODE_ENV', 'API_ROOT', 'SENTRY_DSN', 'GIT_HASH']),
+    ...plugins,
   ],
   resolve: {
     modules: [
