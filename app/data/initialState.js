@@ -3,7 +3,6 @@ export const authenticationInitialState = {
   signingIn: false,
   signInFailed: false,
   token: null,
-  currentUser: null,
 }
 
 export const siteInitialState = {
