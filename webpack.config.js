@@ -8,13 +8,13 @@ const webpack = require('webpack')
 const WebpackGitHash = require('webpack-git-hash')
 const SentryPlugin = require('webpack-sentry-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const DashboardPlugin = require('webpack-dashboard/plugin')
 
 const { skipHash: gitHash } = new WebpackGitHash()
 
 const plugins = []
 
 if (!isProduction) {
+  const DashboardPlugin = require('webpack-dashboard/plugin')
   plugins.push(new DashboardPlugin(), new HtmlWebpackPlugin({ template: '../public/index.html' }))
 } else {
   plugins.push(new HtmlWebpackPlugin({
