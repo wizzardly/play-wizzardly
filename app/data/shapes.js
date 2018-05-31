@@ -19,10 +19,12 @@ export const authenticationShape = PropTypes.shape({
   signingIn: PropTypes.bool,
   signInFailed: PropTypes.bool,
   token: PropTypes.string,
-  currentUser: PropTypes.shape(userShape),
 })
 
 export const siteShape = PropTypes.shape({
   mainMenuOpen: PropTypes.bool,
   signOutDialogOpen: PropTypes.bool,
 })
+
+// currentUser: null,
+// currentUser: PropTypes.shape(userShape),
