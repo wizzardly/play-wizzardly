@@ -33,7 +33,7 @@ module.exports = {
   },
   plugins: [
     new EnvironmentPlugin(['NODE_ENV', 'API_ROOT']),
-    new HtmlWebpackPlugin({ template: '../public/index.html' })
+    new HtmlWebpackPlugin({ template: '../public/index.html' }),
   ],
   resolve: {
     modules: [

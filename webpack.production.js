@@ -20,6 +20,7 @@ module.exports = merge(common, {
     new EnvironmentPlugin(['SENTRY_DSN', 'GIT_HASH']),
     new HtmlWebpackPlugin({
       inject: true,
+      template: '../public/index.html',
       filename: 'index.html',
       minify: {
         removeComments: true,
