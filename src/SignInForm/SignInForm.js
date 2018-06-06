@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { authenticationInitialState } from 'data/initialState'
-import { connectedComponentPropType, styledComponentPropType, authenticationShape } from 'data/shapes'
+import { siteInitialState } from 'data/initialState'
+import { connectedComponentPropType, styledComponentPropType, siteShape } from 'data/shapes'
 
 import FormGroup from '@material-ui/core/FormGroup'
 import TextField from '@material-ui/core/TextField'
@@ -11,14 +11,14 @@ import { SignIn } from 'Actions'
 
 export const SIGN_IN_FAIL_ERROR_TEXT = 'A problem occurred trying to sign in.'
 
-class SignInForm extends Component {
+export default class SignInForm extends Component {
   static propTypes = {
     ...connectedComponentPropType,
     ...styledComponentPropType,
-    authentication: authenticationShape,
+    site: siteShape,
   }
 
-  static defaultProps = { authentication: { ...authenticationInitialState } }
+  static defaultProps = { site: { ...siteInitialState } }
 
   state = { email: '', password: '' }
 
@@ -31,7 +31,7 @@ class SignInForm extends Component {
   }
 
   emailInput(className) {
-    const { signingIn, signInFailed } = this.props.authentication
+    const { signingIn, signInFailed } = this.props.site
 
     return <FormGroup>
       <TextField
@@ -51,7 +51,7 @@ class SignInForm extends Component {
   }
 
   passwordInput(className) {
-    const { signingIn, signInFailed } = this.props.authentication
+    const { signingIn, signInFailed } = this.props.site
 
     const helperText = signInFailed ? SIGN_IN_FAIL_ERROR_TEXT : ''
 
@@ -75,7 +75,7 @@ class SignInForm extends Component {
   }
 
   submitButton(className) {
-    const { signingIn } = this.props.authentication
+    const { signingIn } = this.props.site
     const { email, password } = this.state
 
     return <Button
@@ -101,5 +101,3 @@ class SignInForm extends Component {
     </form>
   }
 }
-
-export default SignInForm

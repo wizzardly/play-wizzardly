@@ -16,12 +16,12 @@ export const userShape = PropTypes.shape({
 
 export const authenticationShape = PropTypes.shape({
   signedIn: PropTypes.bool,
-  signingIn: PropTypes.bool,
-  signInFailed: PropTypes.bool,
   token: PropTypes.string,
 })
 
 export const siteShape = PropTypes.shape({
+  signingIn: PropTypes.bool,
+  signInFailed: PropTypes.bool,
   mainMenuOpen: PropTypes.bool,
   signOutDialogOpen: PropTypes.bool,
 })
