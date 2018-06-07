@@ -8,7 +8,7 @@ import Toolbar from '@material-ui/core/Toolbar'
 import IconButton from '@material-ui/core/IconButton'
 import MenuIcon from '@material-ui/icons/Menu'
 
-import { logoRelief } from 'images'
+import Image from 'Image'
 
 function UIHeader({ classes, isShifted, onMenuClick }) {
   return <AppBar
@@ -26,7 +26,7 @@ function UIHeader({ classes, isShifted, onMenuClick }) {
       >
         <MenuIcon />
       </IconButton>
-      <img id="brand-image" src={logoRelief} alt="wizzard.ly" className={classes.logo} />
+      <Image id="brand-image" src="logo-relief.png" alt="wizzard.ly" className={classes.logo} />
     </Toolbar>
   </AppBar>
 }
