@@ -1,6 +1,5 @@
 import React from 'react'
-import { authenticationInitialState } from 'data/initialState'
-import { styledComponentPropType, authenticationShape } from 'data/shapes'
+import { styledComponentPropType } from 'data/shapes'
 
 import Header from 'Header'
 import Layout from 'Layout'

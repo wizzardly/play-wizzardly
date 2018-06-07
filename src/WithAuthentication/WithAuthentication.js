@@ -14,7 +14,7 @@ function WithAuthentication(props) {
 }
 
 WithAuthentication.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node.isRequired,
   authentication: authenticationShape,
 }
 
