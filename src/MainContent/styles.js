@@ -1,4 +1,4 @@
-import { drawerWidth } from 'MainMenu/styles'
+import { drawerWidth } from 'UIMainMenu/styles'
 
 export default theme => ({
   content: {

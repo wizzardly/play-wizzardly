@@ -1,59 +1,25 @@
-import React, { Component } from 'react'
-import Drawer from '@material-ui/core/Drawer'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemIcon from '@material-ui/core/ListItemIcon'
-import ListItemText from '@material-ui/core/ListItemText'
-import ExitToAppIcon from '@material-ui/icons/ExitToApp'
-import IconButton from '@material-ui/core/IconButton'
-import Divider from '@material-ui/core/Divider'
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
+import React from 'react'
 import { siteInitialState } from 'data/initialState'
-import { connectedComponentPropType, styledComponentPropType, siteShape } from 'data/shapes'
+import { connectedComponentPropType, siteShape } from 'data/shapes'
 import { HideMainMenu, ShowSignOutDialog } from 'Actions'
 
-class MainMenu extends Component {
-  static propTypes = {
-    ...connectedComponentPropType,
-    ...styledComponentPropType,
-    site: siteShape,
-  }
+import UIMainMenu from 'UIMainMenu'
 
-  static defaultProps = {
-    site: { ...siteInitialState },
-  }
+function MainMenu({ dispatch, site }) {
+  return <UIMainMenu
+    isOpen={site.mainMenuOpen}
+    onCloseClick={() => dispatch(HideMainMenu())}
+    onSignOutClick={() => dispatch(ShowSignOutDialog())}
+  />
+}
 
-  handleClose = () => this.props.dispatch(HideMainMenu())
+MainMenu.propTypes = {
+  ...connectedComponentPropType,
+  site: siteShape,
+}
 
-  handleSignOut = () => this.props.dispatch(ShowSignOutDialog())
-
-  render() {
-    const { classes, site } = this.props
-    const { mainMenuOpen } = site
-
-    return <Drawer
-      id="main-menu"
-      variant="persistent"
-      anchor="left"
-      open={mainMenuOpen}
-      classes={{ paper: classes.drawerPaper }}
-    >
-      <div className={classes.drawerHeader}>
-        <IconButton id="main-menu-close" onClick={this.handleClose}>
-          <ChevronLeftIcon />
-        </IconButton>
-      </div>
-      <Divider />
-      <List>
-        <ListItem id="main-menu-sign-out" button onClick={this.handleSignOut}>
-          <ListItemIcon>
-            <ExitToAppIcon />
-          </ListItemIcon>
-          <ListItemText inset primary="Sign Out" />
-        </ListItem>
-      </List>
-    </Drawer>
-  }
+MainMenu.defaultProps = {
+  site: { ...siteInitialState },
 }
 
 export default MainMenu

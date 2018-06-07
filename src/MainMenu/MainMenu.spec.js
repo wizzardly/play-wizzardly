@@ -4,6 +4,8 @@ import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
 import { siteInitialState } from 'data/initialState'
 
+import UIMainMenu from 'UIMainMenu'
+
 import { SIGN_OUT_DIALOG_SHOW, MAIN_MENU_HIDE } from 'Actions'
 
 import MainMenu from './MainMenu'
@@ -11,11 +13,19 @@ import MainMenu from './MainMenu'
 const mockStore = configureMockStore([thunk])
 
 describe('MainMenu', () => {
-  const subject = (dispatch, site = { ...siteInitialState }) =>
-    <MainMenu classes={{}} dispatch={dispatch} site={site} />
+  const subject = (dispatch = () => {}, site = { ...siteInitialState }) => <MainMenu dispatch={dispatch} site={site} />
 
-  const closeButtonSelector = 'button#main-menu-close'
-  const signOutButtonSelector = 'div#main-menu-sign-out'
+  describe('when shallow rendered', () => {
+    const wrapper = shallow(subject())
+
+    it('renders an open UIMainMenu', () => expect(wrapper.find(UIMainMenu).props().isOpen).toBe(false))
+  })
+
+  describe('when shallow rendered and mainMenuOpen', () => {
+    const wrapper = shallow(subject(() => {}, { ...siteInitialState, mainMenuOpen: true }))
+
+    it('renders a closed UIMainMenu', () => expect(wrapper.find(UIMainMenu).props().isOpen).toBe(true))
+  })
 
   describe('when mounted with a store', () => {
     let store
@@ -26,32 +36,14 @@ describe('MainMenu', () => {
       mounted = mount(subject(store.dispatch))
     })
 
-    describe('on chevron', () => {
-      beforeEach(() => mounted.find(closeButtonSelector).simulate('click'))
-      it('triggers MAIN_MENU_HIDE', () => expect(store.getActions()).toEqual([{ type: MAIN_MENU_HIDE }]))
+    it('calls the MAIN_MENU_HIDE action', () => {
+      mounted.find(UIMainMenu).props().onCloseClick()
+      expect(store.getActions()).toEqual([{ type: MAIN_MENU_HIDE }])
     })
 
-    describe('on sign out', () => {
-      beforeEach(() => mounted.find(signOutButtonSelector).simulate('click'))
-      it('triggers SIGN_OUT_DIALOG_HIDE', () => expect(store.getActions()).toEqual([{ type: SIGN_OUT_DIALOG_SHOW }]))
+    it('calls the MAIN_MENU_OPEN action', () => {
+      mounted.find(UIMainMenu).props().onSignOutClick()
+      expect(store.getActions()).toEqual([{ type: SIGN_OUT_DIALOG_SHOW }])
     })
-  })
-
-  describe('when shallow rendered', () => {
-    const wrapper = shallow(subject(() => {}))
-
-    it('has the expected selector', () => expect(wrapper.is('#main-menu')).toBe(true))
-  })
-
-  describe('when shallow rendered and open', () => {
-    const wrapper = shallow(subject(() => {}, { ...siteInitialState, mainMenuOpen: true }))
-
-    it('is open', () => expect(wrapper.prop('open')).toBe(true))
-  })
-
-  describe('when shallow rendered and NOT open', () => {
-    const wrapper = shallow(subject(() => {}, { ...siteInitialState }))
-
-    it('is open', () => expect(wrapper.prop('open')).toBe(false))
   })
 })
