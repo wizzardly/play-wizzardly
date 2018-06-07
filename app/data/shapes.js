@@ -14,8 +14,7 @@ export const userShape = PropTypes.shape({
   email: PropTypes.string.isRequired,
 })
 
-export const authenticationShape = PropTypes.shape({
-  signedIn: PropTypes.bool,
+export const sessionShape = PropTypes.shape({
   token: PropTypes.string,
 })
 

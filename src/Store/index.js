@@ -8,6 +8,6 @@ import Reducer from 'Reducer'
 
 export const client = axios.create({ baseURL: process.env.API_ROOT, responseType: 'json' })
 
-const enhancer = compose(applyMiddleware(thunk, axiosMiddleware(client)), persistState('authentication'))
+const enhancer = compose(applyMiddleware(thunk, axiosMiddleware(client)), persistState('session'))
 
 export default () => createStore(Reducer, enhancer)

@@ -11,7 +11,7 @@ import { SignIn, SignOut, SIGN_IN, SIGN_IN_SUCCESS, SIGN_IN_FAIL, SIGN_OUT } fro
 const mockClient = new MockAdapter(client)
 const mockStore = configureMockStore([thunk, axiosMiddleware(client)])
 
-describe('AuthenticationActions', () => {
+describe('SessionActions', () => {
   let store
 
   beforeEach(() => {

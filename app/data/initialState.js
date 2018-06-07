@@ -1,5 +1,4 @@
-export const authenticationInitialState = {
-  signedIn: false,
+export const sessionInitialState = {
   token: null,
 }
 
@@ -11,6 +10,6 @@ export const siteInitialState = {
 }
 
 export default {
-  authentication: { ...authenticationInitialState },
+  session: { ...sessionInitialState },
   site: { ...siteInitialState },
 }
