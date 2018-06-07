@@ -1,11 +1,11 @@
 export const authenticationInitialState = {
   signedIn: false,
-  signingIn: false,
-  signInFailed: false,
   token: null,
 }
 
 export const siteInitialState = {
+  signingIn: false,
+  signInFailed: false,
   mainMenuOpen: false,
   signOutDialogOpen: false,
 }

@@ -3,7 +3,7 @@ import { mount, shallow } from 'enzyme'
 import faker from 'faker'
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
-import { authenticationInitialState } from 'data/initialState'
+import { siteInitialState } from 'data/initialState'
 import { client } from 'Store'
 import MockAdapter from 'axios-mock-adapter'
 
@@ -17,8 +17,8 @@ const mockClient = new MockAdapter(client)
 const mockStore = configureMockStore([thunk, axiosMiddleware(client)])
 
 describe('SignInForm', () => {
-  const subject = (dispatch, authentication = { ...authenticationInitialState }) =>
-    <SignInForm dispatch={dispatch} authentication={authentication} classes={{}} />
+  const subject = (dispatch, site = { ...siteInitialState }) =>
+    <SignInForm dispatch={dispatch} site={site} classes={{}} />
 
   const emailInputSelector = 'input#sign-in-form-email'
   const passwordInputSelector = 'input#sign-in-form-password[type="password"]'
@@ -99,7 +99,7 @@ describe('SignInForm', () => {
     let mounted
 
     beforeEach(() => {
-      mounted = mount(subject(() => {}, { ...authenticationInitialState, signingIn: true }))
+      mounted = mount(subject(() => {}, { ...siteInitialState, signingIn: true }))
     })
 
     it('renders disabled email input', () => expect(mounted.find(emailInputSelector)).toBeDisabled())
@@ -114,7 +114,7 @@ describe('SignInForm', () => {
     let mounted
 
     beforeEach(() => {
-      mounted = mount(subject(() => {}, { ...authenticationInitialState, signInFailed: true }))
+      mounted = mount(subject(() => {}, { ...siteInitialState, signInFailed: true }))
     })
 
     it('renders disabled email input', () => expect(mounted.find(emailInputSelector).prop(invalid)).toBe(true))
