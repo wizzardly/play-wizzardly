@@ -1,6 +1,6 @@
 # play.wizzard.ly
 
-[![Build Status](https://semaphoreci.com/api/v1/wizzardly/play-wizzard-ly/branches/actors/badge.svg)](https://semaphoreci.com/wizzardly/play-wizzard-ly)
+[![Build Status](https://semaphoreci.com/api/v1/wizzardly/play-wizzard-ly/branches/master/badge.svg)](https://semaphoreci.com/wizzardly/play-wizzard-ly)
 [![Maintainability](https://api.codeclimate.com/v1/badges/39f3f39d2e766182ec3a/maintainability)](https://codeclimate.com/github/wizzardly/play.wizzard.ly/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/39f3f39d2e766182ec3a/test_coverage)](https://codeclimate.com/github/wizzardly/play.wizzard.ly/test_coverage)
 
