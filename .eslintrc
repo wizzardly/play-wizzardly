@@ -27,4 +27,4 @@ rules:
   import/no-unresolved: 0
   indent: ["error", 2, { "SwitchCase": 0 }]
   max-len: ["error", { "code": 120 }]
-  object-curly-newline: ["error", { "consistent": true, "minProperties": 8 }]
+  object-curly-newline: ["error", { "consistent": true }]
