@@ -1,25 +1,15 @@
 import React from 'react'
-import classNames from 'classnames'
 import { siteInitialState } from 'data/initialState'
-import { connectedComponentPropType, styledComponentPropType, siteShape } from 'data/shapes'
+import { connectedComponentPropType, siteShape } from 'data/shapes'
 
-import Dashboard from 'Dashboard'
-import Footer from 'Footer'
+import UIMainContent from 'UIMainContent'
 
-function MainContent(props) {
-  const { classes, site } = props
-  const { mainMenuOpen } = site
-
-  return <section id="main-content" className={classNames(classes.content, { [classes.contentShift]: mainMenuOpen })}>
-    <div className={classes.drawerHeader} />
-    <Dashboard />
-    <Footer />
-  </section>
+function MainContent({ site }) {
+  return <UIMainContent isShifted={site.mainMenuOpen} />
 }
 
 MainContent.propTypes = {
   ...connectedComponentPropType,
-  ...styledComponentPropType,
   site: siteShape,
 }
 
