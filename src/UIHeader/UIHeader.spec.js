@@ -16,7 +16,7 @@ describe('UIHeader', () => {
       expect(onMenuClick).toHaveBeenCalled()
     })
 
-    it('renders the brand image', () => expect(mounted.find('#brand-image').prop('alt')).toBe('wizzard.ly'))
+    it('renders the brand image', () => expect(mounted.find('img#brand-image').prop('alt')).toBe('wizzard.ly'))
   })
 
   describe('when shallow rendered and not shifted', () => {
