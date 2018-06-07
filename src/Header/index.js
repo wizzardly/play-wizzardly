@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { withStyles } from '@material-ui/core/styles'
 
-import styles from './styles'
+import styles from '../UIHeader/styles'
 
 import Header from './Header'
 

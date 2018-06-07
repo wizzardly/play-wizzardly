@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { authenticationInitialState } from 'data/initialState'
-import { authenticationShape } from 'data/shapes'
+import { authenticationShape, connectedComponentPropType } from 'data/shapes'
 
 import SignIn from 'SignIn'
 
@@ -14,6 +14,7 @@ function WithAuthentication(props) {
 }
 
 WithAuthentication.propTypes = {
+  ...connectedComponentPropType,
   children: PropTypes.node.isRequired,
   authentication: authenticationShape,
 }

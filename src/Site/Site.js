@@ -5,8 +5,8 @@ import Header from 'Header'
 import Layout from 'Layout'
 import Modals from 'Modals'
 
-function Site(props) {
-  return <div id="site" className={props.classes.root}>
+function Site({ classes }) {
+  return <div id="site" className={classes.root}>
     <Header />
     <Layout />
     <Modals />
