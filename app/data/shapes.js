@@ -24,6 +24,3 @@ export const siteShape = PropTypes.shape({
   mainMenuOpen: PropTypes.bool,
   signOutDialogOpen: PropTypes.bool,
 })
-
-// currentUser: null,
-// currentUser: PropTypes.shape(userShape),
