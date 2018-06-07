@@ -10,7 +10,7 @@ describe('AuthenticationReducer', () => {
 
   it('should reduce the SIGN_IN state', () => {
     const jwt = faker.random.uuid()
-    const currentState = { ...authenticationInitialState, signedIn: true, jwt: jwt }
+    const currentState = { ...authenticationInitialState, signedIn: true, jwt }
 
     expect(reducer(currentState, { type: SIGN_IN })).toEqual({ ...authenticationInitialState })
   })
