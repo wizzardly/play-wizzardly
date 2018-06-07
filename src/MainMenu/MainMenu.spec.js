@@ -18,13 +18,13 @@ describe('MainMenu', () => {
   describe('when shallow rendered', () => {
     const wrapper = shallow(subject())
 
-    it('renders an open UIMainMenu', () => expect(wrapper.find(UIMainMenu).props().isOpen).toBe(false))
+    it('renders a closed UIMainMenu', () => expect(wrapper.find(UIMainMenu).props().isOpen).toBe(false))
   })
 
   describe('when shallow rendered and mainMenuOpen', () => {
     const wrapper = shallow(subject(() => {}, { ...siteInitialState, mainMenuOpen: true }))
 
-    it('renders a closed UIMainMenu', () => expect(wrapper.find(UIMainMenu).props().isOpen).toBe(true))
+    it('renders an open UIMainMenu', () => expect(wrapper.find(UIMainMenu).props().isOpen).toBe(true))
   })
 
   describe('when mounted with a store', () => {
