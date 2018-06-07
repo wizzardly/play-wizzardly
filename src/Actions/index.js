@@ -1,2 +1,2 @@
-export * from './AuthenticationActions'
+export * from './SessionActions'
 export * from './SiteActions'

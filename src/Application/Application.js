@@ -5,7 +5,7 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 
 import { styledComponentPropType } from 'data/shapes'
 
-import WithAuthentication from 'WithAuthentication'
+import WithSession from 'WithSession'
 import Site from 'Site'
 
 import theme from './theme'
@@ -16,9 +16,9 @@ function Application(props) {
   return <div id="application" className={classes.application}>
     <CssBaseline />
     <MuiThemeProvider theme={theme}>
-      <WithAuthentication>
+      <WithSession>
         <Site />
-      </WithAuthentication>
+      </WithSession>
     </MuiThemeProvider>
   </div>
 }
