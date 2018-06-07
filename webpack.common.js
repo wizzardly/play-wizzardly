@@ -32,7 +32,7 @@ module.exports = {
     publicPath: '/',
   },
   plugins: [
-    new EnvironmentPlugin(['NODE_ENV', 'API_ROOT']),
+    new EnvironmentPlugin(['API_ROOT']),
     new HtmlWebpackPlugin({ template: '../public/index.html' }),
   ],
   resolve: {
