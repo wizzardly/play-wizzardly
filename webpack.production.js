@@ -33,6 +33,28 @@ module.exports = merge(common, {
         minifyURLs: true,
       },
     }),
+    new HtmlWebpackExternalsPlugin({
+      externals: [
+        {
+          module: 'react',
+          entry: {
+            path: 'https://unpkg.com/react@16/umd/react.production.min.js',
+            attributes: {
+              crossorigin: 'crossorigin',
+            },
+          },
+        },
+        {
+          module: 'react-dopm',
+          entry: {
+            path: 'https://unpkg.com/react-dom@16/umd/react-dom.production.min.js',
+            attributes: {
+              crossorigin: 'crossorigin',
+            },
+          },
+        },
+      ],
+    }),
     new SentryPlugin({
       suppressConflictError: true,
       organization: env.SENTRY_ORGANIZATION,

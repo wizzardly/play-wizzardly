@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "baseUrl": "src",
+    "rootDirs": ["src"],
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "module": "commonjs",
+    "target": "es5",
+    "jsx": "react"
+  },
+  "include": [
+    "./src/**/*"
+  ],
+  "exclude": [
+    "./src/**/*.spec.js"
+  ]
+}
