@@ -3,7 +3,7 @@
     "allowJs": true,
     "baseUrl": "src",
     "rootDirs": ["src"],
-    "outDir": "./dist/",
+    "outDir": "./compile/",
     "sourceMap": true,
     "noImplicitAny": true,
     "module": "commonjs",

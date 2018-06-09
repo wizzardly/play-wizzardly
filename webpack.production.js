@@ -1,5 +1,6 @@
 const merge = require('webpack-merge')
 const common = require('./webpack.common.js')
+const shared = require('./webpack.shared.js')
 
 const webpack = require('webpack')
 
@@ -12,13 +13,26 @@ const { env } = process
 const { EnvironmentPlugin } = webpack
 const { skipHash: gitHash } = new WebpackGitHash()
 
-module.exports = merge(common, {
+const plugins = []
+
+if (env.SENTRY_API_KEY) {
+  plugins.push(new SentryPlugin({
+    suppressConflictError: true,
+    organization: env.SENTRY_ORGANIZATION,
+    project: env.SENTRY_PROJECT,
+    apiKey: env.SENTRY_API_KEY,
+    release: gitHash,
+  }))
+}
+
+module.exports = merge.smart(common, {
   mode: 'production',
   devtool: 'source-map',
   output: {
     filename: `[name]-${gitHash}.js`,
   },
   plugins: [
+    ...plugins,
     new EnvironmentPlugin(['SENTRY_DSN', 'GIT_HASH']),
     new HtmlWebpackPlugin({
       inject: true,
@@ -36,6 +50,7 @@ module.exports = merge(common, {
     }),
     new HtmlWebpackExternalsPlugin({
       externals: [
+        ...shared.externals,
         {
           module: 'react',
           entry: {
@@ -54,14 +69,17 @@ module.exports = merge(common, {
             },
           },
         },
+        {
+          module: 'raven',
+          entry: {
+            path: 'https://cdn.ravenjs.com/3.25.2/raven.min.js',
+            attributes: {
+              crossorigin: 'anonymous',
+            },
+          },
+          global: 'Raven'
+        },
       ],
-    }),
-    new SentryPlugin({
-      suppressConflictError: true,
-      organization: env.SENTRY_ORGANIZATION,
-      project: env.SENTRY_PROJECT,
-      apiKey: env.SENTRY_API_KEY,
-      release: gitHash,
     }),
   ],
 })

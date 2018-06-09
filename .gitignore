@@ -1,4 +1,5 @@
 coverage
 dist
+compile
 node_modules
 .env
