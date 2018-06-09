@@ -5,7 +5,8 @@ import { connectedComponentPropType, gameShape } from 'data/shapes'
 import Dashboard from 'Dashboard'
 import Footer from 'Footer'
 
-function Game({ dispatch, game }) {
+// { dispatch, game }
+function Game() {
   return <section id="game">
     <Dashboard />
     <Footer />
