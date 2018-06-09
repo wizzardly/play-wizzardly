@@ -1,8 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import Footer from 'Footer'
-import Dashboard from 'Dashboard'
+import Game from 'Game'
 
 import UIMainContent from './UIMainContent'
 
@@ -14,8 +13,7 @@ describe('UIMainContent', () => {
     const wrapper = shallow(subject(false, classes))
 
     it('has the expected selector', () => expect(wrapper.is('#main-content')).toBe(true))
-    it('renders Dashboard', () => expect(wrapper.find(Dashboard)).toExist())
-    it('renders Footer', () => expect(wrapper.find(Footer)).toExist())
+    it('renders Game', () => expect(wrapper.find(Game)).toExist())
     it('is an unshifted app bar', () => {
       expect(wrapper.hasClass(classes.content)).toBe(true)
       expect(wrapper.hasClass(classes.contentShift)).toBe(false)

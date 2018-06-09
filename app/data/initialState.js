@@ -9,7 +9,11 @@ export const siteInitialState = {
   signOutDialogOpen: false,
 }
 
+export const gameInitialState = {
+}
+
 export default {
   session: { ...sessionInitialState },
   site: { ...siteInitialState },
+  game: { ...gameInitialState },
 }
