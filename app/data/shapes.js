@@ -24,3 +24,6 @@ export const siteShape = PropTypes.shape({
   mainMenuOpen: PropTypes.bool,
   signOutDialogOpen: PropTypes.bool,
 })
+
+export const gameShape = PropTypes.shape({
+})
