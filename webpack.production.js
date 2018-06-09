@@ -6,6 +6,7 @@ const webpack = require('webpack')
 const WebpackGitHash = require('webpack-git-hash')
 const SentryPlugin = require('webpack-sentry-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin')
 
 const { env } = process
 const { EnvironmentPlugin } = webpack
