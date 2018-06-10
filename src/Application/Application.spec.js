@@ -4,7 +4,7 @@ import { shallow } from 'enzyme'
 import Site from 'Site'
 import WithSession from 'WithSession'
 
-import Application from './Application.js'
+import Application from './Application'
 
 describe('Application', () => {
   const subject = () => <Application classes={{}} />

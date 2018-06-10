@@ -1,18 +1,19 @@
-import React from 'react'
+import * as React from 'react'
 
-import { MuiThemeProvider } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
+import { MuiThemeProvider } from '@material-ui/core/styles'
 
-import { styledComponentPropType } from 'data/shapes'
-
-import WithSession from 'WithSession'
 import Site from 'Site'
+import WithSession from 'WithSession'
 
 import theme from './theme'
 
-function Application(props) {
-  const { classes } = props
+interface IApplicationClasses { application: string; }
+interface IApplication {
+  classes: IApplicationClasses;
+}
 
+function Application({ classes }: IApplication) {
   return <div id="application" className={classes.application}>
     <CssBaseline />
     <MuiThemeProvider theme={theme}>
@@ -22,7 +23,5 @@ function Application(props) {
     </MuiThemeProvider>
   </div>
 }
-
-Application.propTypes = { ...styledComponentPropType }
 
 export default Application

@@ -2,7 +2,10 @@
   "extends": ["tslint:latest", "tslint-react"],
   "rules": {
     "no-implicit-dependencies": false,
+    "no-submodule-imports": false,
     "interface-name": false,
+    "jsx-wrap-multiline": false,
+    "jsx-boolean-value": false,
     "semicolon": false,
     "quotemark": false,
     "curly": false
