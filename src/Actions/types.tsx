@@ -1,10 +1,10 @@
 import { AxiosRequestConfig } from 'axios'
 
-export interface IAction {
+export interface Action {
   type: symbol;
 }
 
-export interface IAxiosAction {
+export interface AxiosAction {
   types: symbol[];
   payload: {
     request: AxiosRequestConfig,
