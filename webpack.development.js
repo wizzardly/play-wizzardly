@@ -18,7 +18,7 @@ module.exports = merge(common, {
     new DashboardPlugin(),
     new HtmlWebpackExternalsPlugin({
       externals: [
-        shared.externals,
+        ...shared.externals,
         {
           module: 'react',
           entry: {

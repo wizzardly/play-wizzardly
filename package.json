@@ -21,7 +21,9 @@
     "@babel/register": "^7.0.0-beta.49",
     "@material-ui/core": "^1.0.0-rc.0",
     "@material-ui/icons": "^1.1.0",
-    "@types/jest": "^23.0.0",
+    "@types/enzyme": "^3.1.10",
+    "@types/jest": "^23.1.0",
+    "@types/material-ui": "^0.20.8",
     "@types/react": "^16.3.17",
     "@types/react-dom": "^16.0.6",
     "@types/react-redux": "^6.0.2",
@@ -70,6 +72,9 @@
   },
   "jest": {
     "setupTestFrameworkScriptFile": "./.jest.js",
+    "testMatch": [
+      "**/?(*.)+(spec|test).(j|t)s?(x)"
+    ],
     "modulePaths": [
       "app",
       "src"
@@ -87,7 +92,7 @@
     ],
     "transform": {
       "^.+\\.jsx?$": "<rootDir>/node_modules/babel-jest",
-      "^.+\\.(ts|tsx)$": "ts-jest"
+      "^.+\\.(ts|tsx)?$": "ts-jest"
     },
     "globals": {
       "ts-jest": {

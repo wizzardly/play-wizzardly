@@ -1,7 +1,9 @@
-import { connect } from 'react-redux'
+// import { connect } from 'react-redux'
 
 import Game from './Game'
 
-const mapStateToProps = state => ({ game: state.game })
+// const mapStateToProps = state => ({ game: state.game })
 
-export default connect(mapStateToProps)(Game)
+// export default connect(mapStateToProps)(Game)
+
+export default Game

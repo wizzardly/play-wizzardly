@@ -1,5 +1,5 @@
-import React from 'react'
 import { mount, shallow } from 'enzyme'
+import React from 'react'
 
 import Footer from './Footer'
 
