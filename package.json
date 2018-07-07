@@ -4,8 +4,8 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "build": "webpack --config webpack.production.js",
-    "start": "webpack-dashboard -- webpack-dev-server -d --config webpack.development.js",
+    "build": "webpack --config config/webpack.production.js",
+    "start": "webpack-dashboard -- webpack-dev-server -d --config config/webpack.development.js",
     "test": "jest",
     "ci": "jest --coverage && codeclimate-test-reporter < coverage/lcov.info",
     "lint": "eslint ./src --ext .js"
@@ -65,7 +65,7 @@
     "webpack-sentry-plugin": "^1.15.0"
   },
   "jest": {
-    "setupTestFrameworkScriptFile": "./.jest.js",
+    "setupTestFrameworkScriptFile": "./config/jest.js",
     "modulePaths": [
       "app",
       "src"

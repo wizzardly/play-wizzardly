@@ -77,7 +77,7 @@ module.exports = merge.smart(common, {
               crossorigin: 'anonymous',
             },
           },
-          global: 'Raven'
+          global: 'Raven',
         },
       ],
     }),
