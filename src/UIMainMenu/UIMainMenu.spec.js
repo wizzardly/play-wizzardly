@@ -7,16 +7,17 @@ describe('UIMainMenu', () => {
   const subject = (onCloseClick = () => {}, onSignOutClick = () => {}, isOpen = false, classes = {}) =>
     <UIMainMenu onCloseClick={onCloseClick} onSignOutClick={onSignOutClick} isOpen={isOpen} classes={classes} />
 
-  const closeButtonSelector = 'button#main-menu-close'
+  const mainMenuSelector = 'div#main-menu'
   const signOutButtonSelector = 'div#main-menu-sign-out'
 
   describe('when mounted', () => {
     const onCloseClick = jest.fn()
     const onSignOutClick = jest.fn()
-    const mounted = mount(subject(onCloseClick, onSignOutClick))
+    const mounted = mount(subject(onCloseClick, onSignOutClick, true))
 
     describe('onCloseClick', () => {
-      beforeEach(() => mounted.find(closeButtonSelector).simulate('click'))
+      // The first child of the modal is the backdrop, and clicking on it makes the drawer go away
+      beforeEach(() => mounted.find(mainMenuSelector).childAt(0).simulate('click'))
       it('triggers MAIN_MENU_HIDE', () => expect(onCloseClick).toHaveBeenCalled())
     })
 

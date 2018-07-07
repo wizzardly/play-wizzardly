@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import MainContent from 'MainContent'
+import UIMainContent from 'UIMainContent'
 import MainMenu from 'MainMenu'
 
 import Layout from './Layout'
@@ -14,6 +14,6 @@ describe('Layout', () => {
 
     it('has the expected selector', () => expect(wrapper.is('#layout')).toBe(true))
     it('renders MainMenu', () => expect(wrapper.find(MainMenu)).toExist())
-    it('renders MainContent', () => expect(wrapper.find(MainContent)).toExist())
+    it('renders UIMainContent', () => expect(wrapper.find(UIMainContent)).toExist())
   })
 })

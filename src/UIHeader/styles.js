@@ -1,6 +1,4 @@
-import { drawerWidth } from 'UIMainMenu/styles'
-
-export default theme => ({
+export default () => ({
   flex: {
     flex: 1,
   },
@@ -9,18 +7,6 @@ export default theme => ({
   },
   appBar: {
     position: 'absolute',
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-  },
-  appBarShift: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-    marginLeft: drawerWidth,
   },
   menuButton: {
     marginRight: 20,

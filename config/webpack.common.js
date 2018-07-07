@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { EnvironmentPlugin } = webpack
 
 module.exports = {
-  context: path.resolve(__dirname, './src'),
+  context: path.resolve(__dirname, '../src'),
   entry: {
     index: './index.js',
   },

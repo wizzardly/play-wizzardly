@@ -2,14 +2,14 @@ import React from 'react'
 import { styledComponentPropType } from 'data/shapes'
 
 import MainMenu from 'MainMenu'
-import MainContent from 'MainContent'
+import UIMainContent from 'UIMainContent'
 
 function Layout(props) {
   const { classes } = props
 
   return <div id="layout" className={classes.layout}>
     <MainMenu />
-    <MainContent />
+    <UIMainContent />
   </div>
 }
 

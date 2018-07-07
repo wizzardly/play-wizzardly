@@ -18,13 +18,7 @@ describe('Header', () => {
   describe('when shallow rendered', () => {
     const wrapper = shallow(subject())
 
-    it('renders an unshifted UIHeader', () => expect(wrapper.find(UIHeader).props().isShifted).toBe(false))
-  })
-
-  describe('when shallow rendered and mainMenuOpen', () => {
-    const wrapper = shallow(subject(() => {}, { ...siteInitialState, mainMenuOpen: true }))
-
-    it('renders an unshifted UIHeader', () => expect(wrapper.find(UIHeader).props().isShifted).toBe(true))
+    it('renders UIHeader', () => expect(wrapper.find(UIHeader)).toExist())
   })
 
   describe('when mounted with a store', () => {

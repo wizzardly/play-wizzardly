@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import classNames from 'classnames'
 import { styledComponentPropType } from 'data/shapes'
 
 import AppBar from '@material-ui/core/AppBar'
@@ -10,19 +9,15 @@ import MenuIcon from '@material-ui/icons/Menu'
 
 import Image from 'Image'
 
-function UIHeader({ classes, isShifted, onMenuClick }) {
-  return <AppBar
-    id="header"
-    position="static"
-    className={classNames(classes.appBar, { [classes.appBarShift]: isShifted })}
-  >
+function UIHeader({ classes, onMenuClick }) {
+  return <AppBar id="header" position="static" className={classes.appBar}>
     <Toolbar>
       <IconButton
         id="header-menu"
         color="inherit"
         aria-label="open drawer"
         onClick={onMenuClick}
-        className={classNames(classes.menuButton, isShifted && classes.hide)}
+        className={classes.menuButton}
       >
         <MenuIcon />
       </IconButton>
@@ -34,12 +29,10 @@ function UIHeader({ classes, isShifted, onMenuClick }) {
 UIHeader.propTypes = {
   ...styledComponentPropType,
   onMenuClick: PropTypes.func,
-  isShifted: PropTypes.bool,
 }
 
 UIHeader.defaultProps = {
   onMenuClick: () => {},
-  isShifted: false,
 }
 
 export default UIHeader
