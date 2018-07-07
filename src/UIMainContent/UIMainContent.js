@@ -1,12 +1,10 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import classNames from 'classnames'
 import { styledComponentPropType } from 'data/shapes'
 
 import Game from 'Game'
 
-function UIMainContent({ isShifted, classes }) {
-  return <section id="main-content" className={classNames(classes.content, { [classes.contentShift]: isShifted })}>
+function UIMainContent({ classes }) {
+  return <section id="main-content" className={classes.content}>
     <div className={classes.drawerHeader} />
     <Game />
   </section>
@@ -14,11 +12,8 @@ function UIMainContent({ isShifted, classes }) {
 
 UIMainContent.propTypes = {
   ...styledComponentPropType,
-  isShifted: PropTypes.bool,
 }
 
-UIMainContent.defaultProps = {
-  isShifted: false,
-}
+UIMainContent.defaultProps = {}
 
 export default UIMainContent

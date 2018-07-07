@@ -17,7 +17,7 @@ export default (state = siteInitialState, action) => {
   case MAIN_MENU_HIDE:
     return { ...state, mainMenuOpen: false }
   case SIGN_OUT_DIALOG_SHOW:
-    return { ...state, signOutDialogOpen: true }
+    return { ...state, mainMenuOpen: false, signOutDialogOpen: true }
   case SIGN_OUT_DIALOG_HIDE:
     return { ...state, signOutDialogOpen: false }
   case SIGN_OUT:

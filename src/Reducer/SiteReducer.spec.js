@@ -44,6 +44,7 @@ describe('SiteReducer', () => {
 
     expect(reducer(currentState, { type: SIGN_OUT_DIALOG_SHOW })).toEqual({
       ...siteInitialState,
+      mainMenuOpen: false,
       signOutDialogOpen: true,
     })
   })
