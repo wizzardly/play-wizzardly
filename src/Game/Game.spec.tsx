@@ -1,15 +1,16 @@
-import React from 'react'
+// import { gameInitialState } from 'data/initialState'
 import { shallow } from 'enzyme'
-import { gameInitialState } from 'data/initialState'
+import React from 'react'
 
-import Footer from 'Footer'
 import Dashboard from 'Dashboard'
+import Footer from 'Footer'
 
 import Game from './Game'
 
 describe('Game', () => {
-  const subject = (dispatch = () => {}, game = { ...gameInitialState }) =>
-    <Game dispatch={dispatch} game={game} />
+  const subject = () => <Game />
+  // const subject = (dispatch = () => {}, game = { ...gameInitialState }) =>
+  //   <Game dispatch={dispatch} game={game} />
 
   describe('when shallow rendered', () => {
     const wrapper = shallow(subject())

@@ -8,6 +8,7 @@ ratings:
 
 exclude_patterns:
   - "**/*.spec.js"
+  - "**/*.spec.tsx"
   - "**/styles.js"
   - "app/**/*.js"
   - "*.config.js"

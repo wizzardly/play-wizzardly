@@ -7,12 +7,12 @@ const { EnvironmentPlugin } = webpack
 module.exports = {
   context: path.resolve(__dirname, './src'),
   entry: {
-    index: './index.js',
+    index: './index.tsx',
   },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(j|t)sx?$/,
         exclude: [/node_modules/],
         use: [{
           loader: 'babel-loader',
@@ -36,10 +36,15 @@ module.exports = {
     new HtmlWebpackPlugin({ template: '../public/index.html' }),
   ],
   resolve: {
+    extensions: ['.ts', '.tsx', '.js', '.json'],
     modules: [
       path.resolve('./node_modules'),
       path.resolve('./app'),
       path.resolve('./src'),
     ],
+  },
+  externals: {
+    react: 'React',
+    'react-dom': 'ReactDOM',
   },
 }
