@@ -42,4 +42,8 @@ module.exports = {
       path.resolve('./src'),
     ],
   },
+  externals: {
+    react: 'React',
+    'react-dom': 'ReactDOM',
+  },
 }
