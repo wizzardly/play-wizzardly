@@ -1,7 +1,7 @@
-import { CHECK_MATCHMAKING, CHECK_MATCHMAKING_SUCCESS, CHECK_MATCHMAKING_FAIL } from './Actions'
-import matchmakingState from './state'
+import { CHECK_MATCHMAKING, CHECK_MATCHMAKING_SUCCESS, CHECK_MATCHMAKING_FAIL } from './MatchmakingActions'
+import matchmakingState from './MatchmakingState'
 
-import reducer from './Reducer'
+import reducer from './MatchmakingReducer'
 
 describe('MatchmakingReducer', () => {
   it('should reduce the initial state', () => expect(reducer(undefined, {})).toEqual(matchmakingState))

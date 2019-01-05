@@ -1,6 +1,6 @@
-import { CHECK_MATCHMAKING, CHECK_MATCHMAKING_SUCCESS, CHECK_MATCHMAKING_FAIL } from './Actions'
+import { CHECK_MATCHMAKING, CHECK_MATCHMAKING_SUCCESS, CHECK_MATCHMAKING_FAIL } from './MatchmakingActions'
 
-import matchmakingState from './state'
+import matchmakingState from './MatchmakingState'
 
 export default (state = { ...matchmakingState }, action) => {
   switch (action.type) {

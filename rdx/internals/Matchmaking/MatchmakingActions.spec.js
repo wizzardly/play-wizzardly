@@ -5,7 +5,10 @@ import configureMockStore from 'redux-mock-store'
 import axiosMiddleware from 'redux-axios-middleware'
 import thunk from 'redux-thunk'
 
-import { CheckMatchmaking, CHECK_MATCHMAKING, CHECK_MATCHMAKING_SUCCESS, CHECK_MATCHMAKING_FAIL } from 'Actions'
+import {
+  CheckMatchmaking,
+  CHECK_MATCHMAKING, CHECK_MATCHMAKING_SUCCESS, CHECK_MATCHMAKING_FAIL
+} from './MatchmakingActions'
 
 const mockClient = new MockAdapter(client)
 const mockStore = configureMockStore([thunk, axiosMiddleware(client)])
