@@ -68,13 +68,17 @@
     "setupTestFrameworkScriptFile": "./config/jest.js",
     "modulePaths": [
       "dat",
+      "rdx",
       "src"
     ],
     "collectCoverageFrom": [
       "src/**/*.js",
+      "rdx/**/*.js",
       "!src/index.js",
       "!src/**/index.js",
-      "!src/**/styles.js"
+      "!src/**/styles.js",
+      "!rdx/index.js",
+      "!rdx/**/index.js"
     ]
   }
 }
