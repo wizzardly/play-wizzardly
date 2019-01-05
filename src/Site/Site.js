@@ -1,5 +1,5 @@
 import React from 'react'
-import { styledComponentPropType } from 'data/shapes'
+import { styledComponentProp } from 'props'
 
 import Header from 'Header'
 import Layout from 'Layout'
@@ -14,7 +14,7 @@ function Site({ classes }) {
 }
 
 Site.propTypes = {
-  ...styledComponentPropType,
+  ...styledComponentProp,
 }
 
 export default Site

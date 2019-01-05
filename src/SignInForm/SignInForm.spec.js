@@ -3,7 +3,7 @@ import { mount, shallow } from 'enzyme'
 import faker from 'faker'
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
-import { siteInitialState } from 'data/initialState'
+import { siteState } from 'states'
 import { client } from 'Store'
 import MockAdapter from 'axios-mock-adapter'
 
@@ -19,7 +19,7 @@ const mockClient = new MockAdapter(client)
 const mockStore = configureMockStore([thunk, axiosMiddleware(client)])
 
 describe('SignInForm', () => {
-  const subject = (dispatch = () => {}, site = { ...siteInitialState }) =>
+  const subject = (dispatch = () => {}, site = { ...siteState }) =>
     <SignInForm dispatch={dispatch} site={site} />
 
   describe('when shallow rendered', () => {
@@ -33,7 +33,7 @@ describe('SignInForm', () => {
   })
 
   describe('when shallow rendered and signingIn', () => {
-    const wrapper = shallow(subject(() => {}, { ...siteInitialState, signingIn: true }))
+    const wrapper = shallow(subject(() => {}, { ...siteState, signingIn: true }))
     const formProps = wrapper.find(UISignInForm).props()
 
     it('renders a UISignInForm signingIn', () => {
@@ -43,7 +43,7 @@ describe('SignInForm', () => {
   })
 
   describe('when shallow rendered and signInFailed', () => {
-    const wrapper = shallow(subject(() => {}, { ...siteInitialState, signInFailed: true }))
+    const wrapper = shallow(subject(() => {}, { ...siteState, signInFailed: true }))
     const formProps = wrapper.find(UISignInForm).props()
 
     it('renders a UISignInForm signingIn', () => {

@@ -3,7 +3,7 @@ import React from 'react'
 import { MuiThemeProvider } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 
-import { styledComponentPropType } from 'data/shapes'
+import { styledComponentProp } from 'props'
 
 import WithSession from 'WithSession'
 import Site from 'Site'
@@ -23,6 +23,6 @@ function Application(props) {
   </div>
 }
 
-Application.propTypes = { ...styledComponentPropType }
+Application.propTypes = { ...styledComponentProp }
 
 export default Application

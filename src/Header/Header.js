@@ -1,5 +1,5 @@
 import React from 'react'
-import { connectedComponentPropType } from 'data/shapes'
+import { connectedComponentProp } from 'props'
 
 import { ShowMainMenu } from 'Actions'
 import UIHeader from 'UIHeader'
@@ -9,7 +9,7 @@ function Header({ dispatch }) {
 }
 
 Header.propTypes = {
-  ...connectedComponentPropType,
+  ...connectedComponentProp,
 }
 
 Header.defaultProps = {}

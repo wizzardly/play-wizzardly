@@ -1,5 +1,5 @@
 import React from 'react'
-import { styledComponentPropType } from 'data/shapes'
+import { styledComponentProp } from 'props'
 
 import Paper from '@material-ui/core/Paper'
 import Grid from '@material-ui/core/Grid'
@@ -21,6 +21,6 @@ function SignIn(props) {
   </div>
 }
 
-SignIn.propTypes = { ...styledComponentPropType }
+SignIn.propTypes = { ...styledComponentProp }
 
 export default SignIn

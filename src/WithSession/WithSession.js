@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import axios from 'axios'
-import { sessionInitialState } from 'data/initialState'
-import { sessionShape, connectedComponentPropType } from 'data/shapes'
+import { sessionState } from 'states'
+import { connectedComponentProp } from 'props'
+import { sessionShape } from 'shapes'
 
 import SignIn from 'SignIn'
 
@@ -18,13 +19,13 @@ function WithSession(props) {
 }
 
 WithSession.propTypes = {
-  ...connectedComponentPropType,
+  ...connectedComponentProp,
   children: PropTypes.node.isRequired,
   session: sessionShape,
 }
 
 WithSession.defaultProps = {
-  session: { ...sessionInitialState },
+  session: { ...sessionState },
 }
 
 export default WithSession
