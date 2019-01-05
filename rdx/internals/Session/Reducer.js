@@ -1,5 +1,6 @@
-import sessionState from './state'
 import { SIGN_IN, SIGN_IN_SUCCESS, SIGN_OUT } from 'Actions'
+
+import sessionState from './state'
 
 export default (state = { ...sessionState }, action) => {
   switch (action.type) {
