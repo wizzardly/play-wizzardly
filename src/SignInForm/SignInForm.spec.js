@@ -3,7 +3,7 @@ import { mount, shallow } from 'enzyme'
 import faker from 'faker'
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
-import { siteState } from 'states'
+import { siteState } from 'States'
 import { client } from 'Store'
 import MockAdapter from 'axios-mock-adapter'
 

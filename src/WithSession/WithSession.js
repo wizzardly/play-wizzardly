@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import axios from 'axios'
-import { sessionState } from 'states'
+import { sessionState } from 'States'
 import { connectedComponentProp } from 'props'
 import { sessionShape } from 'shapes'
 

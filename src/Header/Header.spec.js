@@ -2,7 +2,7 @@ import React from 'react'
 import { mount, shallow } from 'enzyme'
 import thunk from 'redux-thunk'
 import configureMockStore from 'redux-mock-store'
-import { siteState } from 'states'
+import { siteState } from 'States'
 
 import UIHeader from 'UIHeader'
 

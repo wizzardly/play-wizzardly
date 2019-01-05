@@ -1,7 +1,7 @@
 import faker from 'faker'
 
 import { SIGN_IN, SIGN_IN_SUCCESS, SIGN_OUT } from 'Actions'
-import { sessionState } from 'states'
+import sessionState from './state'
 
 import reducer from './Reducer'
 
