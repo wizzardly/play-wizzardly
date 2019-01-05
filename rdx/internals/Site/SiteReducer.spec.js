@@ -1,10 +1,10 @@
-import siteState from './state'
-import {
-  SIGN_IN, SIGN_IN_SUCCESS, SIGN_IN_FAIL,
-  MAIN_MENU_SHOW, MAIN_MENU_HIDE, SIGN_OUT_DIALOG_SHOW, SIGN_OUT_DIALOG_HIDE, SIGN_OUT,
-} from 'Actions'
+import { SIGN_IN, SIGN_IN_SUCCESS, SIGN_IN_FAIL, SIGN_OUT } from 'Actions'
+import { MAIN_MENU_SHOW, MAIN_MENU_HIDE, SIGN_OUT_DIALOG_SHOW, SIGN_OUT_DIALOG_HIDE } from './SiteActions'
 
-import reducer from './Reducer'
+import siteState from './SiteState'
+
+import reducer from './SiteReducer'
+
 
 describe('SiteReducer', () => {
   it('should reduce the initial state', () => expect(reducer(undefined, {})).toEqual(siteState))

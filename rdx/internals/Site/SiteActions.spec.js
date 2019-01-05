@@ -4,7 +4,7 @@ import thunk from 'redux-thunk'
 import {
   ShowSignOutDialog, HideSignOutDialog, SIGN_OUT_DIALOG_SHOW, SIGN_OUT_DIALOG_HIDE,
   ShowMainMenu, HideMainMenu, MAIN_MENU_SHOW, MAIN_MENU_HIDE,
-} from 'Actions'
+} from './SiteActions'
 
 const mockStore = configureMockStore([thunk])
 

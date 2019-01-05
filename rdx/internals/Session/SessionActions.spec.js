@@ -6,7 +6,7 @@ import configureMockStore from 'redux-mock-store'
 import axiosMiddleware from 'redux-axios-middleware'
 import thunk from 'redux-thunk'
 
-import { SignIn, SignOut, SIGN_IN, SIGN_IN_SUCCESS, SIGN_IN_FAIL, SIGN_OUT } from 'Actions'
+import { SignIn, SignOut, SIGN_IN, SIGN_IN_SUCCESS, SIGN_IN_FAIL, SIGN_OUT } from './SessionActions'
 
 const mockClient = new MockAdapter(client)
 const mockStore = configureMockStore([thunk, axiosMiddleware(client)])
