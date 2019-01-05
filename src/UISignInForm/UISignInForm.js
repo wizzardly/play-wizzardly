@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { styledComponentPropType } from 'data/shapes'
+import { styledComponentProp } from 'props'
 
 import FormGroup from '@material-ui/core/FormGroup'
 import TextField from '@material-ui/core/TextField'
@@ -11,7 +11,7 @@ export const SIGN_IN_FAIL_ERROR_TEXT = 'A problem occurred trying to sign in.'
 
 export default class UISignInForm extends Component {
   static propTypes = {
-    ...styledComponentPropType,
+    ...styledComponentProp,
     onSubmit: PropTypes.func,
     signingIn: PropTypes.bool,
     signInFailed: PropTypes.bool,

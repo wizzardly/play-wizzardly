@@ -67,7 +67,7 @@
   "jest": {
     "setupTestFrameworkScriptFile": "./config/jest.js",
     "modulePaths": [
-      "app",
+      "dat",
       "src"
     ],
     "collectCoverageFrom": [

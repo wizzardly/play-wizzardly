@@ -1,34 +1,34 @@
 import faker from 'faker'
 
 import { SIGN_IN, SIGN_IN_SUCCESS, SIGN_OUT } from 'Actions'
-import { sessionInitialState } from 'data/initialState'
+import { sessionState } from 'states'
 
 import reducer from './SessionReducer'
 
 describe('SessionReducer', () => {
-  it('should reduce the initial state', () => expect(reducer(undefined, {})).toEqual(sessionInitialState))
+  it('should reduce the initial state', () => expect(reducer(undefined, {})).toEqual(sessionState))
 
   it('should reduce the SIGN_IN state', () => {
     const jwt = faker.random.uuid()
-    const currentState = { ...sessionInitialState, jwt }
+    const currentState = { ...sessionState, jwt }
 
-    expect(reducer(currentState, { type: SIGN_IN })).toEqual({ ...sessionInitialState })
+    expect(reducer(currentState, { type: SIGN_IN })).toEqual({ ...sessionState })
   })
 
   it('should reduce the SIGN_IN_SUCCESS state', () => {
     const jwt = faker.random.uuid()
-    const currentState = { ...sessionInitialState }
+    const currentState = { ...sessionState }
 
     expect(reducer(currentState, { type: SIGN_IN_SUCCESS, payload: { data: { jwt } } })).toEqual({
-      ...sessionInitialState,
+      ...sessionState,
       token: jwt,
     })
   })
 
   it('should reduce the SIGN_OUT state', () => {
     const jwt = faker.random.uuid()
-    const currentState = { ...sessionInitialState, token: jwt }
+    const currentState = { ...sessionState, token: jwt }
 
-    expect(reducer(currentState, { type: SIGN_OUT })).toEqual({ ...sessionInitialState })
+    expect(reducer(currentState, { type: SIGN_OUT })).toEqual({ ...sessionState })
   })
 })

@@ -2,7 +2,7 @@ import React from 'react'
 import { mount, shallow } from 'enzyme'
 import thunk from 'redux-thunk'
 import configureMockStore from 'redux-mock-store'
-import { siteInitialState } from 'data/initialState'
+import { siteState } from 'states'
 
 import UIHeader from 'UIHeader'
 
@@ -13,7 +13,7 @@ import Header from './Header'
 const mockStore = configureMockStore([thunk])
 
 describe('Header', () => {
-  const subject = (dispatch = () => {}, site = { ...siteInitialState }) => <Header dispatch={dispatch} site={site} />
+  const subject = (dispatch = () => {}, site = { ...siteState }) => <Header dispatch={dispatch} site={site} />
 
   describe('when shallow rendered', () => {
     const wrapper = shallow(subject())

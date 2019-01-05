@@ -9,5 +9,5 @@ ratings:
 exclude_patterns:
   - "**/*.spec.js"
   - "**/styles.js"
-  - "app/**/*.js"
+  - "dat/**/*.js"
   - "*.config.js"

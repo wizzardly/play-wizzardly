@@ -1,5 +1,5 @@
 import React from 'react'
-import { styledComponentPropType } from 'data/shapes'
+import { styledComponentProp } from 'props'
 
 import MainMenu from 'MainMenu'
 import UIMainContent from 'UIMainContent'
@@ -13,6 +13,6 @@ function Layout(props) {
   </div>
 }
 
-Layout.propTypes = { ...styledComponentPropType }
+Layout.propTypes = { ...styledComponentProp }
 
 export default Layout

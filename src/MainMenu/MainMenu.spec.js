@@ -2,7 +2,7 @@ import React from 'react'
 import { mount, shallow } from 'enzyme'
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
-import { siteInitialState } from 'data/initialState'
+import { siteState } from 'states'
 
 import UIMainMenu from 'UIMainMenu'
 
@@ -13,7 +13,7 @@ import MainMenu from './MainMenu'
 const mockStore = configureMockStore([thunk])
 
 describe('MainMenu', () => {
-  const subject = (dispatch = () => {}, site = { ...siteInitialState }) => <MainMenu dispatch={dispatch} site={site} />
+  const subject = (dispatch = () => {}, site = { ...siteState }) => <MainMenu dispatch={dispatch} site={site} />
 
   describe('when shallow rendered', () => {
     const wrapper = shallow(subject())
@@ -22,7 +22,7 @@ describe('MainMenu', () => {
   })
 
   describe('when shallow rendered and mainMenuOpen', () => {
-    const wrapper = shallow(subject(() => {}, { ...siteInitialState, mainMenuOpen: true }))
+    const wrapper = shallow(subject(() => {}, { ...siteState, mainMenuOpen: true }))
 
     it('renders an open UIMainMenu', () => expect(wrapper.find(UIMainMenu).props().isOpen).toBe(true))
   })

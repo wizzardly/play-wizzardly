@@ -1,6 +1,7 @@
 import React from 'react'
-import { siteInitialState } from 'data/initialState'
-import { connectedComponentPropType, siteShape } from 'data/shapes'
+import { siteState } from 'states'
+import { connectedComponentProp } from 'props'
+import { siteShape } from 'shapes'
 
 import UISignInForm from 'UISignInForm'
 
@@ -17,12 +18,12 @@ function SignInForm({ dispatch, site }) {
 }
 
 SignInForm.propTypes = {
-  ...connectedComponentPropType,
+  ...connectedComponentProp,
   site: siteShape,
 }
 
 SignInForm.defaultProps = {
-  site: { ...siteInitialState },
+  site: { ...siteState },
 }
 
 export default SignInForm

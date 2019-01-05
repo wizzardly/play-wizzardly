@@ -1,6 +1,7 @@
 import React from 'react'
-import { siteInitialState } from 'data/initialState'
-import { connectedComponentPropType, siteShape } from 'data/shapes'
+import { siteState } from 'states'
+import { connectedComponentProp } from 'props'
+import { siteShape } from 'shapes'
 import { HideMainMenu, ShowSignOutDialog } from 'Actions'
 
 import UIMainMenu from 'UIMainMenu'
@@ -14,12 +15,12 @@ function MainMenu({ dispatch, site }) {
 }
 
 MainMenu.propTypes = {
-  ...connectedComponentPropType,
+  ...connectedComponentProp,
   site: siteShape,
 }
 
 MainMenu.defaultProps = {
-  site: { ...siteInitialState },
+  site: { ...siteState },
 }
 
 export default MainMenu

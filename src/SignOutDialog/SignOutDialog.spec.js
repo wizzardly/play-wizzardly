@@ -2,7 +2,7 @@ import React from 'react'
 import { mount, shallow } from 'enzyme'
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
-import { siteInitialState } from 'data/initialState'
+import { siteState } from 'states'
 
 import { SIGN_OUT_DIALOG_HIDE, SIGN_OUT } from 'Actions'
 
@@ -11,7 +11,7 @@ import SignOutDialog from './SignOutDialog'
 const mockStore = configureMockStore([thunk])
 
 describe('SignOutDialog', () => {
-  const subject = (dispatch, site = { ...siteInitialState }) => <SignOutDialog dispatch={dispatch} site={site} />
+  const subject = (dispatch, site = { ...siteState }) => <SignOutDialog dispatch={dispatch} site={site} />
 
   const cancelButtonSelector = 'button#sign-out-dialog-cancel'
   const confirmButtonSelector = 'button#sign-out-dialog-confirm'
@@ -58,13 +58,13 @@ describe('SignOutDialog', () => {
   })
 
   describe('when shallow rendered and open', () => {
-    const wrapper = shallow(subject(() => {}, { ...siteInitialState, signOutDialogOpen: true }))
+    const wrapper = shallow(subject(() => {}, { ...siteState, signOutDialogOpen: true }))
 
     it('is open', () => expect(wrapper.prop('open')).toBe(true))
   })
 
   describe('when shallow rendered and NOT open', () => {
-    const wrapper = shallow(subject(() => {}, { ...siteInitialState }))
+    const wrapper = shallow(subject(() => {}, { ...siteState }))
 
     it('is open', () => expect(wrapper.prop('open')).toBe(false))
   })

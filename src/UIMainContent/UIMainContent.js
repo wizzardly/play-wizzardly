@@ -1,17 +1,17 @@
 import React from 'react'
-import { styledComponentPropType } from 'data/shapes'
+import { styledComponentProp } from 'props'
 
-import Game from 'Game'
+// import Game from 'Game'
 
 function UIMainContent({ classes }) {
   return <section id="main-content" className={classes.content}>
     <div className={classes.drawerHeader} />
-    <Game />
+    {/*<Game />*/}
   </section>
 }
 
 UIMainContent.propTypes = {
-  ...styledComponentPropType,
+  ...styledComponentProp,
 }
 
 UIMainContent.defaultProps = {}
