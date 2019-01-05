@@ -1,5 +1,5 @@
 import React from 'react'
-import { siteState } from 'states'
+import { siteState } from 'States'
 import { connectedComponentProp } from 'props'
 import { siteShape } from 'shapes'
 

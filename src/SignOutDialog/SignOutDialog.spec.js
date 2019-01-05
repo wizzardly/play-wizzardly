@@ -2,7 +2,7 @@ import React from 'react'
 import { mount, shallow } from 'enzyme'
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
-import { siteState } from 'states'
+import { siteState } from 'States'
 
 import { SIGN_OUT_DIALOG_HIDE, SIGN_OUT } from 'Actions'
 

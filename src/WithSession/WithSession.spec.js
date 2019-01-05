@@ -2,7 +2,7 @@ import React from 'react'
 import faker from 'faker'
 import axios from 'axios'
 import { mount, shallow } from 'enzyme'
-import { sessionState } from 'states'
+import { sessionState } from 'States'
 
 import SignIn from 'SignIn'
 

@@ -1,7 +1,8 @@
-import { sessionState } from 'states'
 import { SIGN_IN, SIGN_IN_SUCCESS, SIGN_OUT } from 'Actions'
 
-export default (state = sessionState, action) => {
+import sessionState from './state'
+
+export default (state = { ...sessionState }, action) => {
   switch (action.type) {
   case SIGN_IN:
   case SIGN_OUT:

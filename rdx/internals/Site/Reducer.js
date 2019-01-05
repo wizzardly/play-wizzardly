@@ -1,10 +1,11 @@
-import { siteState } from 'states'
 import {
   SIGN_IN, SIGN_IN_SUCCESS, SIGN_IN_FAIL,
   MAIN_MENU_SHOW, MAIN_MENU_HIDE, SIGN_OUT_DIALOG_SHOW, SIGN_OUT_DIALOG_HIDE, SIGN_OUT,
 } from 'Actions'
 
-export default (state = siteState, action) => {
+import siteState from './state'
+
+export default (state = { ...siteState }, action) => {
   switch (action.type) {
   case SIGN_IN:
     return { ...state, signingIn: true }

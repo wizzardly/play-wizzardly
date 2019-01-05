@@ -1,9 +1,9 @@
 import faker from 'faker'
 
 import { SIGN_IN, SIGN_IN_SUCCESS, SIGN_OUT } from 'Actions'
-import { sessionState } from 'states'
+import sessionState from './state'
 
-import reducer from './SessionReducer'
+import reducer from './Reducer'
 
 describe('SessionReducer', () => {
   it('should reduce the initial state', () => expect(reducer(undefined, {})).toEqual(sessionState))
