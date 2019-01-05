@@ -4,7 +4,7 @@ import {
   MAIN_MENU_SHOW, MAIN_MENU_HIDE, SIGN_OUT_DIALOG_SHOW, SIGN_OUT_DIALOG_HIDE, SIGN_OUT,
 } from 'Actions'
 
-import reducer from './SiteReducer'
+import reducer from './Reducer'
 
 describe('SiteReducer', () => {
   it('should reduce the initial state', () => expect(reducer(undefined, {})).toEqual(siteState))

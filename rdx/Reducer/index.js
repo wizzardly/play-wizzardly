@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 
-import session from './SessionReducer'
-import site from './SiteReducer'
+import session from '../internals/Session/Reducer'
+import site from '../internals/Site/Reducer'
 
 export default combineReducers({
   session,

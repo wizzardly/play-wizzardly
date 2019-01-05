@@ -1,2 +1,2 @@
-export * from './SessionActions'
-export * from './SiteActions'
+export * from '../internals/Session/Actions'
+export * from '../internals/Site/Actions'
